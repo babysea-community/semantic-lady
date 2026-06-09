@@ -1,0 +1,18118 @@
+import type { SemanticLadyModel } from './types.js';
+
+export const SEMANTIC_LADY_IMAGE_MODELS = [
+  {
+    "apiName": "qwen/image",
+    "uiName": "Qwen Image",
+    "provider": "alibaba-cloud",
+    "kind": "image",
+    "workflows": [
+      "text-to-image",
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 6
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_bbox_list",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Bounding boxes for interactive editing workflows."
+      },
+      {
+        "name": "generation_color_palette",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Provider-native color palette or color theme object."
+      },
+      {
+        "name": "generation_enable_interleave",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable interleaved text and image output where supported.",
+        "default": false
+      },
+      {
+        "name": "generation_enable_sequential",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to ask the model for a sequential image set.",
+        "default": false
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_max_images",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Maximum images for sequential generation.",
+        "default": 1,
+        "min": 1,
+        "max": 15
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_stream",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should stream outputs when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_thinking_mode",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to use model thinking mode when supported.",
+        "default": true
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "qwen/image-2",
+    "uiName": "Qwen Image 2",
+    "provider": "alibaba-cloud",
+    "kind": "image",
+    "workflows": [
+      "text-to-image",
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 6
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_bbox_list",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Bounding boxes for interactive editing workflows."
+      },
+      {
+        "name": "generation_color_palette",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Provider-native color palette or color theme object."
+      },
+      {
+        "name": "generation_enable_interleave",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable interleaved text and image output where supported.",
+        "default": false
+      },
+      {
+        "name": "generation_enable_sequential",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to ask the model for a sequential image set.",
+        "default": false
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_max_images",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Maximum images for sequential generation.",
+        "default": 1,
+        "min": 1,
+        "max": 15
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_stream",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should stream outputs when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_thinking_mode",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to use model thinking mode when supported.",
+        "default": true
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "qwen/image-2-pro",
+    "uiName": "Qwen Image 2 Pro",
+    "provider": "alibaba-cloud",
+    "kind": "image",
+    "workflows": [
+      "text-to-image",
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 6
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_bbox_list",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Bounding boxes for interactive editing workflows."
+      },
+      {
+        "name": "generation_color_palette",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Provider-native color palette or color theme object."
+      },
+      {
+        "name": "generation_enable_interleave",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable interleaved text and image output where supported.",
+        "default": false
+      },
+      {
+        "name": "generation_enable_sequential",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to ask the model for a sequential image set.",
+        "default": false
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_max_images",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Maximum images for sequential generation.",
+        "default": 1,
+        "min": 1,
+        "max": 15
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_stream",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should stream outputs when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_thinking_mode",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to use model thinking mode when supported.",
+        "default": true
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "qwen/image-base",
+    "uiName": "Qwen Image Base",
+    "provider": "alibaba-cloud",
+    "kind": "image",
+    "workflows": [
+      "text-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 6
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_bbox_list",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Bounding boxes for interactive editing workflows."
+      },
+      {
+        "name": "generation_color_palette",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Provider-native color palette or color theme object."
+      },
+      {
+        "name": "generation_enable_interleave",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable interleaved text and image output where supported.",
+        "default": false
+      },
+      {
+        "name": "generation_enable_sequential",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to ask the model for a sequential image set.",
+        "default": false
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_max_images",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Maximum images for sequential generation.",
+        "default": 1,
+        "min": 1,
+        "max": 15
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_stream",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should stream outputs when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_thinking_mode",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to use model thinking mode when supported.",
+        "default": true
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "qwen/image-edit",
+    "uiName": "Qwen Image Edit",
+    "provider": "alibaba-cloud",
+    "kind": "image",
+    "workflows": [
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 6
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_bbox_list",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Bounding boxes for interactive editing workflows."
+      },
+      {
+        "name": "generation_color_palette",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Provider-native color palette or color theme object."
+      },
+      {
+        "name": "generation_enable_interleave",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable interleaved text and image output where supported.",
+        "default": false
+      },
+      {
+        "name": "generation_enable_sequential",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to ask the model for a sequential image set.",
+        "default": false
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_max_images",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Maximum images for sequential generation.",
+        "default": 1,
+        "min": 1,
+        "max": 15
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_stream",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should stream outputs when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_thinking_mode",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to use model thinking mode when supported.",
+        "default": true
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "qwen/image-edit-max",
+    "uiName": "Qwen Image Edit Max",
+    "provider": "alibaba-cloud",
+    "kind": "image",
+    "workflows": [
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 6
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_bbox_list",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Bounding boxes for interactive editing workflows."
+      },
+      {
+        "name": "generation_color_palette",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Provider-native color palette or color theme object."
+      },
+      {
+        "name": "generation_enable_interleave",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable interleaved text and image output where supported.",
+        "default": false
+      },
+      {
+        "name": "generation_enable_sequential",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to ask the model for a sequential image set.",
+        "default": false
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_max_images",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Maximum images for sequential generation.",
+        "default": 1,
+        "min": 1,
+        "max": 15
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_stream",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should stream outputs when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_thinking_mode",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to use model thinking mode when supported.",
+        "default": true
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "qwen/image-edit-plus",
+    "uiName": "Qwen Image Edit Plus",
+    "provider": "alibaba-cloud",
+    "kind": "image",
+    "workflows": [
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 6
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_bbox_list",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Bounding boxes for interactive editing workflows."
+      },
+      {
+        "name": "generation_color_palette",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Provider-native color palette or color theme object."
+      },
+      {
+        "name": "generation_enable_interleave",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable interleaved text and image output where supported.",
+        "default": false
+      },
+      {
+        "name": "generation_enable_sequential",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to ask the model for a sequential image set.",
+        "default": false
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_max_images",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Maximum images for sequential generation.",
+        "default": 1,
+        "min": 1,
+        "max": 15
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_stream",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should stream outputs when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_thinking_mode",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to use model thinking mode when supported.",
+        "default": true
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "qwen/image-max",
+    "uiName": "Qwen Image Max",
+    "provider": "alibaba-cloud",
+    "kind": "image",
+    "workflows": [
+      "text-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 6
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_bbox_list",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Bounding boxes for interactive editing workflows."
+      },
+      {
+        "name": "generation_color_palette",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Provider-native color palette or color theme object."
+      },
+      {
+        "name": "generation_enable_interleave",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable interleaved text and image output where supported.",
+        "default": false
+      },
+      {
+        "name": "generation_enable_sequential",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to ask the model for a sequential image set.",
+        "default": false
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_max_images",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Maximum images for sequential generation.",
+        "default": 1,
+        "min": 1,
+        "max": 15
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_stream",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should stream outputs when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_thinking_mode",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to use model thinking mode when supported.",
+        "default": true
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "wan/2.1-imageedit",
+    "uiName": "Wan 2.1 Image Edit",
+    "provider": "alibaba-cloud",
+    "kind": "image",
+    "workflows": [
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 6
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_bbox_list",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Bounding boxes for interactive editing workflows."
+      },
+      {
+        "name": "generation_color_palette",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Provider-native color palette or color theme object."
+      },
+      {
+        "name": "generation_enable_interleave",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable interleaved text and image output where supported.",
+        "default": false
+      },
+      {
+        "name": "generation_enable_sequential",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to ask the model for a sequential image set.",
+        "default": false
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_max_images",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Maximum images for sequential generation.",
+        "default": 1,
+        "min": 1,
+        "max": 15
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_stream",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should stream outputs when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_thinking_mode",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to use model thinking mode when supported.",
+        "default": true
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "wan/2.5-i2i-preview",
+    "uiName": "Wan 2.5 I2I Preview",
+    "provider": "alibaba-cloud",
+    "kind": "image",
+    "workflows": [
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 6
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_bbox_list",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Bounding boxes for interactive editing workflows."
+      },
+      {
+        "name": "generation_color_palette",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Provider-native color palette or color theme object."
+      },
+      {
+        "name": "generation_enable_interleave",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable interleaved text and image output where supported.",
+        "default": false
+      },
+      {
+        "name": "generation_enable_sequential",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to ask the model for a sequential image set.",
+        "default": false
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_max_images",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Maximum images for sequential generation.",
+        "default": 1,
+        "min": 1,
+        "max": 15
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_stream",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should stream outputs when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_thinking_mode",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to use model thinking mode when supported.",
+        "default": true
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "wan/2.6-image",
+    "uiName": "Wan 2.6 Image",
+    "provider": "alibaba-cloud",
+    "kind": "image",
+    "workflows": [
+      "text-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 6
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_bbox_list",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Bounding boxes for interactive editing workflows."
+      },
+      {
+        "name": "generation_color_palette",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Provider-native color palette or color theme object."
+      },
+      {
+        "name": "generation_enable_interleave",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable interleaved text and image output where supported.",
+        "default": false
+      },
+      {
+        "name": "generation_enable_sequential",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to ask the model for a sequential image set.",
+        "default": false
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_max_images",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Maximum images for sequential generation.",
+        "default": 1,
+        "min": 1,
+        "max": 15
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_stream",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should stream outputs when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_thinking_mode",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to use model thinking mode when supported.",
+        "default": true
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "wan/2.6-t2i",
+    "uiName": "Wan 2.6 T2I",
+    "provider": "alibaba-cloud",
+    "kind": "image",
+    "workflows": [
+      "text-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 6
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_bbox_list",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Bounding boxes for interactive editing workflows."
+      },
+      {
+        "name": "generation_color_palette",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Provider-native color palette or color theme object."
+      },
+      {
+        "name": "generation_enable_interleave",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable interleaved text and image output where supported.",
+        "default": false
+      },
+      {
+        "name": "generation_enable_sequential",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to ask the model for a sequential image set.",
+        "default": false
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_max_images",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Maximum images for sequential generation.",
+        "default": 1,
+        "min": 1,
+        "max": 15
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_stream",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should stream outputs when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_thinking_mode",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to use model thinking mode when supported.",
+        "default": true
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "wan/2.7-image",
+    "uiName": "Wan 2.7 Image",
+    "provider": "alibaba-cloud",
+    "kind": "image",
+    "workflows": [
+      "text-to-image",
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 6
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_bbox_list",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Bounding boxes for interactive editing workflows."
+      },
+      {
+        "name": "generation_color_palette",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Provider-native color palette or color theme object."
+      },
+      {
+        "name": "generation_enable_interleave",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable interleaved text and image output where supported.",
+        "default": false
+      },
+      {
+        "name": "generation_enable_sequential",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to ask the model for a sequential image set.",
+        "default": false
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_max_images",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Maximum images for sequential generation.",
+        "default": 1,
+        "min": 1,
+        "max": 15
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_stream",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should stream outputs when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_thinking_mode",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to use model thinking mode when supported.",
+        "default": true
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "wan/2.7-image-pro",
+    "uiName": "Wan 2.7 Image Pro",
+    "provider": "alibaba-cloud",
+    "kind": "image",
+    "workflows": [
+      "text-to-image",
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 6
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_bbox_list",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Bounding boxes for interactive editing workflows."
+      },
+      {
+        "name": "generation_color_palette",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Provider-native color palette or color theme object."
+      },
+      {
+        "name": "generation_enable_interleave",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable interleaved text and image output where supported.",
+        "default": false
+      },
+      {
+        "name": "generation_enable_sequential",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to ask the model for a sequential image set.",
+        "default": false
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_max_images",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Maximum images for sequential generation.",
+        "default": 1,
+        "min": 1,
+        "max": 15
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_stream",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should stream outputs when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_thinking_mode",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to use model thinking mode when supported.",
+        "default": true
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "z/image-turbo",
+    "uiName": "Z-Image Turbo",
+    "provider": "alibaba-cloud",
+    "kind": "image",
+    "workflows": [
+      "text-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 6
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_bbox_list",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Bounding boxes for interactive editing workflows."
+      },
+      {
+        "name": "generation_color_palette",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Provider-native color palette or color theme object."
+      },
+      {
+        "name": "generation_enable_interleave",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable interleaved text and image output where supported.",
+        "default": false
+      },
+      {
+        "name": "generation_enable_sequential",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to ask the model for a sequential image set.",
+        "default": false
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_max_images",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Maximum images for sequential generation.",
+        "default": 1,
+        "min": 1,
+        "max": 15
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_stream",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should stream outputs when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_thinking_mode",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to use model thinking mode when supported.",
+        "default": true
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "bfl/flux-1.1-pro",
+    "uiName": "FLUX 1.1 Pro",
+    "provider": "black-forest-labs",
+    "kind": "image",
+    "workflows": [
+      "text-to-image",
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "jpeg",
+        "enum": [
+          "jpg",
+          "jpeg",
+          "png",
+          "webp"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "1K"
+        ]
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_moderation",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Content moderation (true = moderation on, false = moderation off)",
+        "default": false
+      },
+      {
+        "name": "generation_prompt_strength",
+        "type": "number",
+        "tier": "advanced",
+        "description": "Strength of the prompt vs the input file - higher values mean more deviation from the original file",
+        "default": 0.1,
+        "min": 0,
+        "max": 1
+      },
+      {
+        "name": "generation_raw_mode",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Generate less processed, more natural-looking images when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_webhook_secret",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Provider-native webhook secret for providers that sign callback requests."
+      },
+      {
+        "name": "generation_webhook_url",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Provider-native webhook URL for providers that accept callback URLs directly."
+      }
+    ]
+  },
+  {
+    "apiName": "bfl/flux-1.1-pro-ultra",
+    "uiName": "FLUX 1.1 Pro Ultra",
+    "provider": "black-forest-labs",
+    "kind": "image",
+    "workflows": [
+      "text-to-image",
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "jpeg",
+        "enum": [
+          "jpg",
+          "jpeg",
+          "png",
+          "webp"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "1K"
+        ]
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_moderation",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Content moderation (true = moderation on, false = moderation off)",
+        "default": false
+      },
+      {
+        "name": "generation_prompt_strength",
+        "type": "number",
+        "tier": "advanced",
+        "description": "Strength of the prompt vs the input file - higher values mean more deviation from the original file",
+        "default": 0.1,
+        "min": 0,
+        "max": 1
+      },
+      {
+        "name": "generation_raw_mode",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Generate less processed, more natural-looking images when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_webhook_secret",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Provider-native webhook secret for providers that sign callback requests."
+      },
+      {
+        "name": "generation_webhook_url",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Provider-native webhook URL for providers that accept callback URLs directly."
+      }
+    ]
+  },
+  {
+    "apiName": "bfl/flux-2-flex",
+    "uiName": "FLUX.2 Flex",
+    "provider": "black-forest-labs",
+    "kind": "image",
+    "workflows": [
+      "text-to-image",
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "jpeg",
+        "enum": [
+          "jpg",
+          "jpeg",
+          "png",
+          "webp"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_guidance_scale",
+        "type": "number",
+        "tier": "advanced",
+        "description": "Classifier-free guidance scale - controls how closely the output follows your prompt (higher values increase prompt adherence)",
+        "min": 0,
+        "max": 20
+      },
+      {
+        "name": "generation_moderation",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Content moderation (true = moderation on, false = moderation off)",
+        "default": false
+      },
+      {
+        "name": "generation_num_inference_steps",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Number of denoising steps (more steps produce higher quality but slower results)",
+        "min": 1,
+        "max": 100
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_webhook_secret",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Provider-native webhook secret for providers that sign callback requests."
+      },
+      {
+        "name": "generation_webhook_url",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Provider-native webhook URL for providers that accept callback URLs directly."
+      }
+    ]
+  },
+  {
+    "apiName": "bfl/flux-2-klein-4b",
+    "uiName": "FLUX.2 Klein 4B",
+    "provider": "black-forest-labs",
+    "kind": "image",
+    "workflows": [
+      "text-to-image",
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "jpeg",
+        "enum": [
+          "jpg",
+          "jpeg",
+          "png",
+          "webp"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_guidance_scale",
+        "type": "number",
+        "tier": "advanced",
+        "description": "Classifier-free guidance scale - controls how closely the output follows your prompt (higher values increase prompt adherence)",
+        "min": 0,
+        "max": 20
+      },
+      {
+        "name": "generation_moderation",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Content moderation (true = moderation on, false = moderation off)",
+        "default": false
+      },
+      {
+        "name": "generation_num_inference_steps",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Number of denoising steps (more steps produce higher quality but slower results)",
+        "min": 1,
+        "max": 100
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_webhook_secret",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Provider-native webhook secret for providers that sign callback requests."
+      },
+      {
+        "name": "generation_webhook_url",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Provider-native webhook URL for providers that accept callback URLs directly."
+      }
+    ]
+  },
+  {
+    "apiName": "bfl/flux-2-klein-9b",
+    "uiName": "FLUX.2 Klein 9B",
+    "provider": "black-forest-labs",
+    "kind": "image",
+    "workflows": [
+      "text-to-image",
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "jpeg",
+        "enum": [
+          "jpg",
+          "jpeg",
+          "png",
+          "webp"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_guidance_scale",
+        "type": "number",
+        "tier": "advanced",
+        "description": "Classifier-free guidance scale - controls how closely the output follows your prompt (higher values increase prompt adherence)",
+        "min": 0,
+        "max": 20
+      },
+      {
+        "name": "generation_moderation",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Content moderation (true = moderation on, false = moderation off)",
+        "default": false
+      },
+      {
+        "name": "generation_num_inference_steps",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Number of denoising steps (more steps produce higher quality but slower results)",
+        "min": 1,
+        "max": 100
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_webhook_secret",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Provider-native webhook secret for providers that sign callback requests."
+      },
+      {
+        "name": "generation_webhook_url",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Provider-native webhook URL for providers that accept callback URLs directly."
+      }
+    ]
+  },
+  {
+    "apiName": "bfl/flux-2-max",
+    "uiName": "FLUX.2 Max",
+    "provider": "black-forest-labs",
+    "kind": "image",
+    "workflows": [
+      "text-to-image",
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "jpeg",
+        "enum": [
+          "jpg",
+          "jpeg",
+          "png",
+          "webp"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_guidance_scale",
+        "type": "number",
+        "tier": "advanced",
+        "description": "Classifier-free guidance scale - controls how closely the output follows your prompt (higher values increase prompt adherence)",
+        "min": 0,
+        "max": 20
+      },
+      {
+        "name": "generation_moderation",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Content moderation (true = moderation on, false = moderation off)",
+        "default": false
+      },
+      {
+        "name": "generation_num_inference_steps",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Number of denoising steps (more steps produce higher quality but slower results)",
+        "min": 1,
+        "max": 100
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_webhook_secret",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Provider-native webhook secret for providers that sign callback requests."
+      },
+      {
+        "name": "generation_webhook_url",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Provider-native webhook URL for providers that accept callback URLs directly."
+      }
+    ]
+  },
+  {
+    "apiName": "bfl/flux-2-pro",
+    "uiName": "FLUX.2 Pro",
+    "provider": "black-forest-labs",
+    "kind": "image",
+    "workflows": [
+      "text-to-image",
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "jpeg",
+        "enum": [
+          "jpg",
+          "jpeg",
+          "png",
+          "webp"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_guidance_scale",
+        "type": "number",
+        "tier": "advanced",
+        "description": "Classifier-free guidance scale - controls how closely the output follows your prompt (higher values increase prompt adherence)",
+        "min": 0,
+        "max": 20
+      },
+      {
+        "name": "generation_moderation",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Content moderation (true = moderation on, false = moderation off)",
+        "default": false
+      },
+      {
+        "name": "generation_num_inference_steps",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Number of denoising steps (more steps produce higher quality but slower results)",
+        "min": 1,
+        "max": 100
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_webhook_secret",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Provider-native webhook secret for providers that sign callback requests."
+      },
+      {
+        "name": "generation_webhook_url",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Provider-native webhook URL for providers that accept callback URLs directly."
+      }
+    ]
+  },
+  {
+    "apiName": "bytedance/seedream-4",
+    "uiName": "Seedream 4.0",
+    "provider": "byteplus",
+    "kind": "image",
+    "workflows": [
+      "text-to-image",
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "jpeg",
+        "enum": [
+          "jpg",
+          "jpeg",
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "2K",
+        "enum": [
+          "1K",
+          "2K",
+          "3K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_max_images",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Maximum images for sequential generation.",
+        "default": 1,
+        "min": 1,
+        "max": 15
+      },
+      {
+        "name": "generation_response_format",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "How generated media should be returned by providers that support multiple response modes.",
+        "default": "url",
+        "enum": [
+          "url",
+          "b64_json"
+        ]
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_sequential_image_generation",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Batch generation mode.",
+        "default": "disabled",
+        "enum": [
+          "auto",
+          "disabled"
+        ]
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_stream",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should stream outputs when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "bytedance/seedream-4.5",
+    "uiName": "Seedream 4.5",
+    "provider": "byteplus",
+    "kind": "image",
+    "workflows": [
+      "text-to-image",
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "jpeg",
+        "enum": [
+          "jpg",
+          "jpeg",
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "2K",
+        "enum": [
+          "1K",
+          "2K",
+          "3K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_max_images",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Maximum images for sequential generation.",
+        "default": 1,
+        "min": 1,
+        "max": 15
+      },
+      {
+        "name": "generation_response_format",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "How generated media should be returned by providers that support multiple response modes.",
+        "default": "url",
+        "enum": [
+          "url",
+          "b64_json"
+        ]
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_sequential_image_generation",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Batch generation mode.",
+        "default": "disabled",
+        "enum": [
+          "auto",
+          "disabled"
+        ]
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_stream",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should stream outputs when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "bytedance/seedream-5-lite",
+    "uiName": "Seedream 5 Lite",
+    "provider": "byteplus",
+    "kind": "image",
+    "workflows": [
+      "text-to-image",
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "jpeg",
+        "enum": [
+          "jpg",
+          "jpeg",
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "2K",
+        "enum": [
+          "1K",
+          "2K",
+          "3K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_max_images",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Maximum images for sequential generation.",
+        "default": 1,
+        "min": 1,
+        "max": 15
+      },
+      {
+        "name": "generation_response_format",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "How generated media should be returned by providers that support multiple response modes.",
+        "default": "url",
+        "enum": [
+          "url",
+          "b64_json"
+        ]
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_sequential_image_generation",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Batch generation mode.",
+        "default": "disabled",
+        "enum": [
+          "auto",
+          "disabled"
+        ]
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_stream",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should stream outputs when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "google/imagen-4",
+    "uiName": "Imagen 4",
+    "provider": "google",
+    "kind": "image",
+    "workflows": [
+      "text-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 4
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "0.5K",
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_search_grounding",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to use Google Search grounding when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_thinking",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable thinking when supported.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "google/imagen-4-fast",
+    "uiName": "Imagen 4 Fast",
+    "provider": "google",
+    "kind": "image",
+    "workflows": [
+      "text-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 4
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "0.5K",
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_search_grounding",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to use Google Search grounding when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_thinking",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable thinking when supported.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "google/imagen-4-ultra",
+    "uiName": "Imagen 4 Ultra",
+    "provider": "google",
+    "kind": "image",
+    "workflows": [
+      "text-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 4
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "0.5K",
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_search_grounding",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to use Google Search grounding when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_thinking",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable thinking when supported.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "google/nano-banana",
+    "uiName": "Nano Banana",
+    "provider": "google",
+    "kind": "image",
+    "workflows": [
+      "text-to-image",
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 4
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "0.5K",
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_search_grounding",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to use Google Search grounding when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_thinking",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable thinking when supported.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "google/nano-banana-2",
+    "uiName": "Nano Banana 2",
+    "provider": "google",
+    "kind": "image",
+    "workflows": [
+      "text-to-image",
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 4
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "0.5K",
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_search_grounding",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to use Google Search grounding when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_thinking",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable thinking when supported.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "google/nano-banana-pro",
+    "uiName": "Nano Banana Pro",
+    "provider": "google",
+    "kind": "image",
+    "workflows": [
+      "text-to-image",
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 4
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "0.5K",
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_search_grounding",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to use Google Search grounding when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_thinking",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable thinking when supported.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "gpt/image-2",
+    "uiName": "GPT Image 2",
+    "provider": "openai",
+    "kind": "image",
+    "workflows": [
+      "text-to-image",
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "jpg",
+          "jpeg",
+          "png",
+          "webp"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 4
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "1K",
+          "2K"
+        ]
+      },
+      {
+        "name": "generation_background",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Background type for transparent or opaque output",
+        "default": "auto",
+        "enum": [
+          "auto",
+          "opaque",
+          "transparent"
+        ]
+      },
+      {
+        "name": "generation_mask_file",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Mask image used for edit workflows."
+      },
+      {
+        "name": "generation_moderation",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Content moderation (true = moderation on, false = moderation off)",
+        "default": false
+      },
+      {
+        "name": "generation_output_compression",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Compression level for the output file (higher values mean higher quality)",
+        "min": 0,
+        "max": 100
+      },
+      {
+        "name": "generation_partial_images",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Number of partial images to stream before the final image where supported.",
+        "default": 0,
+        "min": 0,
+        "max": 3
+      },
+      {
+        "name": "generation_quality",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Generation results quality.",
+        "default": "auto",
+        "enum": [
+          "auto",
+          "low",
+          "medium",
+          "high"
+        ]
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_stream",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should stream outputs when supported.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "runway/gen-4-image",
+    "uiName": "Gen-4 Image",
+    "provider": "runway",
+    "kind": "image",
+    "workflows": [
+      "text-to-image",
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "jpg",
+          "jpeg",
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_input_image_file_tags",
+        "type": "string-array",
+        "tier": "advanced",
+        "description": "Tags or labels for input images when a provider supports tagged references."
+      },
+      {
+        "name": "generation_moderation",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Content moderation (true = moderation on, false = moderation off)",
+        "default": false
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      }
+    ]
+  },
+  {
+    "apiName": "runway/gen-4-image-turbo",
+    "uiName": "Gen-4 Image Turbo",
+    "provider": "runway",
+    "kind": "image",
+    "workflows": [
+      "text-to-image",
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "jpg",
+          "jpeg",
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_input_image_file_tags",
+        "type": "string-array",
+        "tier": "advanced",
+        "description": "Tags or labels for input images when a provider supports tagged references."
+      },
+      {
+        "name": "generation_moderation",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Content moderation (true = moderation on, false = moderation off)",
+        "default": false
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      }
+    ]
+  }
+] as const satisfies readonly SemanticLadyModel[];
+
+export const SEMANTIC_LADY_VIDEO_MODELS = [
+  {
+    "apiName": "happyhorse/1.0-i2v",
+    "uiName": "HappyHorse 1.0 I2V",
+    "provider": "alibaba-cloud",
+    "kind": "video",
+    "workflows": [
+      "image-to-video"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "16:9",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9",
+          "adaptive"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "mp4",
+        "enum": [
+          "mp4"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_input_video_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input video URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/video.mp4"
+      },
+      {
+        "name": "generation_input_audio_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input audio URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/audio.mp3"
+      },
+      {
+        "name": "generation_duration",
+        "type": "integer",
+        "tier": "core",
+        "description": "Duration of generated content in seconds",
+        "required": false,
+        "default": 5,
+        "min": 1,
+        "max": 30
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "720p",
+        "enum": [
+          "480p",
+          "720p",
+          "1080p"
+        ]
+      },
+      {
+        "name": "generation_generate_audio",
+        "type": "boolean",
+        "tier": "core",
+        "description": "Add audio for generated content",
+        "default": false
+      },
+      {
+        "name": "generation_audio_setting",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Audio behavior.",
+        "enum": [
+          "auto",
+          "origin"
+        ]
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_input_image_file_last_content",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Last-frame image for video or chained image workflows."
+      },
+      {
+        "name": "generation_media_role",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Provider-native role for media inputs in multimodal video workflows.",
+        "enum": [
+          "audio_url",
+          "driving_audio",
+          "first_clip",
+          "first_frame",
+          "image_url",
+          "last_frame",
+          "reference_audio",
+          "reference_image",
+          "reference_video",
+          "video_url"
+        ]
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_reference_voice_file",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Reference voice URL, data URL, file ID, or provider asset URI."
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_shot_type",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Shot type.",
+        "enum": [
+          "single",
+          "multi"
+        ]
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "happyhorse/1.0-r2v",
+    "uiName": "HappyHorse 1.0 R2V",
+    "provider": "alibaba-cloud",
+    "kind": "video",
+    "workflows": [
+      "image-to-video"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "16:9",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9",
+          "adaptive"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "mp4",
+        "enum": [
+          "mp4"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_input_video_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input video URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/video.mp4"
+      },
+      {
+        "name": "generation_input_audio_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input audio URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/audio.mp3"
+      },
+      {
+        "name": "generation_duration",
+        "type": "integer",
+        "tier": "core",
+        "description": "Duration of generated content in seconds",
+        "required": false,
+        "default": 5,
+        "min": 1,
+        "max": 30
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "720p",
+        "enum": [
+          "480p",
+          "720p",
+          "1080p"
+        ]
+      },
+      {
+        "name": "generation_generate_audio",
+        "type": "boolean",
+        "tier": "core",
+        "description": "Add audio for generated content",
+        "default": false
+      },
+      {
+        "name": "generation_audio_setting",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Audio behavior.",
+        "enum": [
+          "auto",
+          "origin"
+        ]
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_input_image_file_last_content",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Last-frame image for video or chained image workflows."
+      },
+      {
+        "name": "generation_media_role",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Provider-native role for media inputs in multimodal video workflows.",
+        "enum": [
+          "audio_url",
+          "driving_audio",
+          "first_clip",
+          "first_frame",
+          "image_url",
+          "last_frame",
+          "reference_audio",
+          "reference_image",
+          "reference_video",
+          "video_url"
+        ]
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_reference_voice_file",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Reference voice URL, data URL, file ID, or provider asset URI."
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_shot_type",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Shot type.",
+        "enum": [
+          "single",
+          "multi"
+        ]
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "happyhorse/1.0-t2v",
+    "uiName": "HappyHorse 1.0 T2V",
+    "provider": "alibaba-cloud",
+    "kind": "video",
+    "workflows": [
+      "text-to-video"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "16:9",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9",
+          "adaptive"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "mp4",
+        "enum": [
+          "mp4"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_input_video_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input video URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/video.mp4"
+      },
+      {
+        "name": "generation_input_audio_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input audio URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/audio.mp3"
+      },
+      {
+        "name": "generation_duration",
+        "type": "integer",
+        "tier": "core",
+        "description": "Duration of generated content in seconds",
+        "required": false,
+        "default": 5,
+        "min": 1,
+        "max": 30
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "720p",
+        "enum": [
+          "480p",
+          "720p",
+          "1080p"
+        ]
+      },
+      {
+        "name": "generation_generate_audio",
+        "type": "boolean",
+        "tier": "core",
+        "description": "Add audio for generated content",
+        "default": false
+      },
+      {
+        "name": "generation_audio_setting",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Audio behavior.",
+        "enum": [
+          "auto",
+          "origin"
+        ]
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_input_image_file_last_content",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Last-frame image for video or chained image workflows."
+      },
+      {
+        "name": "generation_media_role",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Provider-native role for media inputs in multimodal video workflows.",
+        "enum": [
+          "audio_url",
+          "driving_audio",
+          "first_clip",
+          "first_frame",
+          "image_url",
+          "last_frame",
+          "reference_audio",
+          "reference_image",
+          "reference_video",
+          "video_url"
+        ]
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_reference_voice_file",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Reference voice URL, data URL, file ID, or provider asset URI."
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_shot_type",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Shot type.",
+        "enum": [
+          "single",
+          "multi"
+        ]
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "happyhorse/1.0-video-edit",
+    "uiName": "HappyHorse 1.0 Video Edit",
+    "provider": "alibaba-cloud",
+    "kind": "video",
+    "workflows": [
+      "video-to-video"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "16:9",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9",
+          "adaptive"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "mp4",
+        "enum": [
+          "mp4"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_input_video_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input video URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/video.mp4"
+      },
+      {
+        "name": "generation_input_audio_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input audio URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/audio.mp3"
+      },
+      {
+        "name": "generation_duration",
+        "type": "integer",
+        "tier": "core",
+        "description": "Duration of generated content in seconds",
+        "required": false,
+        "default": 5,
+        "min": 1,
+        "max": 30
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "720p",
+        "enum": [
+          "480p",
+          "720p",
+          "1080p"
+        ]
+      },
+      {
+        "name": "generation_generate_audio",
+        "type": "boolean",
+        "tier": "core",
+        "description": "Add audio for generated content",
+        "default": false
+      },
+      {
+        "name": "generation_audio_setting",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Audio behavior.",
+        "enum": [
+          "auto",
+          "origin"
+        ]
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_input_image_file_last_content",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Last-frame image for video or chained image workflows."
+      },
+      {
+        "name": "generation_media_role",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Provider-native role for media inputs in multimodal video workflows.",
+        "enum": [
+          "audio_url",
+          "driving_audio",
+          "first_clip",
+          "first_frame",
+          "image_url",
+          "last_frame",
+          "reference_audio",
+          "reference_image",
+          "reference_video",
+          "video_url"
+        ]
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_reference_voice_file",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Reference voice URL, data URL, file ID, or provider asset URI."
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_shot_type",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Shot type.",
+        "enum": [
+          "single",
+          "multi"
+        ]
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "wan/2.2-animate-mix",
+    "uiName": "Wan 2.2 Animate Mix",
+    "provider": "alibaba-cloud",
+    "kind": "video",
+    "workflows": [
+      "image-to-video"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "16:9",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9",
+          "adaptive"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "mp4",
+        "enum": [
+          "mp4"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_input_video_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input video URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/video.mp4"
+      },
+      {
+        "name": "generation_input_audio_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input audio URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/audio.mp3"
+      },
+      {
+        "name": "generation_duration",
+        "type": "integer",
+        "tier": "core",
+        "description": "Duration of generated content in seconds",
+        "required": false,
+        "default": 5,
+        "min": 1,
+        "max": 30
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "720p",
+        "enum": [
+          "480p",
+          "720p",
+          "1080p"
+        ]
+      },
+      {
+        "name": "generation_generate_audio",
+        "type": "boolean",
+        "tier": "core",
+        "description": "Add audio for generated content",
+        "default": false
+      },
+      {
+        "name": "generation_audio_setting",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Audio behavior.",
+        "enum": [
+          "auto",
+          "origin"
+        ]
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_input_image_file_last_content",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Last-frame image for video or chained image workflows."
+      },
+      {
+        "name": "generation_media_role",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Provider-native role for media inputs in multimodal video workflows.",
+        "enum": [
+          "audio_url",
+          "driving_audio",
+          "first_clip",
+          "first_frame",
+          "image_url",
+          "last_frame",
+          "reference_audio",
+          "reference_image",
+          "reference_video",
+          "video_url"
+        ]
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_reference_voice_file",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Reference voice URL, data URL, file ID, or provider asset URI."
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_shot_type",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Shot type.",
+        "enum": [
+          "single",
+          "multi"
+        ]
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "wan/2.2-animate-move",
+    "uiName": "Wan 2.2 Animate Move",
+    "provider": "alibaba-cloud",
+    "kind": "video",
+    "workflows": [
+      "image-to-video"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "16:9",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9",
+          "adaptive"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "mp4",
+        "enum": [
+          "mp4"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_input_video_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input video URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/video.mp4"
+      },
+      {
+        "name": "generation_input_audio_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input audio URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/audio.mp3"
+      },
+      {
+        "name": "generation_duration",
+        "type": "integer",
+        "tier": "core",
+        "description": "Duration of generated content in seconds",
+        "required": false,
+        "default": 5,
+        "min": 1,
+        "max": 30
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "720p",
+        "enum": [
+          "480p",
+          "720p",
+          "1080p"
+        ]
+      },
+      {
+        "name": "generation_generate_audio",
+        "type": "boolean",
+        "tier": "core",
+        "description": "Add audio for generated content",
+        "default": false
+      },
+      {
+        "name": "generation_audio_setting",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Audio behavior.",
+        "enum": [
+          "auto",
+          "origin"
+        ]
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_input_image_file_last_content",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Last-frame image for video or chained image workflows."
+      },
+      {
+        "name": "generation_media_role",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Provider-native role for media inputs in multimodal video workflows.",
+        "enum": [
+          "audio_url",
+          "driving_audio",
+          "first_clip",
+          "first_frame",
+          "image_url",
+          "last_frame",
+          "reference_audio",
+          "reference_image",
+          "reference_video",
+          "video_url"
+        ]
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_reference_voice_file",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Reference voice URL, data URL, file ID, or provider asset URI."
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_shot_type",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Shot type.",
+        "enum": [
+          "single",
+          "multi"
+        ]
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "wan/2.7-i2v-2026-04-25",
+    "uiName": "Wan 2.7 I2V",
+    "provider": "alibaba-cloud",
+    "kind": "video",
+    "workflows": [
+      "image-to-video"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "16:9",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9",
+          "adaptive"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "mp4",
+        "enum": [
+          "mp4"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_input_video_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input video URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/video.mp4"
+      },
+      {
+        "name": "generation_input_audio_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input audio URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/audio.mp3"
+      },
+      {
+        "name": "generation_duration",
+        "type": "integer",
+        "tier": "core",
+        "description": "Duration of generated content in seconds",
+        "required": false,
+        "default": 5,
+        "min": 1,
+        "max": 30
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "720p",
+        "enum": [
+          "480p",
+          "720p",
+          "1080p"
+        ]
+      },
+      {
+        "name": "generation_generate_audio",
+        "type": "boolean",
+        "tier": "core",
+        "description": "Add audio for generated content",
+        "default": false
+      },
+      {
+        "name": "generation_audio_setting",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Audio behavior.",
+        "enum": [
+          "auto",
+          "origin"
+        ]
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_input_image_file_last_content",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Last-frame image for video or chained image workflows."
+      },
+      {
+        "name": "generation_media_role",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Provider-native role for media inputs in multimodal video workflows.",
+        "enum": [
+          "audio_url",
+          "driving_audio",
+          "first_clip",
+          "first_frame",
+          "image_url",
+          "last_frame",
+          "reference_audio",
+          "reference_image",
+          "reference_video",
+          "video_url"
+        ]
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_reference_voice_file",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Reference voice URL, data URL, file ID, or provider asset URI."
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_shot_type",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Shot type.",
+        "enum": [
+          "single",
+          "multi"
+        ]
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "wan/2.7-r2v",
+    "uiName": "Wan 2.7 R2V",
+    "provider": "alibaba-cloud",
+    "kind": "video",
+    "workflows": [
+      "image-to-video"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "16:9",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9",
+          "adaptive"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "mp4",
+        "enum": [
+          "mp4"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_input_video_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input video URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/video.mp4"
+      },
+      {
+        "name": "generation_input_audio_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input audio URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/audio.mp3"
+      },
+      {
+        "name": "generation_duration",
+        "type": "integer",
+        "tier": "core",
+        "description": "Duration of generated content in seconds",
+        "required": false,
+        "default": 5,
+        "min": 1,
+        "max": 30
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "720p",
+        "enum": [
+          "480p",
+          "720p",
+          "1080p"
+        ]
+      },
+      {
+        "name": "generation_generate_audio",
+        "type": "boolean",
+        "tier": "core",
+        "description": "Add audio for generated content",
+        "default": false
+      },
+      {
+        "name": "generation_audio_setting",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Audio behavior.",
+        "enum": [
+          "auto",
+          "origin"
+        ]
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_input_image_file_last_content",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Last-frame image for video or chained image workflows."
+      },
+      {
+        "name": "generation_media_role",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Provider-native role for media inputs in multimodal video workflows.",
+        "enum": [
+          "audio_url",
+          "driving_audio",
+          "first_clip",
+          "first_frame",
+          "image_url",
+          "last_frame",
+          "reference_audio",
+          "reference_image",
+          "reference_video",
+          "video_url"
+        ]
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_reference_voice_file",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Reference voice URL, data URL, file ID, or provider asset URI."
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_shot_type",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Shot type.",
+        "enum": [
+          "single",
+          "multi"
+        ]
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "wan/2.7-t2v",
+    "uiName": "Wan 2.7 T2V",
+    "provider": "alibaba-cloud",
+    "kind": "video",
+    "workflows": [
+      "text-to-video"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "16:9",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9",
+          "adaptive"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "mp4",
+        "enum": [
+          "mp4"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_input_video_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input video URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/video.mp4"
+      },
+      {
+        "name": "generation_input_audio_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input audio URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/audio.mp3"
+      },
+      {
+        "name": "generation_duration",
+        "type": "integer",
+        "tier": "core",
+        "description": "Duration of generated content in seconds",
+        "required": false,
+        "default": 5,
+        "min": 1,
+        "max": 30
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "720p",
+        "enum": [
+          "480p",
+          "720p",
+          "1080p"
+        ]
+      },
+      {
+        "name": "generation_generate_audio",
+        "type": "boolean",
+        "tier": "core",
+        "description": "Add audio for generated content",
+        "default": false
+      },
+      {
+        "name": "generation_audio_setting",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Audio behavior.",
+        "enum": [
+          "auto",
+          "origin"
+        ]
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_input_image_file_last_content",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Last-frame image for video or chained image workflows."
+      },
+      {
+        "name": "generation_media_role",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Provider-native role for media inputs in multimodal video workflows.",
+        "enum": [
+          "audio_url",
+          "driving_audio",
+          "first_clip",
+          "first_frame",
+          "image_url",
+          "last_frame",
+          "reference_audio",
+          "reference_image",
+          "reference_video",
+          "video_url"
+        ]
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_reference_voice_file",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Reference voice URL, data URL, file ID, or provider asset URI."
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_shot_type",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Shot type.",
+        "enum": [
+          "single",
+          "multi"
+        ]
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "wan/2.7-videoedit",
+    "uiName": "Wan 2.7 Video Edit",
+    "provider": "alibaba-cloud",
+    "kind": "video",
+    "workflows": [
+      "video-to-video"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "16:9",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9",
+          "adaptive"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "mp4",
+        "enum": [
+          "mp4"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_input_video_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input video URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/video.mp4"
+      },
+      {
+        "name": "generation_input_audio_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input audio URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/audio.mp3"
+      },
+      {
+        "name": "generation_duration",
+        "type": "integer",
+        "tier": "core",
+        "description": "Duration of generated content in seconds",
+        "required": false,
+        "default": 5,
+        "min": 1,
+        "max": 30
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "720p",
+        "enum": [
+          "480p",
+          "720p",
+          "1080p"
+        ]
+      },
+      {
+        "name": "generation_generate_audio",
+        "type": "boolean",
+        "tier": "core",
+        "description": "Add audio for generated content",
+        "default": false
+      },
+      {
+        "name": "generation_audio_setting",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Audio behavior.",
+        "enum": [
+          "auto",
+          "origin"
+        ]
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_input_image_file_last_content",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Last-frame image for video or chained image workflows."
+      },
+      {
+        "name": "generation_media_role",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Provider-native role for media inputs in multimodal video workflows.",
+        "enum": [
+          "audio_url",
+          "driving_audio",
+          "first_clip",
+          "first_frame",
+          "image_url",
+          "last_frame",
+          "reference_audio",
+          "reference_image",
+          "reference_video",
+          "video_url"
+        ]
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_reference_voice_file",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Reference voice URL, data URL, file ID, or provider asset URI."
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_shot_type",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Shot type.",
+        "enum": [
+          "single",
+          "multi"
+        ]
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "bytedance/seedance-1-pro",
+    "uiName": "Seedance 1.0 Pro",
+    "provider": "byteplus",
+    "kind": "video",
+    "workflows": [
+      "text-to-video",
+      "image-to-video"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "16:9",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9",
+          "adaptive"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "mp4",
+        "enum": [
+          "mp4"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_input_video_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input video URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/video.mp4"
+      },
+      {
+        "name": "generation_input_audio_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input audio URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/audio.mp3"
+      },
+      {
+        "name": "generation_duration",
+        "type": "integer",
+        "tier": "core",
+        "description": "Duration of generated content in seconds",
+        "required": false,
+        "default": 5,
+        "min": 1,
+        "max": 30
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "720p",
+        "enum": [
+          "480p",
+          "720p",
+          "1080p"
+        ]
+      },
+      {
+        "name": "generation_generate_audio",
+        "type": "boolean",
+        "tier": "core",
+        "description": "Add audio for generated content",
+        "default": false
+      },
+      {
+        "name": "generation_camera_fixed",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Fix the camera position during content generation (appends an instruction to your prompt but does not guarantee the effect)",
+        "default": false
+      },
+      {
+        "name": "generation_draft",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable low-cost draft mode when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_execution_expires_after",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Provider task expiration in seconds.",
+        "default": 172800,
+        "min": 3600,
+        "max": 259200
+      },
+      {
+        "name": "generation_frames",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Frame count for providers that support frame-based duration.",
+        "min": 29,
+        "max": 289
+      },
+      {
+        "name": "generation_input_image_file_last_content",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Last-frame image for video or chained image workflows."
+      },
+      {
+        "name": "generation_priority",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Queue priority for providers that support priority scheduling.",
+        "default": 0,
+        "min": 0,
+        "max": 9
+      },
+      {
+        "name": "generation_return_last_frame",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to return the final video frame as an image.",
+        "default": false
+      },
+      {
+        "name": "generation_safety_identifier",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Privacy-preserving end-user safety identifier."
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_service_tier",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Provider service tier.",
+        "default": "default",
+        "enum": [
+          "default",
+          "flex"
+        ]
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "bytedance/seedance-1-pro-fast",
+    "uiName": "Seedance 1.0 Pro Fast",
+    "provider": "byteplus",
+    "kind": "video",
+    "workflows": [
+      "text-to-video",
+      "image-to-video"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "16:9",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9",
+          "adaptive"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "mp4",
+        "enum": [
+          "mp4"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_input_video_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input video URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/video.mp4"
+      },
+      {
+        "name": "generation_input_audio_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input audio URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/audio.mp3"
+      },
+      {
+        "name": "generation_duration",
+        "type": "integer",
+        "tier": "core",
+        "description": "Duration of generated content in seconds",
+        "required": false,
+        "default": 5,
+        "min": 1,
+        "max": 30
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "720p",
+        "enum": [
+          "480p",
+          "720p",
+          "1080p"
+        ]
+      },
+      {
+        "name": "generation_generate_audio",
+        "type": "boolean",
+        "tier": "core",
+        "description": "Add audio for generated content",
+        "default": false
+      },
+      {
+        "name": "generation_camera_fixed",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Fix the camera position during content generation (appends an instruction to your prompt but does not guarantee the effect)",
+        "default": false
+      },
+      {
+        "name": "generation_draft",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable low-cost draft mode when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_execution_expires_after",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Provider task expiration in seconds.",
+        "default": 172800,
+        "min": 3600,
+        "max": 259200
+      },
+      {
+        "name": "generation_frames",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Frame count for providers that support frame-based duration.",
+        "min": 29,
+        "max": 289
+      },
+      {
+        "name": "generation_input_image_file_last_content",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Last-frame image for video or chained image workflows."
+      },
+      {
+        "name": "generation_priority",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Queue priority for providers that support priority scheduling.",
+        "default": 0,
+        "min": 0,
+        "max": 9
+      },
+      {
+        "name": "generation_return_last_frame",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to return the final video frame as an image.",
+        "default": false
+      },
+      {
+        "name": "generation_safety_identifier",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Privacy-preserving end-user safety identifier."
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_service_tier",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Provider service tier.",
+        "default": "default",
+        "enum": [
+          "default",
+          "flex"
+        ]
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "bytedance/seedance-1.5-pro",
+    "uiName": "Seedance 1.5 Pro",
+    "provider": "byteplus",
+    "kind": "video",
+    "workflows": [
+      "text-to-video",
+      "image-to-video"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "16:9",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9",
+          "adaptive"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "mp4",
+        "enum": [
+          "mp4"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_input_video_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input video URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/video.mp4"
+      },
+      {
+        "name": "generation_input_audio_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input audio URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/audio.mp3"
+      },
+      {
+        "name": "generation_duration",
+        "type": "integer",
+        "tier": "core",
+        "description": "Duration of generated content in seconds",
+        "required": false,
+        "default": 5,
+        "min": 1,
+        "max": 30
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "720p",
+        "enum": [
+          "480p",
+          "720p",
+          "1080p"
+        ]
+      },
+      {
+        "name": "generation_generate_audio",
+        "type": "boolean",
+        "tier": "core",
+        "description": "Add audio for generated content",
+        "default": false
+      },
+      {
+        "name": "generation_camera_fixed",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Fix the camera position during content generation (appends an instruction to your prompt but does not guarantee the effect)",
+        "default": false
+      },
+      {
+        "name": "generation_draft",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable low-cost draft mode when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_execution_expires_after",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Provider task expiration in seconds.",
+        "default": 172800,
+        "min": 3600,
+        "max": 259200
+      },
+      {
+        "name": "generation_frames",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Frame count for providers that support frame-based duration.",
+        "min": 29,
+        "max": 289
+      },
+      {
+        "name": "generation_input_image_file_last_content",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Last-frame image for video or chained image workflows."
+      },
+      {
+        "name": "generation_priority",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Queue priority for providers that support priority scheduling.",
+        "default": 0,
+        "min": 0,
+        "max": 9
+      },
+      {
+        "name": "generation_return_last_frame",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to return the final video frame as an image.",
+        "default": false
+      },
+      {
+        "name": "generation_safety_identifier",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Privacy-preserving end-user safety identifier."
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_service_tier",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Provider service tier.",
+        "default": "default",
+        "enum": [
+          "default",
+          "flex"
+        ]
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "bytedance/seedance-2.0",
+    "uiName": "Seedance 2.0",
+    "provider": "byteplus",
+    "kind": "video",
+    "workflows": [
+      "text-to-video",
+      "image-to-video",
+      "video-to-video"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "16:9",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9",
+          "adaptive"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "mp4",
+        "enum": [
+          "mp4"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_input_video_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input video URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/video.mp4"
+      },
+      {
+        "name": "generation_input_audio_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input audio URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/audio.mp3"
+      },
+      {
+        "name": "generation_duration",
+        "type": "integer",
+        "tier": "core",
+        "description": "Duration of generated content in seconds",
+        "required": false,
+        "default": 5,
+        "min": 1,
+        "max": 30
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "720p",
+        "enum": [
+          "480p",
+          "720p",
+          "1080p"
+        ]
+      },
+      {
+        "name": "generation_generate_audio",
+        "type": "boolean",
+        "tier": "core",
+        "description": "Add audio for generated content",
+        "default": false
+      },
+      {
+        "name": "generation_camera_fixed",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Fix the camera position during content generation (appends an instruction to your prompt but does not guarantee the effect)",
+        "default": false
+      },
+      {
+        "name": "generation_draft",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable low-cost draft mode when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_execution_expires_after",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Provider task expiration in seconds.",
+        "default": 172800,
+        "min": 3600,
+        "max": 259200
+      },
+      {
+        "name": "generation_frames",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Frame count for providers that support frame-based duration.",
+        "min": 29,
+        "max": 289
+      },
+      {
+        "name": "generation_input_image_file_last_content",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Last-frame image for video or chained image workflows."
+      },
+      {
+        "name": "generation_priority",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Queue priority for providers that support priority scheduling.",
+        "default": 0,
+        "min": 0,
+        "max": 9
+      },
+      {
+        "name": "generation_return_last_frame",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to return the final video frame as an image.",
+        "default": false
+      },
+      {
+        "name": "generation_safety_identifier",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Privacy-preserving end-user safety identifier."
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_service_tier",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Provider service tier.",
+        "default": "default",
+        "enum": [
+          "default",
+          "flex"
+        ]
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "bytedance/seedance-2.0-fast",
+    "uiName": "Seedance 2.0 Fast",
+    "provider": "byteplus",
+    "kind": "video",
+    "workflows": [
+      "text-to-video",
+      "image-to-video",
+      "video-to-video"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "16:9",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9",
+          "adaptive"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "mp4",
+        "enum": [
+          "mp4"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_input_video_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input video URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/video.mp4"
+      },
+      {
+        "name": "generation_input_audio_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input audio URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/audio.mp3"
+      },
+      {
+        "name": "generation_duration",
+        "type": "integer",
+        "tier": "core",
+        "description": "Duration of generated content in seconds",
+        "required": false,
+        "default": 5,
+        "min": 1,
+        "max": 30
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "720p",
+        "enum": [
+          "480p",
+          "720p",
+          "1080p"
+        ]
+      },
+      {
+        "name": "generation_generate_audio",
+        "type": "boolean",
+        "tier": "core",
+        "description": "Add audio for generated content",
+        "default": false
+      },
+      {
+        "name": "generation_camera_fixed",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Fix the camera position during content generation (appends an instruction to your prompt but does not guarantee the effect)",
+        "default": false
+      },
+      {
+        "name": "generation_draft",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable low-cost draft mode when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_execution_expires_after",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Provider task expiration in seconds.",
+        "default": 172800,
+        "min": 3600,
+        "max": 259200
+      },
+      {
+        "name": "generation_frames",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Frame count for providers that support frame-based duration.",
+        "min": 29,
+        "max": 289
+      },
+      {
+        "name": "generation_input_image_file_last_content",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Last-frame image for video or chained image workflows."
+      },
+      {
+        "name": "generation_priority",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Queue priority for providers that support priority scheduling.",
+        "default": 0,
+        "min": 0,
+        "max": 9
+      },
+      {
+        "name": "generation_return_last_frame",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to return the final video frame as an image.",
+        "default": false
+      },
+      {
+        "name": "generation_safety_identifier",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Privacy-preserving end-user safety identifier."
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_service_tier",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Provider service tier.",
+        "default": "default",
+        "enum": [
+          "default",
+          "flex"
+        ]
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "google/veo-3.1",
+    "uiName": "Veo 3.1",
+    "provider": "google",
+    "kind": "video",
+    "workflows": [
+      "text-to-video",
+      "image-to-video"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "16:9",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9",
+          "adaptive"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "mp4",
+        "enum": [
+          "mp4"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_duration",
+        "type": "integer",
+        "tier": "core",
+        "description": "Duration of generated content in seconds",
+        "required": false,
+        "default": 5,
+        "min": 1,
+        "max": 30
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "720p",
+        "enum": [
+          "720p",
+          "1080p",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_generate_audio",
+        "type": "boolean",
+        "tier": "core",
+        "description": "Add audio for generated content",
+        "default": false
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      }
+    ]
+  },
+  {
+    "apiName": "google/veo-3.1-fast",
+    "uiName": "Veo 3.1 Fast",
+    "provider": "google",
+    "kind": "video",
+    "workflows": [
+      "text-to-video",
+      "image-to-video"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "16:9",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9",
+          "adaptive"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "mp4",
+        "enum": [
+          "mp4"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_duration",
+        "type": "integer",
+        "tier": "core",
+        "description": "Duration of generated content in seconds",
+        "required": false,
+        "default": 5,
+        "min": 1,
+        "max": 30
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "720p",
+        "enum": [
+          "720p",
+          "1080p",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_generate_audio",
+        "type": "boolean",
+        "tier": "core",
+        "description": "Add audio for generated content",
+        "default": false
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      }
+    ]
+  },
+  {
+    "apiName": "google/veo-3.1-lite",
+    "uiName": "Veo 3.1 Lite",
+    "provider": "google",
+    "kind": "video",
+    "workflows": [
+      "text-to-video",
+      "image-to-video"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "16:9",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9",
+          "adaptive"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "mp4",
+        "enum": [
+          "mp4"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_duration",
+        "type": "integer",
+        "tier": "core",
+        "description": "Duration of generated content in seconds",
+        "required": false,
+        "default": 5,
+        "min": 1,
+        "max": 30
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "720p",
+        "enum": [
+          "720p",
+          "1080p",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_generate_audio",
+        "type": "boolean",
+        "tier": "core",
+        "description": "Add audio for generated content",
+        "default": false
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      }
+    ]
+  },
+  {
+    "apiName": "runway/act-two",
+    "uiName": "Act-Two",
+    "provider": "runway",
+    "kind": "video",
+    "workflows": [
+      "character-performance"
+    ],
+    "schema": [
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "16:9",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9",
+          "adaptive"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "mp4",
+        "enum": [
+          "mp4"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_input_video_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input video URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/video.mp4"
+      },
+      {
+        "name": "generation_body_control",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to apply non-facial body movements.",
+        "default": false
+      },
+      {
+        "name": "generation_expression_intensity",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Character expression intensity.",
+        "default": 3,
+        "min": 1,
+        "max": 5
+      },
+      {
+        "name": "generation_moderation",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Content moderation (true = moderation on, false = moderation off)",
+        "default": false
+      },
+      {
+        "name": "generation_reference_motion_file",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Reference motion URL, data URL, file ID, or provider asset URI.",
+        "placeholder": "https://example.com/motion.mp4"
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      }
+    ]
+  },
+  {
+    "apiName": "runway/aleph-2",
+    "uiName": "Aleph 2",
+    "provider": "runway",
+    "kind": "video",
+    "workflows": [
+      "video-to-video"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "16:9",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9",
+          "adaptive"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "mp4",
+        "enum": [
+          "mp4"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_input_video_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input video URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/video.mp4"
+      },
+      {
+        "name": "generation_duration",
+        "type": "integer",
+        "tier": "core",
+        "description": "Duration of generated content in seconds",
+        "required": false,
+        "default": 5,
+        "min": 1,
+        "max": 30
+      },
+      {
+        "name": "generation_input_image_file_last_content",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Last-frame image for video or chained image workflows."
+      },
+      {
+        "name": "generation_input_image_file_tags",
+        "type": "string-array",
+        "tier": "advanced",
+        "description": "Tags or labels for input images when a provider supports tagged references."
+      },
+      {
+        "name": "generation_moderation",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Content moderation (true = moderation on, false = moderation off)",
+        "default": false
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      }
+    ]
+  },
+  {
+    "apiName": "runway/gen-4-aleph",
+    "uiName": "Gen-4 Aleph",
+    "provider": "runway",
+    "kind": "video",
+    "workflows": [
+      "video-to-video"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "16:9",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9",
+          "adaptive"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "mp4",
+        "enum": [
+          "mp4"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_input_video_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input video URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/video.mp4"
+      },
+      {
+        "name": "generation_duration",
+        "type": "integer",
+        "tier": "core",
+        "description": "Duration of generated content in seconds",
+        "required": false,
+        "default": 5,
+        "min": 1,
+        "max": 30
+      },
+      {
+        "name": "generation_input_image_file_last_content",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Last-frame image for video or chained image workflows."
+      },
+      {
+        "name": "generation_input_image_file_tags",
+        "type": "string-array",
+        "tier": "advanced",
+        "description": "Tags or labels for input images when a provider supports tagged references."
+      },
+      {
+        "name": "generation_moderation",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Content moderation (true = moderation on, false = moderation off)",
+        "default": false
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      }
+    ]
+  },
+  {
+    "apiName": "runway/gen-4-turbo",
+    "uiName": "Gen-4 Turbo",
+    "provider": "runway",
+    "kind": "video",
+    "workflows": [
+      "image-to-video"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "16:9",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9",
+          "adaptive"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "mp4",
+        "enum": [
+          "mp4"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_input_video_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input video URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/video.mp4"
+      },
+      {
+        "name": "generation_duration",
+        "type": "integer",
+        "tier": "core",
+        "description": "Duration of generated content in seconds",
+        "required": false,
+        "default": 5,
+        "min": 1,
+        "max": 30
+      },
+      {
+        "name": "generation_input_image_file_last_content",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Last-frame image for video or chained image workflows."
+      },
+      {
+        "name": "generation_input_image_file_tags",
+        "type": "string-array",
+        "tier": "advanced",
+        "description": "Tags or labels for input images when a provider supports tagged references."
+      },
+      {
+        "name": "generation_moderation",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Content moderation (true = moderation on, false = moderation off)",
+        "default": false
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      }
+    ]
+  },
+  {
+    "apiName": "runway/gen-4.5",
+    "uiName": "Gen-4.5",
+    "provider": "runway",
+    "kind": "video",
+    "workflows": [
+      "text-to-video",
+      "image-to-video"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "16:9",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9",
+          "adaptive"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "mp4",
+        "enum": [
+          "mp4"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_input_video_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input video URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/video.mp4"
+      },
+      {
+        "name": "generation_duration",
+        "type": "integer",
+        "tier": "core",
+        "description": "Duration of generated content in seconds",
+        "required": false,
+        "default": 5,
+        "min": 1,
+        "max": 30
+      },
+      {
+        "name": "generation_input_image_file_last_content",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Last-frame image for video or chained image workflows."
+      },
+      {
+        "name": "generation_input_image_file_tags",
+        "type": "string-array",
+        "tier": "advanced",
+        "description": "Tags or labels for input images when a provider supports tagged references."
+      },
+      {
+        "name": "generation_moderation",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Content moderation (true = moderation on, false = moderation off)",
+        "default": false
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      }
+    ]
+  }
+] as const satisfies readonly SemanticLadyModel[];
+
+export const SEMANTIC_LADY_MODELS = [
+  {
+    "apiName": "happyhorse/1.0-i2v",
+    "uiName": "HappyHorse 1.0 I2V",
+    "provider": "alibaba-cloud",
+    "kind": "video",
+    "workflows": [
+      "image-to-video"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "16:9",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9",
+          "adaptive"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "mp4",
+        "enum": [
+          "mp4"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_input_video_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input video URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/video.mp4"
+      },
+      {
+        "name": "generation_input_audio_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input audio URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/audio.mp3"
+      },
+      {
+        "name": "generation_duration",
+        "type": "integer",
+        "tier": "core",
+        "description": "Duration of generated content in seconds",
+        "required": false,
+        "default": 5,
+        "min": 1,
+        "max": 30
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "720p",
+        "enum": [
+          "480p",
+          "720p",
+          "1080p"
+        ]
+      },
+      {
+        "name": "generation_generate_audio",
+        "type": "boolean",
+        "tier": "core",
+        "description": "Add audio for generated content",
+        "default": false
+      },
+      {
+        "name": "generation_audio_setting",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Audio behavior.",
+        "enum": [
+          "auto",
+          "origin"
+        ]
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_input_image_file_last_content",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Last-frame image for video or chained image workflows."
+      },
+      {
+        "name": "generation_media_role",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Provider-native role for media inputs in multimodal video workflows.",
+        "enum": [
+          "audio_url",
+          "driving_audio",
+          "first_clip",
+          "first_frame",
+          "image_url",
+          "last_frame",
+          "reference_audio",
+          "reference_image",
+          "reference_video",
+          "video_url"
+        ]
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_reference_voice_file",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Reference voice URL, data URL, file ID, or provider asset URI."
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_shot_type",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Shot type.",
+        "enum": [
+          "single",
+          "multi"
+        ]
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "happyhorse/1.0-r2v",
+    "uiName": "HappyHorse 1.0 R2V",
+    "provider": "alibaba-cloud",
+    "kind": "video",
+    "workflows": [
+      "image-to-video"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "16:9",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9",
+          "adaptive"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "mp4",
+        "enum": [
+          "mp4"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_input_video_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input video URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/video.mp4"
+      },
+      {
+        "name": "generation_input_audio_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input audio URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/audio.mp3"
+      },
+      {
+        "name": "generation_duration",
+        "type": "integer",
+        "tier": "core",
+        "description": "Duration of generated content in seconds",
+        "required": false,
+        "default": 5,
+        "min": 1,
+        "max": 30
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "720p",
+        "enum": [
+          "480p",
+          "720p",
+          "1080p"
+        ]
+      },
+      {
+        "name": "generation_generate_audio",
+        "type": "boolean",
+        "tier": "core",
+        "description": "Add audio for generated content",
+        "default": false
+      },
+      {
+        "name": "generation_audio_setting",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Audio behavior.",
+        "enum": [
+          "auto",
+          "origin"
+        ]
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_input_image_file_last_content",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Last-frame image for video or chained image workflows."
+      },
+      {
+        "name": "generation_media_role",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Provider-native role for media inputs in multimodal video workflows.",
+        "enum": [
+          "audio_url",
+          "driving_audio",
+          "first_clip",
+          "first_frame",
+          "image_url",
+          "last_frame",
+          "reference_audio",
+          "reference_image",
+          "reference_video",
+          "video_url"
+        ]
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_reference_voice_file",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Reference voice URL, data URL, file ID, or provider asset URI."
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_shot_type",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Shot type.",
+        "enum": [
+          "single",
+          "multi"
+        ]
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "happyhorse/1.0-t2v",
+    "uiName": "HappyHorse 1.0 T2V",
+    "provider": "alibaba-cloud",
+    "kind": "video",
+    "workflows": [
+      "text-to-video"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "16:9",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9",
+          "adaptive"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "mp4",
+        "enum": [
+          "mp4"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_input_video_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input video URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/video.mp4"
+      },
+      {
+        "name": "generation_input_audio_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input audio URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/audio.mp3"
+      },
+      {
+        "name": "generation_duration",
+        "type": "integer",
+        "tier": "core",
+        "description": "Duration of generated content in seconds",
+        "required": false,
+        "default": 5,
+        "min": 1,
+        "max": 30
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "720p",
+        "enum": [
+          "480p",
+          "720p",
+          "1080p"
+        ]
+      },
+      {
+        "name": "generation_generate_audio",
+        "type": "boolean",
+        "tier": "core",
+        "description": "Add audio for generated content",
+        "default": false
+      },
+      {
+        "name": "generation_audio_setting",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Audio behavior.",
+        "enum": [
+          "auto",
+          "origin"
+        ]
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_input_image_file_last_content",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Last-frame image for video or chained image workflows."
+      },
+      {
+        "name": "generation_media_role",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Provider-native role for media inputs in multimodal video workflows.",
+        "enum": [
+          "audio_url",
+          "driving_audio",
+          "first_clip",
+          "first_frame",
+          "image_url",
+          "last_frame",
+          "reference_audio",
+          "reference_image",
+          "reference_video",
+          "video_url"
+        ]
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_reference_voice_file",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Reference voice URL, data URL, file ID, or provider asset URI."
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_shot_type",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Shot type.",
+        "enum": [
+          "single",
+          "multi"
+        ]
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "happyhorse/1.0-video-edit",
+    "uiName": "HappyHorse 1.0 Video Edit",
+    "provider": "alibaba-cloud",
+    "kind": "video",
+    "workflows": [
+      "video-to-video"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "16:9",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9",
+          "adaptive"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "mp4",
+        "enum": [
+          "mp4"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_input_video_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input video URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/video.mp4"
+      },
+      {
+        "name": "generation_input_audio_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input audio URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/audio.mp3"
+      },
+      {
+        "name": "generation_duration",
+        "type": "integer",
+        "tier": "core",
+        "description": "Duration of generated content in seconds",
+        "required": false,
+        "default": 5,
+        "min": 1,
+        "max": 30
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "720p",
+        "enum": [
+          "480p",
+          "720p",
+          "1080p"
+        ]
+      },
+      {
+        "name": "generation_generate_audio",
+        "type": "boolean",
+        "tier": "core",
+        "description": "Add audio for generated content",
+        "default": false
+      },
+      {
+        "name": "generation_audio_setting",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Audio behavior.",
+        "enum": [
+          "auto",
+          "origin"
+        ]
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_input_image_file_last_content",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Last-frame image for video or chained image workflows."
+      },
+      {
+        "name": "generation_media_role",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Provider-native role for media inputs in multimodal video workflows.",
+        "enum": [
+          "audio_url",
+          "driving_audio",
+          "first_clip",
+          "first_frame",
+          "image_url",
+          "last_frame",
+          "reference_audio",
+          "reference_image",
+          "reference_video",
+          "video_url"
+        ]
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_reference_voice_file",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Reference voice URL, data URL, file ID, or provider asset URI."
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_shot_type",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Shot type.",
+        "enum": [
+          "single",
+          "multi"
+        ]
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "qwen/image",
+    "uiName": "Qwen Image",
+    "provider": "alibaba-cloud",
+    "kind": "image",
+    "workflows": [
+      "text-to-image",
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 6
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_bbox_list",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Bounding boxes for interactive editing workflows."
+      },
+      {
+        "name": "generation_color_palette",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Provider-native color palette or color theme object."
+      },
+      {
+        "name": "generation_enable_interleave",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable interleaved text and image output where supported.",
+        "default": false
+      },
+      {
+        "name": "generation_enable_sequential",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to ask the model for a sequential image set.",
+        "default": false
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_max_images",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Maximum images for sequential generation.",
+        "default": 1,
+        "min": 1,
+        "max": 15
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_stream",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should stream outputs when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_thinking_mode",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to use model thinking mode when supported.",
+        "default": true
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "qwen/image-2",
+    "uiName": "Qwen Image 2",
+    "provider": "alibaba-cloud",
+    "kind": "image",
+    "workflows": [
+      "text-to-image",
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 6
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_bbox_list",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Bounding boxes for interactive editing workflows."
+      },
+      {
+        "name": "generation_color_palette",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Provider-native color palette or color theme object."
+      },
+      {
+        "name": "generation_enable_interleave",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable interleaved text and image output where supported.",
+        "default": false
+      },
+      {
+        "name": "generation_enable_sequential",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to ask the model for a sequential image set.",
+        "default": false
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_max_images",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Maximum images for sequential generation.",
+        "default": 1,
+        "min": 1,
+        "max": 15
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_stream",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should stream outputs when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_thinking_mode",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to use model thinking mode when supported.",
+        "default": true
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "qwen/image-2-pro",
+    "uiName": "Qwen Image 2 Pro",
+    "provider": "alibaba-cloud",
+    "kind": "image",
+    "workflows": [
+      "text-to-image",
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 6
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_bbox_list",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Bounding boxes for interactive editing workflows."
+      },
+      {
+        "name": "generation_color_palette",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Provider-native color palette or color theme object."
+      },
+      {
+        "name": "generation_enable_interleave",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable interleaved text and image output where supported.",
+        "default": false
+      },
+      {
+        "name": "generation_enable_sequential",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to ask the model for a sequential image set.",
+        "default": false
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_max_images",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Maximum images for sequential generation.",
+        "default": 1,
+        "min": 1,
+        "max": 15
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_stream",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should stream outputs when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_thinking_mode",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to use model thinking mode when supported.",
+        "default": true
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "qwen/image-base",
+    "uiName": "Qwen Image Base",
+    "provider": "alibaba-cloud",
+    "kind": "image",
+    "workflows": [
+      "text-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 6
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_bbox_list",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Bounding boxes for interactive editing workflows."
+      },
+      {
+        "name": "generation_color_palette",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Provider-native color palette or color theme object."
+      },
+      {
+        "name": "generation_enable_interleave",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable interleaved text and image output where supported.",
+        "default": false
+      },
+      {
+        "name": "generation_enable_sequential",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to ask the model for a sequential image set.",
+        "default": false
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_max_images",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Maximum images for sequential generation.",
+        "default": 1,
+        "min": 1,
+        "max": 15
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_stream",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should stream outputs when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_thinking_mode",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to use model thinking mode when supported.",
+        "default": true
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "qwen/image-edit",
+    "uiName": "Qwen Image Edit",
+    "provider": "alibaba-cloud",
+    "kind": "image",
+    "workflows": [
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 6
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_bbox_list",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Bounding boxes for interactive editing workflows."
+      },
+      {
+        "name": "generation_color_palette",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Provider-native color palette or color theme object."
+      },
+      {
+        "name": "generation_enable_interleave",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable interleaved text and image output where supported.",
+        "default": false
+      },
+      {
+        "name": "generation_enable_sequential",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to ask the model for a sequential image set.",
+        "default": false
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_max_images",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Maximum images for sequential generation.",
+        "default": 1,
+        "min": 1,
+        "max": 15
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_stream",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should stream outputs when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_thinking_mode",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to use model thinking mode when supported.",
+        "default": true
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "qwen/image-edit-max",
+    "uiName": "Qwen Image Edit Max",
+    "provider": "alibaba-cloud",
+    "kind": "image",
+    "workflows": [
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 6
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_bbox_list",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Bounding boxes for interactive editing workflows."
+      },
+      {
+        "name": "generation_color_palette",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Provider-native color palette or color theme object."
+      },
+      {
+        "name": "generation_enable_interleave",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable interleaved text and image output where supported.",
+        "default": false
+      },
+      {
+        "name": "generation_enable_sequential",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to ask the model for a sequential image set.",
+        "default": false
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_max_images",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Maximum images for sequential generation.",
+        "default": 1,
+        "min": 1,
+        "max": 15
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_stream",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should stream outputs when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_thinking_mode",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to use model thinking mode when supported.",
+        "default": true
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "qwen/image-edit-plus",
+    "uiName": "Qwen Image Edit Plus",
+    "provider": "alibaba-cloud",
+    "kind": "image",
+    "workflows": [
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 6
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_bbox_list",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Bounding boxes for interactive editing workflows."
+      },
+      {
+        "name": "generation_color_palette",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Provider-native color palette or color theme object."
+      },
+      {
+        "name": "generation_enable_interleave",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable interleaved text and image output where supported.",
+        "default": false
+      },
+      {
+        "name": "generation_enable_sequential",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to ask the model for a sequential image set.",
+        "default": false
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_max_images",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Maximum images for sequential generation.",
+        "default": 1,
+        "min": 1,
+        "max": 15
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_stream",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should stream outputs when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_thinking_mode",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to use model thinking mode when supported.",
+        "default": true
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "qwen/image-max",
+    "uiName": "Qwen Image Max",
+    "provider": "alibaba-cloud",
+    "kind": "image",
+    "workflows": [
+      "text-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 6
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_bbox_list",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Bounding boxes for interactive editing workflows."
+      },
+      {
+        "name": "generation_color_palette",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Provider-native color palette or color theme object."
+      },
+      {
+        "name": "generation_enable_interleave",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable interleaved text and image output where supported.",
+        "default": false
+      },
+      {
+        "name": "generation_enable_sequential",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to ask the model for a sequential image set.",
+        "default": false
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_max_images",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Maximum images for sequential generation.",
+        "default": 1,
+        "min": 1,
+        "max": 15
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_stream",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should stream outputs when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_thinking_mode",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to use model thinking mode when supported.",
+        "default": true
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "wan/2.1-imageedit",
+    "uiName": "Wan 2.1 Image Edit",
+    "provider": "alibaba-cloud",
+    "kind": "image",
+    "workflows": [
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 6
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_bbox_list",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Bounding boxes for interactive editing workflows."
+      },
+      {
+        "name": "generation_color_palette",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Provider-native color palette or color theme object."
+      },
+      {
+        "name": "generation_enable_interleave",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable interleaved text and image output where supported.",
+        "default": false
+      },
+      {
+        "name": "generation_enable_sequential",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to ask the model for a sequential image set.",
+        "default": false
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_max_images",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Maximum images for sequential generation.",
+        "default": 1,
+        "min": 1,
+        "max": 15
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_stream",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should stream outputs when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_thinking_mode",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to use model thinking mode when supported.",
+        "default": true
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "wan/2.2-animate-mix",
+    "uiName": "Wan 2.2 Animate Mix",
+    "provider": "alibaba-cloud",
+    "kind": "video",
+    "workflows": [
+      "image-to-video"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "16:9",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9",
+          "adaptive"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "mp4",
+        "enum": [
+          "mp4"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_input_video_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input video URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/video.mp4"
+      },
+      {
+        "name": "generation_input_audio_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input audio URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/audio.mp3"
+      },
+      {
+        "name": "generation_duration",
+        "type": "integer",
+        "tier": "core",
+        "description": "Duration of generated content in seconds",
+        "required": false,
+        "default": 5,
+        "min": 1,
+        "max": 30
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "720p",
+        "enum": [
+          "480p",
+          "720p",
+          "1080p"
+        ]
+      },
+      {
+        "name": "generation_generate_audio",
+        "type": "boolean",
+        "tier": "core",
+        "description": "Add audio for generated content",
+        "default": false
+      },
+      {
+        "name": "generation_audio_setting",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Audio behavior.",
+        "enum": [
+          "auto",
+          "origin"
+        ]
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_input_image_file_last_content",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Last-frame image for video or chained image workflows."
+      },
+      {
+        "name": "generation_media_role",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Provider-native role for media inputs in multimodal video workflows.",
+        "enum": [
+          "audio_url",
+          "driving_audio",
+          "first_clip",
+          "first_frame",
+          "image_url",
+          "last_frame",
+          "reference_audio",
+          "reference_image",
+          "reference_video",
+          "video_url"
+        ]
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_reference_voice_file",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Reference voice URL, data URL, file ID, or provider asset URI."
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_shot_type",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Shot type.",
+        "enum": [
+          "single",
+          "multi"
+        ]
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "wan/2.2-animate-move",
+    "uiName": "Wan 2.2 Animate Move",
+    "provider": "alibaba-cloud",
+    "kind": "video",
+    "workflows": [
+      "image-to-video"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "16:9",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9",
+          "adaptive"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "mp4",
+        "enum": [
+          "mp4"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_input_video_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input video URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/video.mp4"
+      },
+      {
+        "name": "generation_input_audio_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input audio URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/audio.mp3"
+      },
+      {
+        "name": "generation_duration",
+        "type": "integer",
+        "tier": "core",
+        "description": "Duration of generated content in seconds",
+        "required": false,
+        "default": 5,
+        "min": 1,
+        "max": 30
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "720p",
+        "enum": [
+          "480p",
+          "720p",
+          "1080p"
+        ]
+      },
+      {
+        "name": "generation_generate_audio",
+        "type": "boolean",
+        "tier": "core",
+        "description": "Add audio for generated content",
+        "default": false
+      },
+      {
+        "name": "generation_audio_setting",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Audio behavior.",
+        "enum": [
+          "auto",
+          "origin"
+        ]
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_input_image_file_last_content",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Last-frame image for video or chained image workflows."
+      },
+      {
+        "name": "generation_media_role",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Provider-native role for media inputs in multimodal video workflows.",
+        "enum": [
+          "audio_url",
+          "driving_audio",
+          "first_clip",
+          "first_frame",
+          "image_url",
+          "last_frame",
+          "reference_audio",
+          "reference_image",
+          "reference_video",
+          "video_url"
+        ]
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_reference_voice_file",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Reference voice URL, data URL, file ID, or provider asset URI."
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_shot_type",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Shot type.",
+        "enum": [
+          "single",
+          "multi"
+        ]
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "wan/2.5-i2i-preview",
+    "uiName": "Wan 2.5 I2I Preview",
+    "provider": "alibaba-cloud",
+    "kind": "image",
+    "workflows": [
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 6
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_bbox_list",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Bounding boxes for interactive editing workflows."
+      },
+      {
+        "name": "generation_color_palette",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Provider-native color palette or color theme object."
+      },
+      {
+        "name": "generation_enable_interleave",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable interleaved text and image output where supported.",
+        "default": false
+      },
+      {
+        "name": "generation_enable_sequential",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to ask the model for a sequential image set.",
+        "default": false
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_max_images",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Maximum images for sequential generation.",
+        "default": 1,
+        "min": 1,
+        "max": 15
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_stream",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should stream outputs when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_thinking_mode",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to use model thinking mode when supported.",
+        "default": true
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "wan/2.6-image",
+    "uiName": "Wan 2.6 Image",
+    "provider": "alibaba-cloud",
+    "kind": "image",
+    "workflows": [
+      "text-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 6
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_bbox_list",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Bounding boxes for interactive editing workflows."
+      },
+      {
+        "name": "generation_color_palette",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Provider-native color palette or color theme object."
+      },
+      {
+        "name": "generation_enable_interleave",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable interleaved text and image output where supported.",
+        "default": false
+      },
+      {
+        "name": "generation_enable_sequential",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to ask the model for a sequential image set.",
+        "default": false
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_max_images",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Maximum images for sequential generation.",
+        "default": 1,
+        "min": 1,
+        "max": 15
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_stream",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should stream outputs when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_thinking_mode",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to use model thinking mode when supported.",
+        "default": true
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "wan/2.6-t2i",
+    "uiName": "Wan 2.6 T2I",
+    "provider": "alibaba-cloud",
+    "kind": "image",
+    "workflows": [
+      "text-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 6
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_bbox_list",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Bounding boxes for interactive editing workflows."
+      },
+      {
+        "name": "generation_color_palette",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Provider-native color palette or color theme object."
+      },
+      {
+        "name": "generation_enable_interleave",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable interleaved text and image output where supported.",
+        "default": false
+      },
+      {
+        "name": "generation_enable_sequential",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to ask the model for a sequential image set.",
+        "default": false
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_max_images",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Maximum images for sequential generation.",
+        "default": 1,
+        "min": 1,
+        "max": 15
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_stream",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should stream outputs when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_thinking_mode",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to use model thinking mode when supported.",
+        "default": true
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "wan/2.7-i2v-2026-04-25",
+    "uiName": "Wan 2.7 I2V",
+    "provider": "alibaba-cloud",
+    "kind": "video",
+    "workflows": [
+      "image-to-video"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "16:9",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9",
+          "adaptive"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "mp4",
+        "enum": [
+          "mp4"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_input_video_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input video URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/video.mp4"
+      },
+      {
+        "name": "generation_input_audio_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input audio URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/audio.mp3"
+      },
+      {
+        "name": "generation_duration",
+        "type": "integer",
+        "tier": "core",
+        "description": "Duration of generated content in seconds",
+        "required": false,
+        "default": 5,
+        "min": 1,
+        "max": 30
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "720p",
+        "enum": [
+          "480p",
+          "720p",
+          "1080p"
+        ]
+      },
+      {
+        "name": "generation_generate_audio",
+        "type": "boolean",
+        "tier": "core",
+        "description": "Add audio for generated content",
+        "default": false
+      },
+      {
+        "name": "generation_audio_setting",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Audio behavior.",
+        "enum": [
+          "auto",
+          "origin"
+        ]
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_input_image_file_last_content",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Last-frame image for video or chained image workflows."
+      },
+      {
+        "name": "generation_media_role",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Provider-native role for media inputs in multimodal video workflows.",
+        "enum": [
+          "audio_url",
+          "driving_audio",
+          "first_clip",
+          "first_frame",
+          "image_url",
+          "last_frame",
+          "reference_audio",
+          "reference_image",
+          "reference_video",
+          "video_url"
+        ]
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_reference_voice_file",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Reference voice URL, data URL, file ID, or provider asset URI."
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_shot_type",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Shot type.",
+        "enum": [
+          "single",
+          "multi"
+        ]
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "wan/2.7-image",
+    "uiName": "Wan 2.7 Image",
+    "provider": "alibaba-cloud",
+    "kind": "image",
+    "workflows": [
+      "text-to-image",
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 6
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_bbox_list",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Bounding boxes for interactive editing workflows."
+      },
+      {
+        "name": "generation_color_palette",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Provider-native color palette or color theme object."
+      },
+      {
+        "name": "generation_enable_interleave",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable interleaved text and image output where supported.",
+        "default": false
+      },
+      {
+        "name": "generation_enable_sequential",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to ask the model for a sequential image set.",
+        "default": false
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_max_images",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Maximum images for sequential generation.",
+        "default": 1,
+        "min": 1,
+        "max": 15
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_stream",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should stream outputs when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_thinking_mode",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to use model thinking mode when supported.",
+        "default": true
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "wan/2.7-image-pro",
+    "uiName": "Wan 2.7 Image Pro",
+    "provider": "alibaba-cloud",
+    "kind": "image",
+    "workflows": [
+      "text-to-image",
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 6
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_bbox_list",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Bounding boxes for interactive editing workflows."
+      },
+      {
+        "name": "generation_color_palette",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Provider-native color palette or color theme object."
+      },
+      {
+        "name": "generation_enable_interleave",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable interleaved text and image output where supported.",
+        "default": false
+      },
+      {
+        "name": "generation_enable_sequential",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to ask the model for a sequential image set.",
+        "default": false
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_max_images",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Maximum images for sequential generation.",
+        "default": 1,
+        "min": 1,
+        "max": 15
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_stream",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should stream outputs when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_thinking_mode",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to use model thinking mode when supported.",
+        "default": true
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "wan/2.7-r2v",
+    "uiName": "Wan 2.7 R2V",
+    "provider": "alibaba-cloud",
+    "kind": "video",
+    "workflows": [
+      "image-to-video"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "16:9",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9",
+          "adaptive"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "mp4",
+        "enum": [
+          "mp4"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_input_video_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input video URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/video.mp4"
+      },
+      {
+        "name": "generation_input_audio_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input audio URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/audio.mp3"
+      },
+      {
+        "name": "generation_duration",
+        "type": "integer",
+        "tier": "core",
+        "description": "Duration of generated content in seconds",
+        "required": false,
+        "default": 5,
+        "min": 1,
+        "max": 30
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "720p",
+        "enum": [
+          "480p",
+          "720p",
+          "1080p"
+        ]
+      },
+      {
+        "name": "generation_generate_audio",
+        "type": "boolean",
+        "tier": "core",
+        "description": "Add audio for generated content",
+        "default": false
+      },
+      {
+        "name": "generation_audio_setting",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Audio behavior.",
+        "enum": [
+          "auto",
+          "origin"
+        ]
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_input_image_file_last_content",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Last-frame image for video or chained image workflows."
+      },
+      {
+        "name": "generation_media_role",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Provider-native role for media inputs in multimodal video workflows.",
+        "enum": [
+          "audio_url",
+          "driving_audio",
+          "first_clip",
+          "first_frame",
+          "image_url",
+          "last_frame",
+          "reference_audio",
+          "reference_image",
+          "reference_video",
+          "video_url"
+        ]
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_reference_voice_file",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Reference voice URL, data URL, file ID, or provider asset URI."
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_shot_type",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Shot type.",
+        "enum": [
+          "single",
+          "multi"
+        ]
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "wan/2.7-t2v",
+    "uiName": "Wan 2.7 T2V",
+    "provider": "alibaba-cloud",
+    "kind": "video",
+    "workflows": [
+      "text-to-video"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "16:9",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9",
+          "adaptive"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "mp4",
+        "enum": [
+          "mp4"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_input_video_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input video URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/video.mp4"
+      },
+      {
+        "name": "generation_input_audio_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input audio URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/audio.mp3"
+      },
+      {
+        "name": "generation_duration",
+        "type": "integer",
+        "tier": "core",
+        "description": "Duration of generated content in seconds",
+        "required": false,
+        "default": 5,
+        "min": 1,
+        "max": 30
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "720p",
+        "enum": [
+          "480p",
+          "720p",
+          "1080p"
+        ]
+      },
+      {
+        "name": "generation_generate_audio",
+        "type": "boolean",
+        "tier": "core",
+        "description": "Add audio for generated content",
+        "default": false
+      },
+      {
+        "name": "generation_audio_setting",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Audio behavior.",
+        "enum": [
+          "auto",
+          "origin"
+        ]
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_input_image_file_last_content",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Last-frame image for video or chained image workflows."
+      },
+      {
+        "name": "generation_media_role",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Provider-native role for media inputs in multimodal video workflows.",
+        "enum": [
+          "audio_url",
+          "driving_audio",
+          "first_clip",
+          "first_frame",
+          "image_url",
+          "last_frame",
+          "reference_audio",
+          "reference_image",
+          "reference_video",
+          "video_url"
+        ]
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_reference_voice_file",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Reference voice URL, data URL, file ID, or provider asset URI."
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_shot_type",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Shot type.",
+        "enum": [
+          "single",
+          "multi"
+        ]
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "wan/2.7-videoedit",
+    "uiName": "Wan 2.7 Video Edit",
+    "provider": "alibaba-cloud",
+    "kind": "video",
+    "workflows": [
+      "video-to-video"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "16:9",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9",
+          "adaptive"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "mp4",
+        "enum": [
+          "mp4"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_input_video_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input video URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/video.mp4"
+      },
+      {
+        "name": "generation_input_audio_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input audio URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/audio.mp3"
+      },
+      {
+        "name": "generation_duration",
+        "type": "integer",
+        "tier": "core",
+        "description": "Duration of generated content in seconds",
+        "required": false,
+        "default": 5,
+        "min": 1,
+        "max": 30
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "720p",
+        "enum": [
+          "480p",
+          "720p",
+          "1080p"
+        ]
+      },
+      {
+        "name": "generation_generate_audio",
+        "type": "boolean",
+        "tier": "core",
+        "description": "Add audio for generated content",
+        "default": false
+      },
+      {
+        "name": "generation_audio_setting",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Audio behavior.",
+        "enum": [
+          "auto",
+          "origin"
+        ]
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_input_image_file_last_content",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Last-frame image for video or chained image workflows."
+      },
+      {
+        "name": "generation_media_role",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Provider-native role for media inputs in multimodal video workflows.",
+        "enum": [
+          "audio_url",
+          "driving_audio",
+          "first_clip",
+          "first_frame",
+          "image_url",
+          "last_frame",
+          "reference_audio",
+          "reference_image",
+          "reference_video",
+          "video_url"
+        ]
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_reference_voice_file",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Reference voice URL, data URL, file ID, or provider asset URI."
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_shot_type",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Shot type.",
+        "enum": [
+          "single",
+          "multi"
+        ]
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "z/image-turbo",
+    "uiName": "Z-Image Turbo",
+    "provider": "alibaba-cloud",
+    "kind": "image",
+    "workflows": [
+      "text-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 6
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_bbox_list",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Bounding boxes for interactive editing workflows."
+      },
+      {
+        "name": "generation_color_palette",
+        "type": "object",
+        "tier": "advanced",
+        "description": "Provider-native color palette or color theme object."
+      },
+      {
+        "name": "generation_enable_interleave",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable interleaved text and image output where supported.",
+        "default": false
+      },
+      {
+        "name": "generation_enable_sequential",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to ask the model for a sequential image set.",
+        "default": false
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_max_images",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Maximum images for sequential generation.",
+        "default": 1,
+        "min": 1,
+        "max": 15
+      },
+      {
+        "name": "generation_negative_prompt",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Content to avoid in the generated output"
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_stream",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should stream outputs when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_thinking_mode",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to use model thinking mode when supported.",
+        "default": true
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "bfl/flux-1.1-pro",
+    "uiName": "FLUX 1.1 Pro",
+    "provider": "black-forest-labs",
+    "kind": "image",
+    "workflows": [
+      "text-to-image",
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "jpeg",
+        "enum": [
+          "jpg",
+          "jpeg",
+          "png",
+          "webp"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "1K"
+        ]
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_moderation",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Content moderation (true = moderation on, false = moderation off)",
+        "default": false
+      },
+      {
+        "name": "generation_prompt_strength",
+        "type": "number",
+        "tier": "advanced",
+        "description": "Strength of the prompt vs the input file - higher values mean more deviation from the original file",
+        "default": 0.1,
+        "min": 0,
+        "max": 1
+      },
+      {
+        "name": "generation_raw_mode",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Generate less processed, more natural-looking images when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_webhook_secret",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Provider-native webhook secret for providers that sign callback requests."
+      },
+      {
+        "name": "generation_webhook_url",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Provider-native webhook URL for providers that accept callback URLs directly."
+      }
+    ]
+  },
+  {
+    "apiName": "bfl/flux-1.1-pro-ultra",
+    "uiName": "FLUX 1.1 Pro Ultra",
+    "provider": "black-forest-labs",
+    "kind": "image",
+    "workflows": [
+      "text-to-image",
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "jpeg",
+        "enum": [
+          "jpg",
+          "jpeg",
+          "png",
+          "webp"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "1K"
+        ]
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_moderation",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Content moderation (true = moderation on, false = moderation off)",
+        "default": false
+      },
+      {
+        "name": "generation_prompt_strength",
+        "type": "number",
+        "tier": "advanced",
+        "description": "Strength of the prompt vs the input file - higher values mean more deviation from the original file",
+        "default": 0.1,
+        "min": 0,
+        "max": 1
+      },
+      {
+        "name": "generation_raw_mode",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Generate less processed, more natural-looking images when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_webhook_secret",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Provider-native webhook secret for providers that sign callback requests."
+      },
+      {
+        "name": "generation_webhook_url",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Provider-native webhook URL for providers that accept callback URLs directly."
+      }
+    ]
+  },
+  {
+    "apiName": "bfl/flux-2-flex",
+    "uiName": "FLUX.2 Flex",
+    "provider": "black-forest-labs",
+    "kind": "image",
+    "workflows": [
+      "text-to-image",
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "jpeg",
+        "enum": [
+          "jpg",
+          "jpeg",
+          "png",
+          "webp"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_guidance_scale",
+        "type": "number",
+        "tier": "advanced",
+        "description": "Classifier-free guidance scale - controls how closely the output follows your prompt (higher values increase prompt adherence)",
+        "min": 0,
+        "max": 20
+      },
+      {
+        "name": "generation_moderation",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Content moderation (true = moderation on, false = moderation off)",
+        "default": false
+      },
+      {
+        "name": "generation_num_inference_steps",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Number of denoising steps (more steps produce higher quality but slower results)",
+        "min": 1,
+        "max": 100
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_webhook_secret",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Provider-native webhook secret for providers that sign callback requests."
+      },
+      {
+        "name": "generation_webhook_url",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Provider-native webhook URL for providers that accept callback URLs directly."
+      }
+    ]
+  },
+  {
+    "apiName": "bfl/flux-2-klein-4b",
+    "uiName": "FLUX.2 Klein 4B",
+    "provider": "black-forest-labs",
+    "kind": "image",
+    "workflows": [
+      "text-to-image",
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "jpeg",
+        "enum": [
+          "jpg",
+          "jpeg",
+          "png",
+          "webp"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_guidance_scale",
+        "type": "number",
+        "tier": "advanced",
+        "description": "Classifier-free guidance scale - controls how closely the output follows your prompt (higher values increase prompt adherence)",
+        "min": 0,
+        "max": 20
+      },
+      {
+        "name": "generation_moderation",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Content moderation (true = moderation on, false = moderation off)",
+        "default": false
+      },
+      {
+        "name": "generation_num_inference_steps",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Number of denoising steps (more steps produce higher quality but slower results)",
+        "min": 1,
+        "max": 100
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_webhook_secret",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Provider-native webhook secret for providers that sign callback requests."
+      },
+      {
+        "name": "generation_webhook_url",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Provider-native webhook URL for providers that accept callback URLs directly."
+      }
+    ]
+  },
+  {
+    "apiName": "bfl/flux-2-klein-9b",
+    "uiName": "FLUX.2 Klein 9B",
+    "provider": "black-forest-labs",
+    "kind": "image",
+    "workflows": [
+      "text-to-image",
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "jpeg",
+        "enum": [
+          "jpg",
+          "jpeg",
+          "png",
+          "webp"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_guidance_scale",
+        "type": "number",
+        "tier": "advanced",
+        "description": "Classifier-free guidance scale - controls how closely the output follows your prompt (higher values increase prompt adherence)",
+        "min": 0,
+        "max": 20
+      },
+      {
+        "name": "generation_moderation",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Content moderation (true = moderation on, false = moderation off)",
+        "default": false
+      },
+      {
+        "name": "generation_num_inference_steps",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Number of denoising steps (more steps produce higher quality but slower results)",
+        "min": 1,
+        "max": 100
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_webhook_secret",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Provider-native webhook secret for providers that sign callback requests."
+      },
+      {
+        "name": "generation_webhook_url",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Provider-native webhook URL for providers that accept callback URLs directly."
+      }
+    ]
+  },
+  {
+    "apiName": "bfl/flux-2-max",
+    "uiName": "FLUX.2 Max",
+    "provider": "black-forest-labs",
+    "kind": "image",
+    "workflows": [
+      "text-to-image",
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "jpeg",
+        "enum": [
+          "jpg",
+          "jpeg",
+          "png",
+          "webp"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_guidance_scale",
+        "type": "number",
+        "tier": "advanced",
+        "description": "Classifier-free guidance scale - controls how closely the output follows your prompt (higher values increase prompt adherence)",
+        "min": 0,
+        "max": 20
+      },
+      {
+        "name": "generation_moderation",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Content moderation (true = moderation on, false = moderation off)",
+        "default": false
+      },
+      {
+        "name": "generation_num_inference_steps",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Number of denoising steps (more steps produce higher quality but slower results)",
+        "min": 1,
+        "max": 100
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_webhook_secret",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Provider-native webhook secret for providers that sign callback requests."
+      },
+      {
+        "name": "generation_webhook_url",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Provider-native webhook URL for providers that accept callback URLs directly."
+      }
+    ]
+  },
+  {
+    "apiName": "bfl/flux-2-pro",
+    "uiName": "FLUX.2 Pro",
+    "provider": "black-forest-labs",
+    "kind": "image",
+    "workflows": [
+      "text-to-image",
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "jpeg",
+        "enum": [
+          "jpg",
+          "jpeg",
+          "png",
+          "webp"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_guidance_scale",
+        "type": "number",
+        "tier": "advanced",
+        "description": "Classifier-free guidance scale - controls how closely the output follows your prompt (higher values increase prompt adherence)",
+        "min": 0,
+        "max": 20
+      },
+      {
+        "name": "generation_moderation",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Content moderation (true = moderation on, false = moderation off)",
+        "default": false
+      },
+      {
+        "name": "generation_num_inference_steps",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Number of denoising steps (more steps produce higher quality but slower results)",
+        "min": 1,
+        "max": 100
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_webhook_secret",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Provider-native webhook secret for providers that sign callback requests."
+      },
+      {
+        "name": "generation_webhook_url",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Provider-native webhook URL for providers that accept callback URLs directly."
+      }
+    ]
+  },
+  {
+    "apiName": "bytedance/seedance-1-pro",
+    "uiName": "Seedance 1.0 Pro",
+    "provider": "byteplus",
+    "kind": "video",
+    "workflows": [
+      "text-to-video",
+      "image-to-video"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "16:9",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9",
+          "adaptive"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "mp4",
+        "enum": [
+          "mp4"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_input_video_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input video URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/video.mp4"
+      },
+      {
+        "name": "generation_input_audio_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input audio URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/audio.mp3"
+      },
+      {
+        "name": "generation_duration",
+        "type": "integer",
+        "tier": "core",
+        "description": "Duration of generated content in seconds",
+        "required": false,
+        "default": 5,
+        "min": 1,
+        "max": 30
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "720p",
+        "enum": [
+          "480p",
+          "720p",
+          "1080p"
+        ]
+      },
+      {
+        "name": "generation_generate_audio",
+        "type": "boolean",
+        "tier": "core",
+        "description": "Add audio for generated content",
+        "default": false
+      },
+      {
+        "name": "generation_camera_fixed",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Fix the camera position during content generation (appends an instruction to your prompt but does not guarantee the effect)",
+        "default": false
+      },
+      {
+        "name": "generation_draft",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable low-cost draft mode when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_execution_expires_after",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Provider task expiration in seconds.",
+        "default": 172800,
+        "min": 3600,
+        "max": 259200
+      },
+      {
+        "name": "generation_frames",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Frame count for providers that support frame-based duration.",
+        "min": 29,
+        "max": 289
+      },
+      {
+        "name": "generation_input_image_file_last_content",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Last-frame image for video or chained image workflows."
+      },
+      {
+        "name": "generation_priority",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Queue priority for providers that support priority scheduling.",
+        "default": 0,
+        "min": 0,
+        "max": 9
+      },
+      {
+        "name": "generation_return_last_frame",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to return the final video frame as an image.",
+        "default": false
+      },
+      {
+        "name": "generation_safety_identifier",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Privacy-preserving end-user safety identifier."
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_service_tier",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Provider service tier.",
+        "default": "default",
+        "enum": [
+          "default",
+          "flex"
+        ]
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "bytedance/seedance-1-pro-fast",
+    "uiName": "Seedance 1.0 Pro Fast",
+    "provider": "byteplus",
+    "kind": "video",
+    "workflows": [
+      "text-to-video",
+      "image-to-video"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "16:9",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9",
+          "adaptive"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "mp4",
+        "enum": [
+          "mp4"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_input_video_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input video URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/video.mp4"
+      },
+      {
+        "name": "generation_input_audio_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input audio URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/audio.mp3"
+      },
+      {
+        "name": "generation_duration",
+        "type": "integer",
+        "tier": "core",
+        "description": "Duration of generated content in seconds",
+        "required": false,
+        "default": 5,
+        "min": 1,
+        "max": 30
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "720p",
+        "enum": [
+          "480p",
+          "720p",
+          "1080p"
+        ]
+      },
+      {
+        "name": "generation_generate_audio",
+        "type": "boolean",
+        "tier": "core",
+        "description": "Add audio for generated content",
+        "default": false
+      },
+      {
+        "name": "generation_camera_fixed",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Fix the camera position during content generation (appends an instruction to your prompt but does not guarantee the effect)",
+        "default": false
+      },
+      {
+        "name": "generation_draft",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable low-cost draft mode when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_execution_expires_after",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Provider task expiration in seconds.",
+        "default": 172800,
+        "min": 3600,
+        "max": 259200
+      },
+      {
+        "name": "generation_frames",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Frame count for providers that support frame-based duration.",
+        "min": 29,
+        "max": 289
+      },
+      {
+        "name": "generation_input_image_file_last_content",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Last-frame image for video or chained image workflows."
+      },
+      {
+        "name": "generation_priority",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Queue priority for providers that support priority scheduling.",
+        "default": 0,
+        "min": 0,
+        "max": 9
+      },
+      {
+        "name": "generation_return_last_frame",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to return the final video frame as an image.",
+        "default": false
+      },
+      {
+        "name": "generation_safety_identifier",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Privacy-preserving end-user safety identifier."
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_service_tier",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Provider service tier.",
+        "default": "default",
+        "enum": [
+          "default",
+          "flex"
+        ]
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "bytedance/seedance-1.5-pro",
+    "uiName": "Seedance 1.5 Pro",
+    "provider": "byteplus",
+    "kind": "video",
+    "workflows": [
+      "text-to-video",
+      "image-to-video"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "16:9",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9",
+          "adaptive"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "mp4",
+        "enum": [
+          "mp4"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_input_video_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input video URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/video.mp4"
+      },
+      {
+        "name": "generation_input_audio_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input audio URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/audio.mp3"
+      },
+      {
+        "name": "generation_duration",
+        "type": "integer",
+        "tier": "core",
+        "description": "Duration of generated content in seconds",
+        "required": false,
+        "default": 5,
+        "min": 1,
+        "max": 30
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "720p",
+        "enum": [
+          "480p",
+          "720p",
+          "1080p"
+        ]
+      },
+      {
+        "name": "generation_generate_audio",
+        "type": "boolean",
+        "tier": "core",
+        "description": "Add audio for generated content",
+        "default": false
+      },
+      {
+        "name": "generation_camera_fixed",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Fix the camera position during content generation (appends an instruction to your prompt but does not guarantee the effect)",
+        "default": false
+      },
+      {
+        "name": "generation_draft",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable low-cost draft mode when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_execution_expires_after",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Provider task expiration in seconds.",
+        "default": 172800,
+        "min": 3600,
+        "max": 259200
+      },
+      {
+        "name": "generation_frames",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Frame count for providers that support frame-based duration.",
+        "min": 29,
+        "max": 289
+      },
+      {
+        "name": "generation_input_image_file_last_content",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Last-frame image for video or chained image workflows."
+      },
+      {
+        "name": "generation_priority",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Queue priority for providers that support priority scheduling.",
+        "default": 0,
+        "min": 0,
+        "max": 9
+      },
+      {
+        "name": "generation_return_last_frame",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to return the final video frame as an image.",
+        "default": false
+      },
+      {
+        "name": "generation_safety_identifier",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Privacy-preserving end-user safety identifier."
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_service_tier",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Provider service tier.",
+        "default": "default",
+        "enum": [
+          "default",
+          "flex"
+        ]
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "bytedance/seedance-2.0",
+    "uiName": "Seedance 2.0",
+    "provider": "byteplus",
+    "kind": "video",
+    "workflows": [
+      "text-to-video",
+      "image-to-video",
+      "video-to-video"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "16:9",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9",
+          "adaptive"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "mp4",
+        "enum": [
+          "mp4"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_input_video_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input video URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/video.mp4"
+      },
+      {
+        "name": "generation_input_audio_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input audio URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/audio.mp3"
+      },
+      {
+        "name": "generation_duration",
+        "type": "integer",
+        "tier": "core",
+        "description": "Duration of generated content in seconds",
+        "required": false,
+        "default": 5,
+        "min": 1,
+        "max": 30
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "720p",
+        "enum": [
+          "480p",
+          "720p",
+          "1080p"
+        ]
+      },
+      {
+        "name": "generation_generate_audio",
+        "type": "boolean",
+        "tier": "core",
+        "description": "Add audio for generated content",
+        "default": false
+      },
+      {
+        "name": "generation_camera_fixed",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Fix the camera position during content generation (appends an instruction to your prompt but does not guarantee the effect)",
+        "default": false
+      },
+      {
+        "name": "generation_draft",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable low-cost draft mode when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_execution_expires_after",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Provider task expiration in seconds.",
+        "default": 172800,
+        "min": 3600,
+        "max": 259200
+      },
+      {
+        "name": "generation_frames",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Frame count for providers that support frame-based duration.",
+        "min": 29,
+        "max": 289
+      },
+      {
+        "name": "generation_input_image_file_last_content",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Last-frame image for video or chained image workflows."
+      },
+      {
+        "name": "generation_priority",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Queue priority for providers that support priority scheduling.",
+        "default": 0,
+        "min": 0,
+        "max": 9
+      },
+      {
+        "name": "generation_return_last_frame",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to return the final video frame as an image.",
+        "default": false
+      },
+      {
+        "name": "generation_safety_identifier",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Privacy-preserving end-user safety identifier."
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_service_tier",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Provider service tier.",
+        "default": "default",
+        "enum": [
+          "default",
+          "flex"
+        ]
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "bytedance/seedance-2.0-fast",
+    "uiName": "Seedance 2.0 Fast",
+    "provider": "byteplus",
+    "kind": "video",
+    "workflows": [
+      "text-to-video",
+      "image-to-video",
+      "video-to-video"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "16:9",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9",
+          "adaptive"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "mp4",
+        "enum": [
+          "mp4"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_input_video_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input video URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/video.mp4"
+      },
+      {
+        "name": "generation_input_audio_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input audio URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/audio.mp3"
+      },
+      {
+        "name": "generation_duration",
+        "type": "integer",
+        "tier": "core",
+        "description": "Duration of generated content in seconds",
+        "required": false,
+        "default": 5,
+        "min": 1,
+        "max": 30
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "720p",
+        "enum": [
+          "480p",
+          "720p",
+          "1080p"
+        ]
+      },
+      {
+        "name": "generation_generate_audio",
+        "type": "boolean",
+        "tier": "core",
+        "description": "Add audio for generated content",
+        "default": false
+      },
+      {
+        "name": "generation_camera_fixed",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Fix the camera position during content generation (appends an instruction to your prompt but does not guarantee the effect)",
+        "default": false
+      },
+      {
+        "name": "generation_draft",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable low-cost draft mode when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_execution_expires_after",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Provider task expiration in seconds.",
+        "default": 172800,
+        "min": 3600,
+        "max": 259200
+      },
+      {
+        "name": "generation_frames",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Frame count for providers that support frame-based duration.",
+        "min": 29,
+        "max": 289
+      },
+      {
+        "name": "generation_input_image_file_last_content",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Last-frame image for video or chained image workflows."
+      },
+      {
+        "name": "generation_priority",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Queue priority for providers that support priority scheduling.",
+        "default": 0,
+        "min": 0,
+        "max": 9
+      },
+      {
+        "name": "generation_return_last_frame",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to return the final video frame as an image.",
+        "default": false
+      },
+      {
+        "name": "generation_safety_identifier",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Privacy-preserving end-user safety identifier."
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_service_tier",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Provider service tier.",
+        "default": "default",
+        "enum": [
+          "default",
+          "flex"
+        ]
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "bytedance/seedream-4",
+    "uiName": "Seedream 4.0",
+    "provider": "byteplus",
+    "kind": "image",
+    "workflows": [
+      "text-to-image",
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "jpeg",
+        "enum": [
+          "jpg",
+          "jpeg",
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "2K",
+        "enum": [
+          "1K",
+          "2K",
+          "3K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_max_images",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Maximum images for sequential generation.",
+        "default": 1,
+        "min": 1,
+        "max": 15
+      },
+      {
+        "name": "generation_response_format",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "How generated media should be returned by providers that support multiple response modes.",
+        "default": "url",
+        "enum": [
+          "url",
+          "b64_json"
+        ]
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_sequential_image_generation",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Batch generation mode.",
+        "default": "disabled",
+        "enum": [
+          "auto",
+          "disabled"
+        ]
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_stream",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should stream outputs when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "bytedance/seedream-4.5",
+    "uiName": "Seedream 4.5",
+    "provider": "byteplus",
+    "kind": "image",
+    "workflows": [
+      "text-to-image",
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "jpeg",
+        "enum": [
+          "jpg",
+          "jpeg",
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "2K",
+        "enum": [
+          "1K",
+          "2K",
+          "3K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_max_images",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Maximum images for sequential generation.",
+        "default": 1,
+        "min": 1,
+        "max": 15
+      },
+      {
+        "name": "generation_response_format",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "How generated media should be returned by providers that support multiple response modes.",
+        "default": "url",
+        "enum": [
+          "url",
+          "b64_json"
+        ]
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_sequential_image_generation",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Batch generation mode.",
+        "default": "disabled",
+        "enum": [
+          "auto",
+          "disabled"
+        ]
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_stream",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should stream outputs when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "bytedance/seedream-5-lite",
+    "uiName": "Seedream 5 Lite",
+    "provider": "byteplus",
+    "kind": "image",
+    "workflows": [
+      "text-to-image",
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "jpeg",
+        "enum": [
+          "jpg",
+          "jpeg",
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "2K",
+        "enum": [
+          "1K",
+          "2K",
+          "3K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_enhance_prompt",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Prompt enhancement mode.",
+        "default": "off",
+        "enum": [
+          "off",
+          "standard",
+          "fast"
+        ]
+      },
+      {
+        "name": "generation_max_images",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Maximum images for sequential generation.",
+        "default": 1,
+        "min": 1,
+        "max": 15
+      },
+      {
+        "name": "generation_response_format",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "How generated media should be returned by providers that support multiple response modes.",
+        "default": "url",
+        "enum": [
+          "url",
+          "b64_json"
+        ]
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_sequential_image_generation",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Batch generation mode.",
+        "default": "disabled",
+        "enum": [
+          "auto",
+          "disabled"
+        ]
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_stream",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should stream outputs when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_watermark",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should add a visible AI watermark.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "google/imagen-4",
+    "uiName": "Imagen 4",
+    "provider": "google",
+    "kind": "image",
+    "workflows": [
+      "text-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 4
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "0.5K",
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_search_grounding",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to use Google Search grounding when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_thinking",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable thinking when supported.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "google/imagen-4-fast",
+    "uiName": "Imagen 4 Fast",
+    "provider": "google",
+    "kind": "image",
+    "workflows": [
+      "text-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 4
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "0.5K",
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_search_grounding",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to use Google Search grounding when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_thinking",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable thinking when supported.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "google/imagen-4-ultra",
+    "uiName": "Imagen 4 Ultra",
+    "provider": "google",
+    "kind": "image",
+    "workflows": [
+      "text-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 4
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "0.5K",
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_search_grounding",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to use Google Search grounding when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_thinking",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable thinking when supported.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "google/nano-banana",
+    "uiName": "Nano Banana",
+    "provider": "google",
+    "kind": "image",
+    "workflows": [
+      "text-to-image",
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 4
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "0.5K",
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_search_grounding",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to use Google Search grounding when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_thinking",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable thinking when supported.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "google/nano-banana-2",
+    "uiName": "Nano Banana 2",
+    "provider": "google",
+    "kind": "image",
+    "workflows": [
+      "text-to-image",
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 4
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "0.5K",
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_search_grounding",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to use Google Search grounding when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_thinking",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable thinking when supported.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "google/nano-banana-pro",
+    "uiName": "Nano Banana Pro",
+    "provider": "google",
+    "kind": "image",
+    "workflows": [
+      "text-to-image",
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 4
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "0.5K",
+          "1K",
+          "2K",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_search_grounding",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to use Google Search grounding when supported.",
+        "default": false
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_thinking",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to enable thinking when supported.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "google/veo-3.1",
+    "uiName": "Veo 3.1",
+    "provider": "google",
+    "kind": "video",
+    "workflows": [
+      "text-to-video",
+      "image-to-video"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "16:9",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9",
+          "adaptive"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "mp4",
+        "enum": [
+          "mp4"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_duration",
+        "type": "integer",
+        "tier": "core",
+        "description": "Duration of generated content in seconds",
+        "required": false,
+        "default": 5,
+        "min": 1,
+        "max": 30
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "720p",
+        "enum": [
+          "720p",
+          "1080p",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_generate_audio",
+        "type": "boolean",
+        "tier": "core",
+        "description": "Add audio for generated content",
+        "default": false
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      }
+    ]
+  },
+  {
+    "apiName": "google/veo-3.1-fast",
+    "uiName": "Veo 3.1 Fast",
+    "provider": "google",
+    "kind": "video",
+    "workflows": [
+      "text-to-video",
+      "image-to-video"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "16:9",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9",
+          "adaptive"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "mp4",
+        "enum": [
+          "mp4"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_duration",
+        "type": "integer",
+        "tier": "core",
+        "description": "Duration of generated content in seconds",
+        "required": false,
+        "default": 5,
+        "min": 1,
+        "max": 30
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "720p",
+        "enum": [
+          "720p",
+          "1080p",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_generate_audio",
+        "type": "boolean",
+        "tier": "core",
+        "description": "Add audio for generated content",
+        "default": false
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      }
+    ]
+  },
+  {
+    "apiName": "google/veo-3.1-lite",
+    "uiName": "Veo 3.1 Lite",
+    "provider": "google",
+    "kind": "video",
+    "workflows": [
+      "text-to-video",
+      "image-to-video"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "16:9",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9",
+          "adaptive"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "mp4",
+        "enum": [
+          "mp4"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_duration",
+        "type": "integer",
+        "tier": "core",
+        "description": "Duration of generated content in seconds",
+        "required": false,
+        "default": 5,
+        "min": 1,
+        "max": 30
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "720p",
+        "enum": [
+          "720p",
+          "1080p",
+          "4K"
+        ]
+      },
+      {
+        "name": "generation_generate_audio",
+        "type": "boolean",
+        "tier": "core",
+        "description": "Add audio for generated content",
+        "default": false
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      }
+    ]
+  },
+  {
+    "apiName": "gpt/image-2",
+    "uiName": "GPT Image 2",
+    "provider": "openai",
+    "kind": "image",
+    "workflows": [
+      "text-to-image",
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "jpg",
+          "jpeg",
+          "png",
+          "webp"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 4
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_resolution",
+        "type": "enum",
+        "tier": "core",
+        "description": "Output resolution",
+        "default": "1K",
+        "enum": [
+          "1K",
+          "2K"
+        ]
+      },
+      {
+        "name": "generation_background",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Background type for transparent or opaque output",
+        "default": "auto",
+        "enum": [
+          "auto",
+          "opaque",
+          "transparent"
+        ]
+      },
+      {
+        "name": "generation_mask_file",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Mask image used for edit workflows."
+      },
+      {
+        "name": "generation_moderation",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Content moderation (true = moderation on, false = moderation off)",
+        "default": false
+      },
+      {
+        "name": "generation_output_compression",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Compression level for the output file (higher values mean higher quality)",
+        "min": 0,
+        "max": 100
+      },
+      {
+        "name": "generation_partial_images",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Number of partial images to stream before the final image where supported.",
+        "default": 0,
+        "min": 0,
+        "max": 3
+      },
+      {
+        "name": "generation_quality",
+        "type": "enum",
+        "tier": "advanced",
+        "description": "Generation results quality.",
+        "default": "auto",
+        "enum": [
+          "auto",
+          "low",
+          "medium",
+          "high"
+        ]
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      },
+      {
+        "name": "generation_size",
+        "type": "string",
+        "tier": "advanced",
+        "description": "Output size preset"
+      },
+      {
+        "name": "generation_stream",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether the provider should stream outputs when supported.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "apiName": "runway/act-two",
+    "uiName": "Act-Two",
+    "provider": "runway",
+    "kind": "video",
+    "workflows": [
+      "character-performance"
+    ],
+    "schema": [
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "16:9",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9",
+          "adaptive"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "mp4",
+        "enum": [
+          "mp4"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_input_video_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input video URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/video.mp4"
+      },
+      {
+        "name": "generation_body_control",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Whether to apply non-facial body movements.",
+        "default": false
+      },
+      {
+        "name": "generation_expression_intensity",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Character expression intensity.",
+        "default": 3,
+        "min": 1,
+        "max": 5
+      },
+      {
+        "name": "generation_moderation",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Content moderation (true = moderation on, false = moderation off)",
+        "default": false
+      },
+      {
+        "name": "generation_reference_motion_file",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Reference motion URL, data URL, file ID, or provider asset URI.",
+        "placeholder": "https://example.com/motion.mp4"
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      }
+    ]
+  },
+  {
+    "apiName": "runway/aleph-2",
+    "uiName": "Aleph 2",
+    "provider": "runway",
+    "kind": "video",
+    "workflows": [
+      "video-to-video"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "16:9",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9",
+          "adaptive"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "mp4",
+        "enum": [
+          "mp4"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_input_video_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input video URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/video.mp4"
+      },
+      {
+        "name": "generation_duration",
+        "type": "integer",
+        "tier": "core",
+        "description": "Duration of generated content in seconds",
+        "required": false,
+        "default": 5,
+        "min": 1,
+        "max": 30
+      },
+      {
+        "name": "generation_input_image_file_last_content",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Last-frame image for video or chained image workflows."
+      },
+      {
+        "name": "generation_input_image_file_tags",
+        "type": "string-array",
+        "tier": "advanced",
+        "description": "Tags or labels for input images when a provider supports tagged references."
+      },
+      {
+        "name": "generation_moderation",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Content moderation (true = moderation on, false = moderation off)",
+        "default": false
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      }
+    ]
+  },
+  {
+    "apiName": "runway/gen-4-aleph",
+    "uiName": "Gen-4 Aleph",
+    "provider": "runway",
+    "kind": "video",
+    "workflows": [
+      "video-to-video"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "16:9",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9",
+          "adaptive"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "mp4",
+        "enum": [
+          "mp4"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_input_video_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input video URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/video.mp4"
+      },
+      {
+        "name": "generation_duration",
+        "type": "integer",
+        "tier": "core",
+        "description": "Duration of generated content in seconds",
+        "required": false,
+        "default": 5,
+        "min": 1,
+        "max": 30
+      },
+      {
+        "name": "generation_input_image_file_last_content",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Last-frame image for video or chained image workflows."
+      },
+      {
+        "name": "generation_input_image_file_tags",
+        "type": "string-array",
+        "tier": "advanced",
+        "description": "Tags or labels for input images when a provider supports tagged references."
+      },
+      {
+        "name": "generation_moderation",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Content moderation (true = moderation on, false = moderation off)",
+        "default": false
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      }
+    ]
+  },
+  {
+    "apiName": "runway/gen-4-image",
+    "uiName": "Gen-4 Image",
+    "provider": "runway",
+    "kind": "image",
+    "workflows": [
+      "text-to-image",
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "jpg",
+          "jpeg",
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_input_image_file_tags",
+        "type": "string-array",
+        "tier": "advanced",
+        "description": "Tags or labels for input images when a provider supports tagged references."
+      },
+      {
+        "name": "generation_moderation",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Content moderation (true = moderation on, false = moderation off)",
+        "default": false
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      }
+    ]
+  },
+  {
+    "apiName": "runway/gen-4-image-turbo",
+    "uiName": "Gen-4 Image Turbo",
+    "provider": "runway",
+    "kind": "image",
+    "workflows": [
+      "text-to-image",
+      "image-to-image"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "1:1",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "png",
+        "enum": [
+          "jpg",
+          "jpeg",
+          "png"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_input_image_file_tags",
+        "type": "string-array",
+        "tier": "advanced",
+        "description": "Tags or labels for input images when a provider supports tagged references."
+      },
+      {
+        "name": "generation_moderation",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Content moderation (true = moderation on, false = moderation off)",
+        "default": false
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      }
+    ]
+  },
+  {
+    "apiName": "runway/gen-4-turbo",
+    "uiName": "Gen-4 Turbo",
+    "provider": "runway",
+    "kind": "video",
+    "workflows": [
+      "image-to-video"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "16:9",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9",
+          "adaptive"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "mp4",
+        "enum": [
+          "mp4"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_input_video_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input video URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/video.mp4"
+      },
+      {
+        "name": "generation_duration",
+        "type": "integer",
+        "tier": "core",
+        "description": "Duration of generated content in seconds",
+        "required": false,
+        "default": 5,
+        "min": 1,
+        "max": 30
+      },
+      {
+        "name": "generation_input_image_file_last_content",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Last-frame image for video or chained image workflows."
+      },
+      {
+        "name": "generation_input_image_file_tags",
+        "type": "string-array",
+        "tier": "advanced",
+        "description": "Tags or labels for input images when a provider supports tagged references."
+      },
+      {
+        "name": "generation_moderation",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Content moderation (true = moderation on, false = moderation off)",
+        "default": false
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      }
+    ]
+  },
+  {
+    "apiName": "runway/gen-4.5",
+    "uiName": "Gen-4.5",
+    "provider": "runway",
+    "kind": "video",
+    "workflows": [
+      "text-to-video",
+      "image-to-video"
+    ],
+    "schema": [
+      {
+        "name": "generation_prompt",
+        "type": "string",
+        "tier": "core",
+        "description": "Text description of the content you want to generate",
+        "required": true,
+        "placeholder": "Describe what you want to generate..."
+      },
+      {
+        "name": "generation_ratio",
+        "type": "enum",
+        "tier": "core",
+        "description": "Aspect ratio of the generated content",
+        "default": "16:9",
+        "enum": [
+          "1:1",
+          "1:2",
+          "1:3",
+          "2:3",
+          "3:4",
+          "4:5",
+          "9:16",
+          "10:16",
+          "9:21",
+          "2:1",
+          "3:1",
+          "3:2",
+          "4:3",
+          "5:4",
+          "16:9",
+          "16:10",
+          "21:9",
+          "adaptive"
+        ]
+      },
+      {
+        "name": "generation_output_format",
+        "type": "enum",
+        "tier": "core",
+        "description": "Format of the output file",
+        "default": "mp4",
+        "enum": [
+          "mp4"
+        ]
+      },
+      {
+        "name": "generation_output_number",
+        "type": "integer",
+        "tier": "core",
+        "description": "Number of outputs to generate",
+        "default": 1,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "name": "generation_input_image_file",
+        "type": "url-array",
+        "tier": "core",
+        "description": "Input image URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/image.png"
+      },
+      {
+        "name": "generation_input_video_file",
+        "type": "url",
+        "tier": "core",
+        "description": "Input video URL(s) to transform or use as reference",
+        "placeholder": "https://example.com/video.mp4"
+      },
+      {
+        "name": "generation_duration",
+        "type": "integer",
+        "tier": "core",
+        "description": "Duration of generated content in seconds",
+        "required": false,
+        "default": 5,
+        "min": 1,
+        "max": 30
+      },
+      {
+        "name": "generation_input_image_file_last_content",
+        "type": "url",
+        "tier": "advanced",
+        "description": "Last-frame image for video or chained image workflows."
+      },
+      {
+        "name": "generation_input_image_file_tags",
+        "type": "string-array",
+        "tier": "advanced",
+        "description": "Tags or labels for input images when a provider supports tagged references."
+      },
+      {
+        "name": "generation_moderation",
+        "type": "boolean",
+        "tier": "advanced",
+        "description": "Content moderation (true = moderation on, false = moderation off)",
+        "default": false
+      },
+      {
+        "name": "generation_seed",
+        "type": "integer",
+        "tier": "advanced",
+        "description": "Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed",
+        "min": -1,
+        "max": 4294967295
+      }
+    ]
+  }
+] as const satisfies readonly SemanticLadyModel[];

@@ -1,0 +1,70 @@
+{
+  "name": "@babysea/semantic-lady",
+  "version": "0.1.0",
+  "description": "Schema unification SDK for generative media model APIs.",
+  "keywords": [
+    "babysea",
+    "semantic-lady",
+    "schema-unification",
+    "generative-media",
+    "model-schema",
+    "babychain",
+    "byok",
+    "typescript"
+  ],
+  "license": "Apache-2.0",
+  "author": {
+    "name": "BabySea",
+    "url": "https://babysea.ai"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/babysea-community/semantic-lady.git"
+  },
+  "bugs": {
+    "url": "https://github.com/babysea-community/semantic-lady/issues"
+  },
+  "homepage": "https://github.com/babysea-community/semantic-lady#readme",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "files": [
+    "dist",
+    "CHANGELOG.md",
+    "README.md",
+    "LICENSE"
+  ],
+  "packageManager": "pnpm@10.19.0",
+  "sideEffects": false,
+  "engines": {
+    "node": ">=22"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts --clean",
+    "clean": "rm -rf .turbo node_modules dist coverage",
+    "test": "pnpm run build && node --test \"test/*.mjs\"",
+    "typecheck": "tsc --noEmit",
+    "check": "pnpm run typecheck && pnpm run test && pnpm run build"
+  },
+  "devDependencies": {
+    "@types/node": "^25.3.1",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3"
+  }
+}
