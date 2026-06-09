@@ -1,5 +1,5 @@
 {
-  "name": "@babysea/semantic-lady",
+  "name": "semantic-lady",
   "version": "0.1.0",
   "description": "Schema unification SDK for generative media model APIs.",
   "keywords": [

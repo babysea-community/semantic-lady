@@ -1,6 +1,6 @@
 # semantic-lady
 
-`@babysea/semantic-lady` is a public TypeScript SDK for local schema unification across generative media models. See [README.md](README.md) for the full contract.
+`semantic-lady` is a public TypeScript SDK for local schema unification across generative media models. See [README.md](README.md) for the full contract.
 
 This file mirrors the README so deploys, IDEs, and tooling that read `AGENTS.md` see the same context.
 

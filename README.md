@@ -99,7 +99,7 @@ BabySea OSS projects are published into three status levels:
 
 ### What this is
 
-`@babysea/semantic-lady` is a local TypeScript SDK for resolving generative media model schemas into one normalized `generation_*` field contract.
+`semantic-lady` is a local TypeScript SDK for resolving generative media model schemas into one normalized `generation_*` field contract.
 
 It helps BYOK products, workflow builders, and community tools present many provider models through one consistent schema vocabulary without calling BabySea, running a backend, or wrapping provider SDKs.
 
@@ -160,7 +160,7 @@ Private schema source
 Resolved public catalog
         |
         v
-@babysea/semantic-lady local SDK
+semantic-lady local SDK
         |
         v
 Your BYOK app UI / workflow builder / provider adapter
@@ -173,11 +173,11 @@ The public SDK exports generated, normalized catalog data and small resolver hel
 ### Install
 
 ```bash
-pnpm add @babysea/semantic-lady
+pnpm add semantic-lady
 ```
 
 ```bash
-npm install @babysea/semantic-lady
+npm install semantic-lady
 ```
 
 ### List models
@@ -187,7 +187,7 @@ import {
   SEMANTIC_LADY_IMAGE_MODELS,
   SEMANTIC_LADY_VIDEO_MODELS,
   listModelSummaries,
-} from '@babysea/semantic-lady';
+} from 'semantic-lady';
 
 const models = listModelSummaries();
 const imageModelCount = SEMANTIC_LADY_IMAGE_MODELS.length;
@@ -199,7 +199,7 @@ console.log(models[0]?.apiName, imageModelCount, videoModelCount);
 ### Resolve a model schema
 
 ```typescript
-import { getModelSchema } from '@babysea/semantic-lady';
+import { getModelSchema } from 'semantic-lady';
 
 const schema = getModelSchema('bfl/flux-2-pro', 'full');
 
@@ -211,7 +211,7 @@ for (const field of schema.fields) {
 ### Build UI controls
 
 ```typescript
-import { getModelCoreSchema } from '@babysea/semantic-lady';
+import { getModelCoreSchema } from 'semantic-lady';
 
 const core = getModelCoreSchema('google/veo-3.1-fast');
 
