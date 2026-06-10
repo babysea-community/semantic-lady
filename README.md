@@ -29,9 +29,9 @@ Schema unification SDK for generative media model APIs.
 
 <strong>Built with</strong>
 
+[![npm](https://img.shields.io/npm/v/semantic-lady?style=for-the-badge&color=CB3837&logo=npm&logoColor=white)](https://www.npmjs.com/package/semantic-lady)
+[![Node.js](https://img.shields.io/badge/Node.js-22%2B-5FA04E?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org)
 [![TypeScript](https://img.shields.io/badge/typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
-[![Node.js](https://img.shields.io/badge/node.js-22%2B-5FA04E?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org)
-[![npm](https://img.shields.io/badge/npm-package-CB3837?style=for-the-badge&logo=npm&logoColor=white)](https://www.npmjs.com)
 [![BYOK](https://custom-icon-badges.demolab.com/badge/byok-first-0D9488?style=for-the-badge&logo=key&logoColor=white)](#4-boundaries)
 
 </div>
