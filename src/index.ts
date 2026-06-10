@@ -1,8 +1,4 @@
-import {
-  SEMANTIC_LADY_IMAGE_MODELS,
-  SEMANTIC_LADY_MODELS,
-  SEMANTIC_LADY_VIDEO_MODELS,
-} from './catalog.generated.js';
+import { SEMANTIC_LADY_MODELS } from './catalog.generated.js';
 import type {
   SemanticLadyField,
   SemanticLadyModel,

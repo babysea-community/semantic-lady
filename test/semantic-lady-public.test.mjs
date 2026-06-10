@@ -1,15 +1,16 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+
 import {
-  getModel,
-  getModelSchema,
-  listModelNames,
-  listModels,
-  listModelSummaries,
-  resolveModelSchema,
   SEMANTIC_LADY_IMAGE_MODELS,
   SEMANTIC_LADY_MODELS,
   SEMANTIC_LADY_VIDEO_MODELS,
+  getModel,
+  getModelSchema,
+  listModelNames,
+  listModelSummaries,
+  listModels,
+  resolveModelSchema,
 } from '../dist/index.js';
 
 test('publishes the resolved local schema catalog', () => {
@@ -23,6 +24,37 @@ test('publishes the resolved local schema catalog', () => {
   assert.equal(qwen.uiName, 'Qwen Image');
   assert.equal(qwen.kind, 'image');
   assert.ok(qwen.schema.every((field) => field.name.startsWith('generation_')));
+});
+
+test('publishes doc-backed model-specific schemas', () => {
+  const field = (modelName, fieldName) =>
+    getModelSchema(modelName).fields.find((entry) => entry.name === fieldName);
+  const fieldNames = (modelName) =>
+    getModelSchema(modelName).fields.map((entry) => entry.name);
+
+  assert.deepEqual(field('wan/2.7-image', 'generation_resolution')?.enum, [
+    '1K',
+    '2K',
+  ]);
+  assert.deepEqual(field('wan/2.7-image-pro', 'generation_resolution')?.enum, [
+    '1K',
+    '2K',
+    '4K',
+  ]);
+  assert.equal(field('wan/2.7-image-pro', 'generation_output_number')?.max, 12);
+  assert.ok(!fieldNames('wan/2.7-image-pro').includes('generation_max_images'));
+  assert.deepEqual(
+    field('bytedance/seedream-4', 'generation_resolution')?.enum,
+    ['1K', '2K', '4K'],
+  );
+  assert.ok(!fieldNames('google/nano-banana').includes('generation_thinking'));
+  assert.ok(
+    field('google/nano-banana-2', 'generation_ratio')?.enum?.includes('1:8'),
+  );
+  assert.ok(
+    !fieldNames('runway/gen-4-turbo').includes('generation_input_video_file'),
+  );
+  assert.ok(!fieldNames('runway/aleph-2').includes('generation_duration'));
 });
 
 test('orders models by inference provider and API name', () => {
@@ -40,7 +72,10 @@ test('keeps public model data free of raw provider internals', () => {
   for (const model of listModels()) {
     assert.equal(Object.hasOwn(model, 'aliases'), false);
     assert.equal(Object.hasOwn(model, 'providerModel'), false);
-    assert.equal(model.schema.some((field) => Object.hasOwn(field, 'aliases')), false);
+    assert.equal(
+      model.schema.some((field) => Object.hasOwn(field, 'aliases')),
+      false,
+    );
   }
 });
 

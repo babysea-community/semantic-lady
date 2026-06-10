@@ -7,7 +7,8 @@ const RESERVED_PROJECT_SLUGS = new Set(['babysea']);
 const token = readRequiredEnv('SENTRY_AUTH_TOKEN');
 const org = readRequiredEnv('SENTRY_ORG');
 const project = readRequiredEnv('SENTRY_PROJECT');
-const expectedPlatform = process.env.SENTRY_EXPECTED_PLATFORM || DEFAULT_PLATFORM;
+const expectedPlatform =
+  process.env.SENTRY_EXPECTED_PLATFORM || DEFAULT_PLATFORM;
 const allowPermissionSkip = process.env.SENTRY_ALLOW_PERMISSION_SKIP === '1';
 const sentryUrl = normalizeSentryUrl(process.env.SENTRY_URL || DEFAULT_URL);
 
@@ -26,7 +27,10 @@ const response = await fetch(
 );
 
 if (!response.ok) {
-  if ((response.status === 401 || response.status === 403) && allowPermissionSkip) {
+  if (
+    (response.status === 401 || response.status === 403) &&
+    allowPermissionSkip
+  ) {
     console.log(
       `[sentry-project-check] Permission-limited response ${response.status}; skipping because SENTRY_ALLOW_PERMISSION_SKIP=1.`,
     );
@@ -41,14 +45,20 @@ const slug = typeof body.slug === 'string' ? body.slug : '';
 const platform = typeof body.platform === 'string' ? body.platform : '';
 
 if (slug !== project) {
-  fail(`Sentry project slug mismatch: expected ${project}, received ${slug || '<missing>'}.`);
+  fail(
+    `Sentry project slug mismatch: expected ${project}, received ${slug || '<missing>'}.`,
+  );
 }
 
 if (expectedPlatform && platform && platform !== expectedPlatform) {
-  fail(`Sentry project platform mismatch: expected ${expectedPlatform}, received ${platform}.`);
+  fail(
+    `Sentry project platform mismatch: expected ${expectedPlatform}, received ${platform}.`,
+  );
 }
 
-console.log(`[sentry-project-check] Verified Sentry project ${org}/${project}.`);
+console.log(
+  `[sentry-project-check] Verified Sentry project ${org}/${project}.`,
+);
 
 function readRequiredEnv(name) {
   const value = process.env[name]?.trim();
@@ -70,7 +80,8 @@ function normalizeSentryUrl(value) {
   }
 
   const hostname = url.hostname.toLowerCase().replace(/^\[|\]$/g, '');
-  const isLocalhost = hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '::1';
+  const isLocalhost =
+    hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '::1';
 
   if (url.protocol !== 'https:' && !(url.protocol === 'http:' && isLocalhost)) {
     fail('SENTRY_URL must use HTTPS unless it points to localhost.');
