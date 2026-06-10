@@ -19,7 +19,7 @@ Schema unification SDK for generative media model APIs.
 <strong>Checks</strong>
 
 [![GitLabCI](https://img.shields.io/gitlab/pipeline-status/babysea/semantic-lady?branch=main&style=for-the-badge&label=gitlabci&logo=gitlab&logoColor=white&color=FC6D26)](https://gitlab.com/babysea/semantic-lady/-/commits/main)
-[![CircleCI](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fcircleci.com%2Fapi%2Fv1.1%2Fproject%2Fcircleci%2F2uTLcwc4naeNuKDP41es88%2FLkDoyyGhqLz6j1Wi6mUHWd%2Ftree%2Fmain%3Flimit%3D1&query=%24%5B0%5D.status&style=for-the-badge&logo=circleci&logoColor=white&label=circleci&color=003740)](https://dl.circleci.com/status-badge/redirect/circleci/2uTLcwc4naeNuKDP41es88/LkDoyyGhqLz6j1Wi6mUHWd/tree/main)
+[![CircleCI](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fcircleci.com%2Fapi%2Fv1.1%2Fproject%2Fcircleci%2F2uTLcwc4naeNuKDP41es88%2FJAQ2UA5vn1uRhoARPXDWrS%2Ftree%2Fmain%3Flimit%3D1&query=%24%5B0%5D.status&style=for-the-badge&logo=circleci&logoColor=white&label=circleci&color=003740)](https://dl.circleci.com/status-badge/redirect/circleci/2uTLcwc4naeNuKDP41es88/JAQ2UA5vn1uRhoARPXDWrS/tree/main)
 [![Codecov](https://img.shields.io/codecov/c/github/babysea-community/semantic-lady?style=for-the-badge&label=codecov&logo=codecov&logoColor=white&color=FF0077&token=dBkFMBfgZf)](https://codecov.io/github/babysea-community/semantic-lady)
 [![Sentry](https://img.shields.io/github/actions/workflow/status/babysea-community/semantic-lady/sentry-check.yml?style=for-the-badge&label=sentry&logo=sentry&logoColor=white&color=181225)](https://github.com/babysea-community/semantic-lady/actions/workflows/sentry-check.yml)
 [![CodeQL](https://img.shields.io/github/actions/workflow/status/babysea-community/semantic-lady/codeql.yml?style=for-the-badge&label=codeql&logo=github&logoColor=white)](https://github.com/babysea-community/semantic-lady/actions/workflows/codeql.yml)
@@ -32,7 +32,6 @@ Schema unification SDK for generative media model APIs.
 [![npm](https://img.shields.io/npm/v/semantic-lady?style=for-the-badge&color=CB3837&logo=npm&logoColor=white)](https://www.npmjs.com/package/semantic-lady)
 [![Node.js](https://img.shields.io/badge/Node.js-22%2B-5FA04E?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org)
 [![TypeScript](https://img.shields.io/badge/typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
-[![BYOK](https://custom-icon-badges.demolab.com/badge/byok-first-0D9488?style=for-the-badge&logo=key&logoColor=white)](#4-boundaries)
 
 </div>
 
