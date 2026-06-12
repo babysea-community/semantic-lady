@@ -37,7 +37,7 @@ export type SemanticLadySchemaView = SemanticLadySchemaTier | 'full';
 export type SemanticLadyField = {
   default?: unknown;
   description: string;
-  enum?: readonly string[];
+  enum?: readonly (number | string)[];
   max?: number;
   min?: number;
   name: SemanticLadyFieldName;

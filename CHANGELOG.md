@@ -4,6 +4,13 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 
 ## Unreleased
 
+## [0.2.1] - 2026-06-12
+
+### Fixed
+
+- Corrected Google Veo 3.1 schemas: durations are constrained to numeric `4`, `6`, or `8`, `generation_seed` is non-negative, `4K` casing is preserved, and provider input no longer emits image-count fields for Veo video requests.
+- Added numeric enum support for integer/number fields in the public schema metadata.
+
 ## [0.2.0] - 2026-06-10
 
 ### Changed

@@ -55,6 +55,12 @@ test('publishes doc-backed model-specific schemas', () => {
     !fieldNames('runway/gen-4-turbo').includes('generation_input_video_file'),
   );
   assert.ok(!fieldNames('runway/aleph-2').includes('generation_duration'));
+  assert.deepEqual(field('google/veo-3.1-fast', 'generation_duration')?.enum, [
+    4,
+    6,
+    8,
+  ]);
+  assert.equal(field('google/veo-3.1-fast', 'generation_seed')?.min, 0);
 });
 
 test('orders models by inference provider and API name', () => {

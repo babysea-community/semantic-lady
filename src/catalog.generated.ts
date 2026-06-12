@@ -6,7 +6,9 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
     uiName: 'Qwen Image',
     provider: 'alibaba-cloud',
     kind: 'image',
-    workflows: ['text-to-image'],
+    workflows: [
+      'text-to-image',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -21,7 +23,13 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Aspect ratio of the generated content',
         default: '16:9',
-        enum: ['1:1', '3:4', '4:3', '9:16', '16:9'],
+        enum: [
+          '1:1',
+          '3:4',
+          '4:3',
+          '9:16',
+          '16:9',
+        ],
       },
       {
         name: 'generation_output_format',
@@ -29,7 +37,9 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'png',
-        enum: ['png'],
+        enum: [
+          'png',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -46,7 +56,10 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'advanced',
         description: 'Prompt enhancement mode.',
         default: 'standard',
-        enum: ['off', 'standard'],
+        enum: [
+          'off',
+          'standard',
+        ],
       },
       {
         name: 'generation_negative_prompt',
@@ -58,8 +71,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 2147483647,
         min: 0,
       },
@@ -77,7 +89,10 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
     uiName: 'Qwen Image 2',
     provider: 'alibaba-cloud',
     kind: 'image',
-    workflows: ['text-to-image', 'image-to-image'],
+    workflows: [
+      'text-to-image',
+      'image-to-image',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -92,7 +107,13 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Aspect ratio of the generated content',
         default: '1:1',
-        enum: ['1:1', '3:4', '4:3', '9:16', '16:9'],
+        enum: [
+          '1:1',
+          '3:4',
+          '4:3',
+          '9:16',
+          '16:9',
+        ],
       },
       {
         name: 'generation_output_format',
@@ -100,7 +121,9 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'png',
-        enum: ['png'],
+        enum: [
+          'png',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -123,7 +146,10 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Output resolution',
         default: '2K',
-        enum: ['1K', '2K'],
+        enum: [
+          '1K',
+          '2K',
+        ],
       },
       {
         name: 'generation_enhance_prompt',
@@ -131,7 +157,10 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'advanced',
         description: 'Prompt enhancement mode.',
         default: 'standard',
-        enum: ['off', 'standard'],
+        enum: [
+          'off',
+          'standard',
+        ],
       },
       {
         name: 'generation_negative_prompt',
@@ -143,8 +172,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 2147483647,
         min: 0,
       },
@@ -168,7 +196,10 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
     uiName: 'Qwen Image 2 Pro',
     provider: 'alibaba-cloud',
     kind: 'image',
-    workflows: ['text-to-image', 'image-to-image'],
+    workflows: [
+      'text-to-image',
+      'image-to-image',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -183,7 +214,13 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Aspect ratio of the generated content',
         default: '1:1',
-        enum: ['1:1', '3:4', '4:3', '9:16', '16:9'],
+        enum: [
+          '1:1',
+          '3:4',
+          '4:3',
+          '9:16',
+          '16:9',
+        ],
       },
       {
         name: 'generation_output_format',
@@ -191,7 +228,9 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'png',
-        enum: ['png'],
+        enum: [
+          'png',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -214,7 +253,10 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Output resolution',
         default: '2K',
-        enum: ['1K', '2K'],
+        enum: [
+          '1K',
+          '2K',
+        ],
       },
       {
         name: 'generation_enhance_prompt',
@@ -222,7 +264,10 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'advanced',
         description: 'Prompt enhancement mode.',
         default: 'standard',
-        enum: ['off', 'standard'],
+        enum: [
+          'off',
+          'standard',
+        ],
       },
       {
         name: 'generation_negative_prompt',
@@ -234,8 +279,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 2147483647,
         min: 0,
       },
@@ -259,7 +303,9 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
     uiName: 'Qwen Image Base',
     provider: 'alibaba-cloud',
     kind: 'image',
-    workflows: ['text-to-image'],
+    workflows: [
+      'text-to-image',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -274,7 +320,13 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Aspect ratio of the generated content',
         default: '16:9',
-        enum: ['1:1', '3:4', '4:3', '9:16', '16:9'],
+        enum: [
+          '1:1',
+          '3:4',
+          '4:3',
+          '9:16',
+          '16:9',
+        ],
       },
       {
         name: 'generation_output_format',
@@ -282,7 +334,9 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'png',
-        enum: ['png'],
+        enum: [
+          'png',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -299,7 +353,10 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'advanced',
         description: 'Prompt enhancement mode.',
         default: 'standard',
-        enum: ['off', 'standard'],
+        enum: [
+          'off',
+          'standard',
+        ],
       },
       {
         name: 'generation_negative_prompt',
@@ -311,8 +368,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 2147483647,
         min: 0,
       },
@@ -330,7 +386,9 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
     uiName: 'Qwen Image Edit',
     provider: 'alibaba-cloud',
     kind: 'image',
-    workflows: ['image-to-image'],
+    workflows: [
+      'image-to-image',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -345,7 +403,9 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'png',
-        enum: ['png'],
+        enum: [
+          'png',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -372,8 +432,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 2147483647,
         min: 0,
       },
@@ -391,7 +450,9 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
     uiName: 'Qwen Image Edit Max',
     provider: 'alibaba-cloud',
     kind: 'image',
-    workflows: ['image-to-image'],
+    workflows: [
+      'image-to-image',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -406,7 +467,16 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Aspect ratio of the generated content',
         default: '1:1',
-        enum: ['1:1', '2:3', '3:2', '3:4', '4:3', '9:16', '16:9', '21:9'],
+        enum: [
+          '1:1',
+          '2:3',
+          '3:2',
+          '3:4',
+          '4:3',
+          '9:16',
+          '16:9',
+          '21:9',
+        ],
       },
       {
         name: 'generation_output_format',
@@ -414,7 +484,9 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'png',
-        enum: ['png'],
+        enum: [
+          'png',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -437,7 +509,10 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Output resolution',
         default: '1K',
-        enum: ['1K', '2K'],
+        enum: [
+          '1K',
+          '2K',
+        ],
       },
       {
         name: 'generation_enhance_prompt',
@@ -445,7 +520,10 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'advanced',
         description: 'Prompt enhancement mode.',
         default: 'standard',
-        enum: ['off', 'standard'],
+        enum: [
+          'off',
+          'standard',
+        ],
       },
       {
         name: 'generation_negative_prompt',
@@ -457,8 +535,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 2147483647,
         min: 0,
       },
@@ -482,7 +559,9 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
     uiName: 'Qwen Image Edit Plus',
     provider: 'alibaba-cloud',
     kind: 'image',
-    workflows: ['image-to-image'],
+    workflows: [
+      'image-to-image',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -497,7 +576,16 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Aspect ratio of the generated content',
         default: '1:1',
-        enum: ['1:1', '2:3', '3:2', '3:4', '4:3', '9:16', '16:9', '21:9'],
+        enum: [
+          '1:1',
+          '2:3',
+          '3:2',
+          '3:4',
+          '4:3',
+          '9:16',
+          '16:9',
+          '21:9',
+        ],
       },
       {
         name: 'generation_output_format',
@@ -505,7 +593,9 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'png',
-        enum: ['png'],
+        enum: [
+          'png',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -528,7 +618,10 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Output resolution',
         default: '1K',
-        enum: ['1K', '2K'],
+        enum: [
+          '1K',
+          '2K',
+        ],
       },
       {
         name: 'generation_enhance_prompt',
@@ -536,7 +629,10 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'advanced',
         description: 'Prompt enhancement mode.',
         default: 'standard',
-        enum: ['off', 'standard'],
+        enum: [
+          'off',
+          'standard',
+        ],
       },
       {
         name: 'generation_negative_prompt',
@@ -548,8 +644,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 2147483647,
         min: 0,
       },
@@ -573,7 +668,9 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
     uiName: 'Qwen Image Max',
     provider: 'alibaba-cloud',
     kind: 'image',
-    workflows: ['text-to-image'],
+    workflows: [
+      'text-to-image',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -588,7 +685,13 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Aspect ratio of the generated content',
         default: '16:9',
-        enum: ['1:1', '3:4', '4:3', '9:16', '16:9'],
+        enum: [
+          '1:1',
+          '3:4',
+          '4:3',
+          '9:16',
+          '16:9',
+        ],
       },
       {
         name: 'generation_output_format',
@@ -596,7 +699,9 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'png',
-        enum: ['png'],
+        enum: [
+          'png',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -613,7 +718,10 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'advanced',
         description: 'Prompt enhancement mode.',
         default: 'standard',
-        enum: ['off', 'standard'],
+        enum: [
+          'off',
+          'standard',
+        ],
       },
       {
         name: 'generation_negative_prompt',
@@ -625,8 +733,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 2147483647,
         min: 0,
       },
@@ -644,7 +751,9 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
     uiName: 'Wan 2.1 Image Edit',
     provider: 'alibaba-cloud',
     kind: 'image',
-    workflows: ['image-to-image'],
+    workflows: [
+      'image-to-image',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -659,7 +768,9 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'png',
-        enum: ['png'],
+        enum: [
+          'png',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -708,8 +819,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         name: 'generation_is_sketch',
         type: 'boolean',
         tier: 'advanced',
-        description:
-          'Whether the input is a sketch for sketch-guided image editing.',
+        description: 'Whether the input is a sketch for sketch-guided image editing.',
         default: false,
       },
       {
@@ -740,8 +850,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 2147483647,
         min: 0,
       },
@@ -786,7 +895,9 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
     uiName: 'Wan 2.5 I2I Preview',
     provider: 'alibaba-cloud',
     kind: 'image',
-    workflows: ['image-to-image'],
+    workflows: [
+      'image-to-image',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -801,7 +912,16 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Aspect ratio of the generated content',
         default: '1:1',
-        enum: ['1:1', '2:3', '3:2', '3:4', '4:3', '9:16', '16:9', '21:9'],
+        enum: [
+          '1:1',
+          '2:3',
+          '3:2',
+          '3:4',
+          '4:3',
+          '9:16',
+          '16:9',
+          '21:9',
+        ],
       },
       {
         name: 'generation_output_format',
@@ -809,7 +929,9 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'png',
-        enum: ['png'],
+        enum: [
+          'png',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -832,7 +954,10 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'advanced',
         description: 'Prompt enhancement mode.',
         default: 'standard',
-        enum: ['off', 'standard'],
+        enum: [
+          'off',
+          'standard',
+        ],
       },
       {
         name: 'generation_negative_prompt',
@@ -844,8 +969,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 2147483647,
         min: 0,
       },
@@ -869,7 +993,10 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
     uiName: 'Wan 2.6 Image',
     provider: 'alibaba-cloud',
     kind: 'image',
-    workflows: ['text-to-image', 'image-to-image'],
+    workflows: [
+      'text-to-image',
+      'image-to-image',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -910,7 +1037,9 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'png',
-        enum: ['png'],
+        enum: [
+          'png',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -933,14 +1062,16 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Output resolution',
         default: '1K',
-        enum: ['1K', '2K'],
+        enum: [
+          '1K',
+          '2K',
+        ],
       },
       {
         name: 'generation_enable_interleave',
         type: 'boolean',
         tier: 'advanced',
-        description:
-          'Whether to enable interleaved text and image output where supported.',
+        description: 'Whether to enable interleaved text and image output where supported.',
         default: false,
       },
       {
@@ -949,7 +1080,10 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'advanced',
         description: 'Prompt enhancement mode.',
         default: 'standard',
-        enum: ['off', 'standard'],
+        enum: [
+          'off',
+          'standard',
+        ],
       },
       {
         name: 'generation_max_images',
@@ -970,8 +1104,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 2147483647,
         min: 0,
       },
@@ -985,8 +1118,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         name: 'generation_stream',
         type: 'boolean',
         tier: 'advanced',
-        description:
-          'Whether the provider should stream outputs when supported.',
+        description: 'Whether the provider should stream outputs when supported.',
         default: false,
       },
       {
@@ -1003,7 +1135,9 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
     uiName: 'Wan 2.6 T2I',
     provider: 'alibaba-cloud',
     kind: 'image',
-    workflows: ['text-to-image'],
+    workflows: [
+      'text-to-image',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -1018,7 +1152,13 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Aspect ratio of the generated content',
         default: '1:1',
-        enum: ['1:1', '3:4', '4:3', '9:16', '16:9'],
+        enum: [
+          '1:1',
+          '3:4',
+          '4:3',
+          '9:16',
+          '16:9',
+        ],
       },
       {
         name: 'generation_output_format',
@@ -1026,7 +1166,9 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'png',
-        enum: ['png'],
+        enum: [
+          'png',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -1043,7 +1185,10 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'advanced',
         description: 'Prompt enhancement mode.',
         default: 'standard',
-        enum: ['off', 'standard'],
+        enum: [
+          'off',
+          'standard',
+        ],
       },
       {
         name: 'generation_negative_prompt',
@@ -1055,8 +1200,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 2147483647,
         min: 0,
       },
@@ -1080,7 +1224,10 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
     uiName: 'Wan 2.7 Image',
     provider: 'alibaba-cloud',
     kind: 'image',
-    workflows: ['text-to-image', 'image-to-image'],
+    workflows: [
+      'text-to-image',
+      'image-to-image',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -1121,7 +1268,9 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'png',
-        enum: ['png'],
+        enum: [
+          'png',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -1144,7 +1293,10 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Output resolution',
         default: '2K',
-        enum: ['1K', '2K'],
+        enum: [
+          '1K',
+          '2K',
+        ],
       },
       {
         name: 'generation_bbox_list',
@@ -1169,8 +1321,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 2147483647,
         min: 0,
       },
@@ -1201,7 +1352,10 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
     uiName: 'Wan 2.7 Image Pro',
     provider: 'alibaba-cloud',
     kind: 'image',
-    workflows: ['text-to-image', 'image-to-image'],
+    workflows: [
+      'text-to-image',
+      'image-to-image',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -1242,7 +1396,9 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'png',
-        enum: ['png'],
+        enum: [
+          'png',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -1265,7 +1421,11 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Output resolution',
         default: '2K',
-        enum: ['1K', '2K', '4K'],
+        enum: [
+          '1K',
+          '2K',
+          '4K',
+        ],
       },
       {
         name: 'generation_bbox_list',
@@ -1290,8 +1450,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 2147483647,
         min: 0,
       },
@@ -1322,7 +1481,9 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
     uiName: 'Z-Image Turbo',
     provider: 'alibaba-cloud',
     kind: 'image',
-    workflows: ['text-to-image'],
+    workflows: [
+      'text-to-image',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -1355,7 +1516,9 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'png',
-        enum: ['png'],
+        enum: [
+          'png',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -1372,7 +1535,10 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Output resolution',
         default: '1K',
-        enum: ['1K', '2K'],
+        enum: [
+          '1K',
+          '2K',
+        ],
       },
       {
         name: 'generation_enhance_prompt',
@@ -1380,14 +1546,16 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'advanced',
         description: 'Prompt enhancement mode.',
         default: 'off',
-        enum: ['off', 'standard'],
+        enum: [
+          'off',
+          'standard',
+        ],
       },
       {
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 2147483647,
         min: 0,
       },
@@ -1404,7 +1572,10 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
     uiName: 'FLUX 1.1 Pro',
     provider: 'black-forest-labs',
     kind: 'image',
-    workflows: ['text-to-image', 'image-to-image'],
+    workflows: [
+      'text-to-image',
+      'image-to-image',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -1445,7 +1616,12 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'jpeg',
-        enum: ['jpg', 'jpeg', 'png', 'webp'],
+        enum: [
+          'jpg',
+          'jpeg',
+          'png',
+          'webp',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -1468,7 +1644,9 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Output resolution',
         default: '1K',
-        enum: ['1K'],
+        enum: [
+          '1K',
+        ],
       },
       {
         name: 'generation_enhance_prompt',
@@ -1476,22 +1654,23 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'advanced',
         description: 'Prompt enhancement mode.',
         default: 'off',
-        enum: ['off', 'standard'],
+        enum: [
+          'off',
+          'standard',
+        ],
       },
       {
         name: 'generation_moderation',
         type: 'boolean',
         tier: 'advanced',
-        description:
-          'Content moderation (true = moderation on, false = moderation off)',
+        description: 'Content moderation (true = moderation on, false = moderation off)',
         default: false,
       },
       {
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 4294967295,
         min: -1,
       },
@@ -1505,15 +1684,13 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         name: 'generation_webhook_secret',
         type: 'string',
         tier: 'advanced',
-        description:
-          'Provider-native webhook secret for providers that sign callback requests.',
+        description: 'Provider-native webhook secret for providers that sign callback requests.',
       },
       {
         name: 'generation_webhook_url',
         type: 'url',
         tier: 'advanced',
-        description:
-          'Provider-native webhook URL for providers that accept callback URLs directly.',
+        description: 'Provider-native webhook URL for providers that accept callback URLs directly.',
       },
     ],
   },
@@ -1522,7 +1699,10 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
     uiName: 'FLUX 1.1 Pro Ultra',
     provider: 'black-forest-labs',
     kind: 'image',
-    workflows: ['text-to-image', 'image-to-image'],
+    workflows: [
+      'text-to-image',
+      'image-to-image',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -1561,7 +1741,12 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'jpeg',
-        enum: ['jpg', 'jpeg', 'png', 'webp'],
+        enum: [
+          'jpg',
+          'jpeg',
+          'png',
+          'webp',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -1584,22 +1769,23 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'advanced',
         description: 'Prompt enhancement mode.',
         default: 'off',
-        enum: ['off', 'standard'],
+        enum: [
+          'off',
+          'standard',
+        ],
       },
       {
         name: 'generation_moderation',
         type: 'boolean',
         tier: 'advanced',
-        description:
-          'Content moderation (true = moderation on, false = moderation off)',
+        description: 'Content moderation (true = moderation on, false = moderation off)',
         default: false,
       },
       {
         name: 'generation_prompt_strength',
         type: 'number',
         tier: 'advanced',
-        description:
-          'Strength of the prompt vs the input file - higher values mean more deviation from the original file',
+        description: 'Strength of the prompt vs the input file - higher values mean more deviation from the original file',
         default: 0.1,
         max: 1,
         min: 0,
@@ -1608,16 +1794,14 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         name: 'generation_raw_mode',
         type: 'boolean',
         tier: 'advanced',
-        description:
-          'Generate less processed, more natural-looking images when supported.',
+        description: 'Generate less processed, more natural-looking images when supported.',
         default: false,
       },
       {
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 4294967295,
         min: -1,
       },
@@ -1625,15 +1809,13 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         name: 'generation_webhook_secret',
         type: 'string',
         tier: 'advanced',
-        description:
-          'Provider-native webhook secret for providers that sign callback requests.',
+        description: 'Provider-native webhook secret for providers that sign callback requests.',
       },
       {
         name: 'generation_webhook_url',
         type: 'url',
         tier: 'advanced',
-        description:
-          'Provider-native webhook URL for providers that accept callback URLs directly.',
+        description: 'Provider-native webhook URL for providers that accept callback URLs directly.',
       },
     ],
   },
@@ -1642,7 +1824,10 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
     uiName: 'FLUX.2 Flex',
     provider: 'black-forest-labs',
     kind: 'image',
-    workflows: ['text-to-image', 'image-to-image'],
+    workflows: [
+      'text-to-image',
+      'image-to-image',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -1683,7 +1868,12 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'jpeg',
-        enum: ['jpg', 'jpeg', 'png', 'webp'],
+        enum: [
+          'jpg',
+          'jpeg',
+          'png',
+          'webp',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -1706,7 +1896,10 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Output resolution',
         default: '1K',
-        enum: ['1K', '2K'],
+        enum: [
+          '1K',
+          '2K',
+        ],
       },
       {
         name: 'generation_enhance_prompt',
@@ -1714,14 +1907,16 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'advanced',
         description: 'Prompt enhancement mode.',
         default: 'standard',
-        enum: ['off', 'standard'],
+        enum: [
+          'off',
+          'standard',
+        ],
       },
       {
         name: 'generation_guidance_scale',
         type: 'number',
         tier: 'advanced',
-        description:
-          'Classifier-free guidance scale - controls how closely the output follows your prompt (higher values increase prompt adherence)',
+        description: 'Classifier-free guidance scale - controls how closely the output follows your prompt (higher values increase prompt adherence)',
         default: 5,
         max: 10,
         min: 1.5,
@@ -1730,16 +1925,14 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         name: 'generation_moderation',
         type: 'boolean',
         tier: 'advanced',
-        description:
-          'Content moderation (true = moderation on, false = moderation off)',
+        description: 'Content moderation (true = moderation on, false = moderation off)',
         default: false,
       },
       {
         name: 'generation_num_inference_steps',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Number of denoising steps (more steps produce higher quality but slower results)',
+        description: 'Number of denoising steps (more steps produce higher quality but slower results)',
         default: 50,
         max: 50,
         min: 1,
@@ -1748,8 +1941,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 4294967295,
         min: -1,
       },
@@ -1763,15 +1955,13 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         name: 'generation_webhook_secret',
         type: 'string',
         tier: 'advanced',
-        description:
-          'Provider-native webhook secret for providers that sign callback requests.',
+        description: 'Provider-native webhook secret for providers that sign callback requests.',
       },
       {
         name: 'generation_webhook_url',
         type: 'url',
         tier: 'advanced',
-        description:
-          'Provider-native webhook URL for providers that accept callback URLs directly.',
+        description: 'Provider-native webhook URL for providers that accept callback URLs directly.',
       },
     ],
   },
@@ -1780,7 +1970,10 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
     uiName: 'FLUX.2 Klein 4B',
     provider: 'black-forest-labs',
     kind: 'image',
-    workflows: ['text-to-image', 'image-to-image'],
+    workflows: [
+      'text-to-image',
+      'image-to-image',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -1821,7 +2014,12 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'jpeg',
-        enum: ['jpg', 'jpeg', 'png', 'webp'],
+        enum: [
+          'jpg',
+          'jpeg',
+          'png',
+          'webp',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -1844,22 +2042,23 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Output resolution',
         default: '1K',
-        enum: ['1K', '2K'],
+        enum: [
+          '1K',
+          '2K',
+        ],
       },
       {
         name: 'generation_moderation',
         type: 'boolean',
         tier: 'advanced',
-        description:
-          'Content moderation (true = moderation on, false = moderation off)',
+        description: 'Content moderation (true = moderation on, false = moderation off)',
         default: false,
       },
       {
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 4294967295,
         min: -1,
       },
@@ -1873,15 +2072,13 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         name: 'generation_webhook_secret',
         type: 'string',
         tier: 'advanced',
-        description:
-          'Provider-native webhook secret for providers that sign callback requests.',
+        description: 'Provider-native webhook secret for providers that sign callback requests.',
       },
       {
         name: 'generation_webhook_url',
         type: 'url',
         tier: 'advanced',
-        description:
-          'Provider-native webhook URL for providers that accept callback URLs directly.',
+        description: 'Provider-native webhook URL for providers that accept callback URLs directly.',
       },
     ],
   },
@@ -1890,7 +2087,10 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
     uiName: 'FLUX.2 Klein 9B',
     provider: 'black-forest-labs',
     kind: 'image',
-    workflows: ['text-to-image', 'image-to-image'],
+    workflows: [
+      'text-to-image',
+      'image-to-image',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -1931,7 +2131,12 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'jpeg',
-        enum: ['jpg', 'jpeg', 'png', 'webp'],
+        enum: [
+          'jpg',
+          'jpeg',
+          'png',
+          'webp',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -1954,22 +2159,23 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Output resolution',
         default: '1K',
-        enum: ['1K', '2K'],
+        enum: [
+          '1K',
+          '2K',
+        ],
       },
       {
         name: 'generation_moderation',
         type: 'boolean',
         tier: 'advanced',
-        description:
-          'Content moderation (true = moderation on, false = moderation off)',
+        description: 'Content moderation (true = moderation on, false = moderation off)',
         default: false,
       },
       {
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 4294967295,
         min: -1,
       },
@@ -1983,15 +2189,13 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         name: 'generation_webhook_secret',
         type: 'string',
         tier: 'advanced',
-        description:
-          'Provider-native webhook secret for providers that sign callback requests.',
+        description: 'Provider-native webhook secret for providers that sign callback requests.',
       },
       {
         name: 'generation_webhook_url',
         type: 'url',
         tier: 'advanced',
-        description:
-          'Provider-native webhook URL for providers that accept callback URLs directly.',
+        description: 'Provider-native webhook URL for providers that accept callback URLs directly.',
       },
     ],
   },
@@ -2000,7 +2204,10 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
     uiName: 'FLUX.2 Max',
     provider: 'black-forest-labs',
     kind: 'image',
-    workflows: ['text-to-image', 'image-to-image'],
+    workflows: [
+      'text-to-image',
+      'image-to-image',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -2041,7 +2248,12 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'jpeg',
-        enum: ['jpg', 'jpeg', 'png', 'webp'],
+        enum: [
+          'jpg',
+          'jpeg',
+          'png',
+          'webp',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -2064,22 +2276,23 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Output resolution',
         default: '1K',
-        enum: ['1K', '2K'],
+        enum: [
+          '1K',
+          '2K',
+        ],
       },
       {
         name: 'generation_moderation',
         type: 'boolean',
         tier: 'advanced',
-        description:
-          'Content moderation (true = moderation on, false = moderation off)',
+        description: 'Content moderation (true = moderation on, false = moderation off)',
         default: false,
       },
       {
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 4294967295,
         min: -1,
       },
@@ -2093,15 +2306,13 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         name: 'generation_webhook_secret',
         type: 'string',
         tier: 'advanced',
-        description:
-          'Provider-native webhook secret for providers that sign callback requests.',
+        description: 'Provider-native webhook secret for providers that sign callback requests.',
       },
       {
         name: 'generation_webhook_url',
         type: 'url',
         tier: 'advanced',
-        description:
-          'Provider-native webhook URL for providers that accept callback URLs directly.',
+        description: 'Provider-native webhook URL for providers that accept callback URLs directly.',
       },
     ],
   },
@@ -2110,7 +2321,10 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
     uiName: 'FLUX.2 Pro',
     provider: 'black-forest-labs',
     kind: 'image',
-    workflows: ['text-to-image', 'image-to-image'],
+    workflows: [
+      'text-to-image',
+      'image-to-image',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -2151,7 +2365,12 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'jpeg',
-        enum: ['jpg', 'jpeg', 'png', 'webp'],
+        enum: [
+          'jpg',
+          'jpeg',
+          'png',
+          'webp',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -2174,22 +2393,23 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Output resolution',
         default: '1K',
-        enum: ['1K', '2K'],
+        enum: [
+          '1K',
+          '2K',
+        ],
       },
       {
         name: 'generation_moderation',
         type: 'boolean',
         tier: 'advanced',
-        description:
-          'Content moderation (true = moderation on, false = moderation off)',
+        description: 'Content moderation (true = moderation on, false = moderation off)',
         default: false,
       },
       {
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 4294967295,
         min: -1,
       },
@@ -2203,15 +2423,13 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         name: 'generation_webhook_secret',
         type: 'string',
         tier: 'advanced',
-        description:
-          'Provider-native webhook secret for providers that sign callback requests.',
+        description: 'Provider-native webhook secret for providers that sign callback requests.',
       },
       {
         name: 'generation_webhook_url',
         type: 'url',
         tier: 'advanced',
-        description:
-          'Provider-native webhook URL for providers that accept callback URLs directly.',
+        description: 'Provider-native webhook URL for providers that accept callback URLs directly.',
       },
     ],
   },
@@ -2220,7 +2438,10 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
     uiName: 'Seedream 4.0',
     provider: 'byteplus',
     kind: 'image',
-    workflows: ['text-to-image', 'image-to-image'],
+    workflows: [
+      'text-to-image',
+      'image-to-image',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -2276,7 +2497,11 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Output resolution',
         default: '2K',
-        enum: ['1K', '2K', '4K'],
+        enum: [
+          '1K',
+          '2K',
+          '4K',
+        ],
       },
       {
         name: 'generation_enhance_prompt',
@@ -2284,7 +2509,11 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'advanced',
         description: 'Prompt enhancement mode.',
         default: 'standard',
-        enum: ['off', 'standard', 'fast'],
+        enum: [
+          'off',
+          'standard',
+          'fast',
+        ],
       },
       {
         name: 'generation_max_images',
@@ -2299,10 +2528,12 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         name: 'generation_response_format',
         type: 'enum',
         tier: 'advanced',
-        description:
-          'How generated media should be returned by providers that support multiple response modes.',
+        description: 'How generated media should be returned by providers that support multiple response modes.',
         default: 'url',
-        enum: ['url', 'b64_json'],
+        enum: [
+          'url',
+          'b64_json',
+        ],
       },
       {
         name: 'generation_sequential_image_generation',
@@ -2310,7 +2541,10 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'advanced',
         description: 'Batch generation mode.',
         default: 'disabled',
-        enum: ['auto', 'disabled'],
+        enum: [
+          'auto',
+          'disabled',
+        ],
       },
       {
         name: 'generation_size',
@@ -2322,8 +2556,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         name: 'generation_stream',
         type: 'boolean',
         tier: 'advanced',
-        description:
-          'Whether the provider should stream outputs when supported.',
+        description: 'Whether the provider should stream outputs when supported.',
         default: false,
       },
       {
@@ -2340,7 +2573,10 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
     uiName: 'Seedream 4.5',
     provider: 'byteplus',
     kind: 'image',
-    workflows: ['text-to-image', 'image-to-image'],
+    workflows: [
+      'text-to-image',
+      'image-to-image',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -2396,7 +2632,10 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Output resolution',
         default: '2K',
-        enum: ['2K', '4K'],
+        enum: [
+          '2K',
+          '4K',
+        ],
       },
       {
         name: 'generation_enhance_prompt',
@@ -2404,7 +2643,10 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'advanced',
         description: 'Prompt enhancement mode.',
         default: 'standard',
-        enum: ['off', 'standard'],
+        enum: [
+          'off',
+          'standard',
+        ],
       },
       {
         name: 'generation_max_images',
@@ -2419,10 +2661,12 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         name: 'generation_response_format',
         type: 'enum',
         tier: 'advanced',
-        description:
-          'How generated media should be returned by providers that support multiple response modes.',
+        description: 'How generated media should be returned by providers that support multiple response modes.',
         default: 'url',
-        enum: ['url', 'b64_json'],
+        enum: [
+          'url',
+          'b64_json',
+        ],
       },
       {
         name: 'generation_sequential_image_generation',
@@ -2430,7 +2674,10 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'advanced',
         description: 'Batch generation mode.',
         default: 'disabled',
-        enum: ['auto', 'disabled'],
+        enum: [
+          'auto',
+          'disabled',
+        ],
       },
       {
         name: 'generation_size',
@@ -2442,8 +2689,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         name: 'generation_stream',
         type: 'boolean',
         tier: 'advanced',
-        description:
-          'Whether the provider should stream outputs when supported.',
+        description: 'Whether the provider should stream outputs when supported.',
         default: false,
       },
       {
@@ -2460,7 +2706,10 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
     uiName: 'Seedream 5 Lite',
     provider: 'byteplus',
     kind: 'image',
-    workflows: ['text-to-image', 'image-to-image'],
+    workflows: [
+      'text-to-image',
+      'image-to-image',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -2501,7 +2750,10 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'jpeg',
-        enum: ['jpeg', 'png'],
+        enum: [
+          'jpeg',
+          'png',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -2524,7 +2776,11 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Output resolution',
         default: '2K',
-        enum: ['2K', '3K', '4K'],
+        enum: [
+          '2K',
+          '3K',
+          '4K',
+        ],
       },
       {
         name: 'generation_enhance_prompt',
@@ -2532,7 +2788,10 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'advanced',
         description: 'Prompt enhancement mode.',
         default: 'standard',
-        enum: ['off', 'standard'],
+        enum: [
+          'off',
+          'standard',
+        ],
       },
       {
         name: 'generation_max_images',
@@ -2547,10 +2806,12 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         name: 'generation_response_format',
         type: 'enum',
         tier: 'advanced',
-        description:
-          'How generated media should be returned by providers that support multiple response modes.',
+        description: 'How generated media should be returned by providers that support multiple response modes.',
         default: 'url',
-        enum: ['url', 'b64_json'],
+        enum: [
+          'url',
+          'b64_json',
+        ],
       },
       {
         name: 'generation_sequential_image_generation',
@@ -2558,7 +2819,10 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'advanced',
         description: 'Batch generation mode.',
         default: 'disabled',
-        enum: ['auto', 'disabled'],
+        enum: [
+          'auto',
+          'disabled',
+        ],
       },
       {
         name: 'generation_size',
@@ -2570,8 +2834,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         name: 'generation_stream',
         type: 'boolean',
         tier: 'advanced',
-        description:
-          'Whether the provider should stream outputs when supported.',
+        description: 'Whether the provider should stream outputs when supported.',
         default: false,
       },
       {
@@ -2588,7 +2851,9 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
     uiName: 'Imagen 4',
     provider: 'google',
     kind: 'image',
-    workflows: ['text-to-image'],
+    workflows: [
+      'text-to-image',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -2603,7 +2868,13 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Aspect ratio of the generated content',
         default: '1:1',
-        enum: ['1:1', '3:4', '4:3', '9:16', '16:9'],
+        enum: [
+          '1:1',
+          '3:4',
+          '4:3',
+          '9:16',
+          '16:9',
+        ],
       },
       {
         name: 'generation_output_format',
@@ -2611,7 +2882,9 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'png',
-        enum: ['png'],
+        enum: [
+          'png',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -2628,7 +2901,10 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Output resolution',
         default: '1K',
-        enum: ['1K', '2K'],
+        enum: [
+          '1K',
+          '2K',
+        ],
       },
       {
         name: 'generation_size',
@@ -2643,7 +2919,9 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
     uiName: 'Imagen 4 Fast',
     provider: 'google',
     kind: 'image',
-    workflows: ['text-to-image'],
+    workflows: [
+      'text-to-image',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -2658,7 +2936,13 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Aspect ratio of the generated content',
         default: '1:1',
-        enum: ['1:1', '3:4', '4:3', '9:16', '16:9'],
+        enum: [
+          '1:1',
+          '3:4',
+          '4:3',
+          '9:16',
+          '16:9',
+        ],
       },
       {
         name: 'generation_output_format',
@@ -2666,7 +2950,9 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'png',
-        enum: ['png'],
+        enum: [
+          'png',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -2683,7 +2969,9 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Output resolution',
         default: '1K',
-        enum: ['1K'],
+        enum: [
+          '1K',
+        ],
       },
       {
         name: 'generation_size',
@@ -2698,7 +2986,9 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
     uiName: 'Imagen 4 Ultra',
     provider: 'google',
     kind: 'image',
-    workflows: ['text-to-image'],
+    workflows: [
+      'text-to-image',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -2713,7 +3003,13 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Aspect ratio of the generated content',
         default: '1:1',
-        enum: ['1:1', '3:4', '4:3', '9:16', '16:9'],
+        enum: [
+          '1:1',
+          '3:4',
+          '4:3',
+          '9:16',
+          '16:9',
+        ],
       },
       {
         name: 'generation_output_format',
@@ -2721,7 +3017,9 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'png',
-        enum: ['png'],
+        enum: [
+          'png',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -2738,7 +3036,10 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Output resolution',
         default: '1K',
-        enum: ['1K', '2K'],
+        enum: [
+          '1K',
+          '2K',
+        ],
       },
       {
         name: 'generation_size',
@@ -2753,7 +3054,10 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
     uiName: 'Nano Banana',
     provider: 'google',
     kind: 'image',
-    workflows: ['text-to-image', 'image-to-image'],
+    workflows: [
+      'text-to-image',
+      'image-to-image',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -2787,7 +3091,9 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'png',
-        enum: ['png'],
+        enum: [
+          'png',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -2810,14 +3116,15 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Output resolution',
         default: '1K',
-        enum: ['1K'],
+        enum: [
+          '1K',
+        ],
       },
       {
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 4294967295,
         min: -1,
       },
@@ -2834,7 +3141,10 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
     uiName: 'Nano Banana 2',
     provider: 'google',
     kind: 'image',
-    workflows: ['text-to-image', 'image-to-image'],
+    workflows: [
+      'text-to-image',
+      'image-to-image',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -2872,7 +3182,9 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'png',
-        enum: ['png'],
+        enum: [
+          'png',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -2895,7 +3207,12 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Output resolution',
         default: '1K',
-        enum: ['0.5K', '1K', '2K', '4K'],
+        enum: [
+          '0.5K',
+          '1K',
+          '2K',
+          '4K',
+        ],
       },
       {
         name: 'generation_search_grounding',
@@ -2908,8 +3225,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 4294967295,
         min: -1,
       },
@@ -2933,7 +3249,10 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
     uiName: 'Nano Banana Pro',
     provider: 'google',
     kind: 'image',
-    workflows: ['text-to-image', 'image-to-image'],
+    workflows: [
+      'text-to-image',
+      'image-to-image',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -2967,7 +3286,9 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'png',
-        enum: ['png'],
+        enum: [
+          'png',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -2990,7 +3311,11 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Output resolution',
         default: '1K',
-        enum: ['1K', '2K', '4K'],
+        enum: [
+          '1K',
+          '2K',
+          '4K',
+        ],
       },
       {
         name: 'generation_search_grounding',
@@ -3003,8 +3328,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 4294967295,
         min: -1,
       },
@@ -3028,7 +3352,10 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
     uiName: 'GPT Image 2',
     provider: 'openai',
     kind: 'image',
-    workflows: ['text-to-image', 'image-to-image'],
+    workflows: [
+      'text-to-image',
+      'image-to-image',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -3069,7 +3396,12 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'png',
-        enum: ['jpg', 'jpeg', 'png', 'webp'],
+        enum: [
+          'jpg',
+          'jpeg',
+          'png',
+          'webp',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -3092,7 +3424,11 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Output resolution',
         default: '1K',
-        enum: ['1K', '2K', '4K'],
+        enum: [
+          '1K',
+          '2K',
+          '4K',
+        ],
       },
       {
         name: 'generation_background',
@@ -3100,7 +3436,10 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'advanced',
         description: 'Background type for transparent or opaque output',
         default: 'auto',
-        enum: ['auto', 'opaque'],
+        enum: [
+          'auto',
+          'opaque',
+        ],
       },
       {
         name: 'generation_mask_file',
@@ -3112,16 +3451,14 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         name: 'generation_moderation',
         type: 'boolean',
         tier: 'advanced',
-        description:
-          'Content moderation (true = moderation on, false = moderation off)',
+        description: 'Content moderation (true = moderation on, false = moderation off)',
         default: false,
       },
       {
         name: 'generation_output_compression',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Compression level for the output file (higher values mean higher quality)',
+        description: 'Compression level for the output file (higher values mean higher quality)',
         max: 100,
         min: 0,
       },
@@ -3129,8 +3466,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         name: 'generation_partial_images',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Number of partial images to stream before the final image where supported.',
+        description: 'Number of partial images to stream before the final image where supported.',
         default: 0,
         max: 3,
         min: 0,
@@ -3141,7 +3477,12 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'advanced',
         description: 'Generation results quality.',
         default: 'auto',
-        enum: ['auto', 'low', 'medium', 'high'],
+        enum: [
+          'auto',
+          'low',
+          'medium',
+          'high',
+        ],
       },
       {
         name: 'generation_size',
@@ -3153,8 +3494,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         name: 'generation_stream',
         type: 'boolean',
         tier: 'advanced',
-        description:
-          'Whether the provider should stream outputs when supported.',
+        description: 'Whether the provider should stream outputs when supported.',
         default: false,
       },
     ],
@@ -3164,7 +3504,10 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
     uiName: 'Gen-4 Image',
     provider: 'runway',
     kind: 'image',
-    workflows: ['text-to-image', 'image-to-image'],
+    workflows: [
+      'text-to-image',
+      'image-to-image',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -3209,23 +3552,20 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         name: 'generation_input_image_file_tags',
         type: 'string-array',
         tier: 'advanced',
-        description:
-          'Tags or labels for input images when a provider supports tagged references.',
+        description: 'Tags or labels for input images when a provider supports tagged references.',
       },
       {
         name: 'generation_moderation',
         type: 'boolean',
         tier: 'advanced',
-        description:
-          'Content moderation (true = moderation on, false = moderation off)',
+        description: 'Content moderation (true = moderation on, false = moderation off)',
         default: false,
       },
       {
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 4294967295,
         min: 0,
       },
@@ -3236,7 +3576,9 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
     uiName: 'Gen-4 Image Turbo',
     provider: 'runway',
     kind: 'image',
-    workflows: ['image-to-image'],
+    workflows: [
+      'image-to-image',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -3281,23 +3623,20 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         name: 'generation_input_image_file_tags',
         type: 'string-array',
         tier: 'advanced',
-        description:
-          'Tags or labels for input images when a provider supports tagged references.',
+        description: 'Tags or labels for input images when a provider supports tagged references.',
       },
       {
         name: 'generation_moderation',
         type: 'boolean',
         tier: 'advanced',
-        description:
-          'Content moderation (true = moderation on, false = moderation off)',
+        description: 'Content moderation (true = moderation on, false = moderation off)',
         default: false,
       },
       {
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 4294967295,
         min: 0,
       },
@@ -3311,7 +3650,9 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
     uiName: 'HappyHorse 1.0 I2V',
     provider: 'alibaba-cloud',
     kind: 'video',
-    workflows: ['image-to-video'],
+    workflows: [
+      'image-to-video',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -3325,7 +3666,9 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'mp4',
-        enum: ['mp4'],
+        enum: [
+          'mp4',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -3358,14 +3701,16 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'core',
         description: 'Output resolution',
         default: '1080P',
-        enum: ['720P', '1080P'],
+        enum: [
+          '720P',
+          '1080P',
+        ],
       },
       {
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 2147483647,
         min: 0,
       },
@@ -3383,7 +3728,9 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
     uiName: 'HappyHorse 1.0 R2V',
     provider: 'alibaba-cloud',
     kind: 'video',
-    workflows: ['image-to-video'],
+    workflows: [
+      'image-to-video',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -3416,7 +3763,9 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'mp4',
-        enum: ['mp4'],
+        enum: [
+          'mp4',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -3449,14 +3798,16 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'core',
         description: 'Output resolution',
         default: '1080P',
-        enum: ['720P', '1080P'],
+        enum: [
+          '720P',
+          '1080P',
+        ],
       },
       {
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 2147483647,
         min: 0,
       },
@@ -3474,7 +3825,9 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
     uiName: 'HappyHorse 1.0 T2V',
     provider: 'alibaba-cloud',
     kind: 'video',
-    workflows: ['text-to-video'],
+    workflows: [
+      'text-to-video',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -3507,7 +3860,9 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'mp4',
-        enum: ['mp4'],
+        enum: [
+          'mp4',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -3534,14 +3889,16 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'core',
         description: 'Output resolution',
         default: '1080P',
-        enum: ['720P', '1080P'],
+        enum: [
+          '720P',
+          '1080P',
+        ],
       },
       {
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 2147483647,
         min: 0,
       },
@@ -3559,7 +3916,9 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
     uiName: 'HappyHorse 1.0 Video Edit',
     provider: 'alibaba-cloud',
     kind: 'video',
-    workflows: ['video-to-video'],
+    workflows: [
+      'video-to-video',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -3574,7 +3933,9 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'mp4',
-        enum: ['mp4'],
+        enum: [
+          'mp4',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -3603,7 +3964,10 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'core',
         description: 'Output resolution',
         default: '1080P',
-        enum: ['720P', '1080P'],
+        enum: [
+          '720P',
+          '1080P',
+        ],
       },
       {
         name: 'generation_audio_setting',
@@ -3611,14 +3975,16 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'advanced',
         description: 'Audio behavior.',
         default: 'auto',
-        enum: ['auto', 'origin'],
+        enum: [
+          'auto',
+          'origin',
+        ],
       },
       {
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 2147483647,
         min: 0,
       },
@@ -3636,7 +4002,9 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
     uiName: 'Wan 2.2 Animate Mix',
     provider: 'alibaba-cloud',
     kind: 'video',
-    workflows: ['image-to-video'],
+    workflows: [
+      'image-to-video',
+    ],
     schema: [
       {
         name: 'generation_output_format',
@@ -3644,7 +4012,9 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'mp4',
-        enum: ['mp4'],
+        enum: [
+          'mp4',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -3671,8 +4041,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         name: 'generation_check_image',
         type: 'boolean',
         tier: 'advanced',
-        description:
-          'Whether the provider should precheck input images before generation.',
+        description: 'Whether the provider should precheck input images before generation.',
         default: true,
       },
       {
@@ -3681,7 +4050,10 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'advanced',
         description: 'Provider-native generation mode.',
         default: 'wan-std',
-        enum: ['wan-std', 'wan-pro'],
+        enum: [
+          'wan-std',
+          'wan-pro',
+        ],
       },
       {
         name: 'generation_watermark',
@@ -3697,7 +4069,9 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
     uiName: 'Wan 2.2 Animate Move',
     provider: 'alibaba-cloud',
     kind: 'video',
-    workflows: ['image-to-video'],
+    workflows: [
+      'image-to-video',
+    ],
     schema: [
       {
         name: 'generation_output_format',
@@ -3705,7 +4079,9 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'mp4',
-        enum: ['mp4'],
+        enum: [
+          'mp4',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -3732,8 +4108,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         name: 'generation_check_image',
         type: 'boolean',
         tier: 'advanced',
-        description:
-          'Whether the provider should precheck input images before generation.',
+        description: 'Whether the provider should precheck input images before generation.',
         default: true,
       },
       {
@@ -3742,7 +4117,10 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'advanced',
         description: 'Provider-native generation mode.',
         default: 'wan-std',
-        enum: ['wan-std', 'wan-pro'],
+        enum: [
+          'wan-std',
+          'wan-pro',
+        ],
       },
       {
         name: 'generation_watermark',
@@ -3758,7 +4136,9 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
     uiName: 'Wan 2.7 I2V',
     provider: 'alibaba-cloud',
     kind: 'video',
-    workflows: ['image-to-video'],
+    workflows: [
+      'image-to-video',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -3772,7 +4152,9 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'mp4',
-        enum: ['mp4'],
+        enum: [
+          'mp4',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -3817,7 +4199,10 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'core',
         description: 'Output resolution',
         default: '1080P',
-        enum: ['720P', '1080P'],
+        enum: [
+          '720P',
+          '1080P',
+        ],
       },
       {
         name: 'generation_enhance_prompt',
@@ -3825,7 +4210,10 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'advanced',
         description: 'Prompt enhancement mode.',
         default: 'standard',
-        enum: ['off', 'standard'],
+        enum: [
+          'off',
+          'standard',
+        ],
       },
       {
         name: 'generation_input_image_file_last_content',
@@ -3837,8 +4225,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         name: 'generation_media_role',
         type: 'enum',
         tier: 'advanced',
-        description:
-          'Provider-native role for media inputs in multimodal video workflows.',
+        description: 'Provider-native role for media inputs in multimodal video workflows.',
         enum: [
           'audio_url',
           'driving_audio',
@@ -3862,8 +4249,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 2147483647,
         min: 0,
       },
@@ -3881,7 +4267,9 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
     uiName: 'Wan 2.7 R2V',
     provider: 'alibaba-cloud',
     kind: 'video',
-    workflows: ['image-to-video'],
+    workflows: [
+      'image-to-video',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -3896,7 +4284,13 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'core',
         description: 'Aspect ratio of the generated content',
         default: '16:9',
-        enum: ['16:9', '9:16', '1:1', '4:3', '3:4'],
+        enum: [
+          '16:9',
+          '9:16',
+          '1:1',
+          '4:3',
+          '3:4',
+        ],
       },
       {
         name: 'generation_output_format',
@@ -3904,7 +4298,9 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'mp4',
-        enum: ['mp4'],
+        enum: [
+          'mp4',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -3943,7 +4339,10 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'core',
         description: 'Output resolution',
         default: '1080P',
-        enum: ['720P', '1080P'],
+        enum: [
+          '720P',
+          '1080P',
+        ],
       },
       {
         name: 'generation_enhance_prompt',
@@ -3951,14 +4350,16 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'advanced',
         description: 'Prompt enhancement mode.',
         default: 'standard',
-        enum: ['off', 'standard'],
+        enum: [
+          'off',
+          'standard',
+        ],
       },
       {
         name: 'generation_media_role',
         type: 'enum',
         tier: 'advanced',
-        description:
-          'Provider-native role for media inputs in multimodal video workflows.',
+        description: 'Provider-native role for media inputs in multimodal video workflows.',
         enum: [
           'audio_url',
           'driving_audio',
@@ -3982,15 +4383,13 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         name: 'generation_reference_voice_file',
         type: 'url',
         tier: 'advanced',
-        description:
-          'Reference voice URL, data URL, file ID, or provider asset URI.',
+        description: 'Reference voice URL, data URL, file ID, or provider asset URI.',
       },
       {
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 2147483647,
         min: 0,
       },
@@ -4008,7 +4407,9 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
     uiName: 'Wan 2.7 T2V',
     provider: 'alibaba-cloud',
     kind: 'video',
-    workflows: ['text-to-video'],
+    workflows: [
+      'text-to-video',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -4023,7 +4424,13 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'core',
         description: 'Aspect ratio of the generated content',
         default: '16:9',
-        enum: ['16:9', '9:16', '1:1', '4:3', '3:4'],
+        enum: [
+          '16:9',
+          '9:16',
+          '1:1',
+          '4:3',
+          '3:4',
+        ],
       },
       {
         name: 'generation_output_format',
@@ -4031,7 +4438,9 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'mp4',
-        enum: ['mp4'],
+        enum: [
+          'mp4',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -4064,7 +4473,10 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'core',
         description: 'Output resolution',
         default: '1080P',
-        enum: ['720P', '1080P'],
+        enum: [
+          '720P',
+          '1080P',
+        ],
       },
       {
         name: 'generation_enhance_prompt',
@@ -4072,7 +4484,10 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'advanced',
         description: 'Prompt enhancement mode.',
         default: 'standard',
-        enum: ['off', 'standard'],
+        enum: [
+          'off',
+          'standard',
+        ],
       },
       {
         name: 'generation_negative_prompt',
@@ -4084,8 +4499,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 2147483647,
         min: 0,
       },
@@ -4103,7 +4517,9 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
     uiName: 'Wan 2.7 Video Edit',
     provider: 'alibaba-cloud',
     kind: 'video',
-    workflows: ['video-to-video'],
+    workflows: [
+      'video-to-video',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -4116,7 +4532,13 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         type: 'enum',
         tier: 'core',
         description: 'Aspect ratio of the generated content',
-        enum: ['16:9', '9:16', '1:1', '4:3', '3:4'],
+        enum: [
+          '16:9',
+          '9:16',
+          '1:1',
+          '4:3',
+          '3:4',
+        ],
       },
       {
         name: 'generation_output_format',
@@ -4124,7 +4546,9 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'mp4',
-        enum: ['mp4'],
+        enum: [
+          'mp4',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -4163,7 +4587,10 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'core',
         description: 'Output resolution',
         default: '1080P',
-        enum: ['720P', '1080P'],
+        enum: [
+          '720P',
+          '1080P',
+        ],
       },
       {
         name: 'generation_audio_setting',
@@ -4171,7 +4598,10 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'advanced',
         description: 'Audio behavior.',
         default: 'auto',
-        enum: ['auto', 'origin'],
+        enum: [
+          'auto',
+          'origin',
+        ],
       },
       {
         name: 'generation_enhance_prompt',
@@ -4179,7 +4609,10 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'advanced',
         description: 'Prompt enhancement mode.',
         default: 'standard',
-        enum: ['off', 'standard'],
+        enum: [
+          'off',
+          'standard',
+        ],
       },
       {
         name: 'generation_negative_prompt',
@@ -4191,8 +4624,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 2147483647,
         min: 0,
       },
@@ -4210,7 +4642,10 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
     uiName: 'Seedance 1.0 Pro',
     provider: 'byteplus',
     kind: 'video',
-    workflows: ['text-to-video', 'image-to-video'],
+    workflows: [
+      'text-to-video',
+      'image-to-video',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -4224,7 +4659,15 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'core',
         description: 'Aspect ratio of the generated content',
         default: '16:9',
-        enum: ['16:9', '4:3', '1:1', '3:4', '9:16', '21:9', 'adaptive'],
+        enum: [
+          '16:9',
+          '4:3',
+          '1:1',
+          '3:4',
+          '9:16',
+          '21:9',
+          'adaptive',
+        ],
       },
       {
         name: 'generation_output_format',
@@ -4232,7 +4675,9 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'mp4',
-        enum: ['mp4'],
+        enum: [
+          'mp4',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -4277,14 +4722,17 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'core',
         description: 'Output resolution',
         default: '1080p',
-        enum: ['480p', '720p', '1080p'],
+        enum: [
+          '480p',
+          '720p',
+          '1080p',
+        ],
       },
       {
         name: 'generation_camera_fixed',
         type: 'boolean',
         tier: 'advanced',
-        description:
-          'Fix the camera position during content generation (appends an instruction to your prompt but does not guarantee the effect)',
+        description: 'Fix the camera position during content generation (appends an instruction to your prompt but does not guarantee the effect)',
         default: false,
       },
       {
@@ -4300,8 +4748,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         name: 'generation_frames',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Frame count for providers that support frame-based duration.',
+        description: 'Frame count for providers that support frame-based duration.',
         max: 289,
         min: 29,
       },
@@ -4315,8 +4762,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         name: 'generation_media_role',
         type: 'enum',
         tier: 'advanced',
-        description:
-          'Provider-native role for media inputs in multimodal video workflows.',
+        description: 'Provider-native role for media inputs in multimodal video workflows.',
         enum: [
           'audio_url',
           'driving_audio',
@@ -4347,8 +4793,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 4294967295,
         min: -1,
       },
@@ -4358,7 +4803,10 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'advanced',
         description: 'Provider service tier.',
         default: 'default',
-        enum: ['default', 'flex'],
+        enum: [
+          'default',
+          'flex',
+        ],
       },
       {
         name: 'generation_watermark',
@@ -4374,7 +4822,10 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
     uiName: 'Seedance 1.0 Pro Fast',
     provider: 'byteplus',
     kind: 'video',
-    workflows: ['text-to-video', 'image-to-video'],
+    workflows: [
+      'text-to-video',
+      'image-to-video',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -4388,7 +4839,15 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'core',
         description: 'Aspect ratio of the generated content',
         default: '16:9',
-        enum: ['16:9', '4:3', '1:1', '3:4', '9:16', '21:9', 'adaptive'],
+        enum: [
+          '16:9',
+          '4:3',
+          '1:1',
+          '3:4',
+          '9:16',
+          '21:9',
+          'adaptive',
+        ],
       },
       {
         name: 'generation_output_format',
@@ -4396,7 +4855,9 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'mp4',
-        enum: ['mp4'],
+        enum: [
+          'mp4',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -4441,14 +4902,17 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'core',
         description: 'Output resolution',
         default: '1080p',
-        enum: ['480p', '720p', '1080p'],
+        enum: [
+          '480p',
+          '720p',
+          '1080p',
+        ],
       },
       {
         name: 'generation_camera_fixed',
         type: 'boolean',
         tier: 'advanced',
-        description:
-          'Fix the camera position during content generation (appends an instruction to your prompt but does not guarantee the effect)',
+        description: 'Fix the camera position during content generation (appends an instruction to your prompt but does not guarantee the effect)',
         default: false,
       },
       {
@@ -4464,8 +4928,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         name: 'generation_frames',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Frame count for providers that support frame-based duration.',
+        description: 'Frame count for providers that support frame-based duration.',
         max: 289,
         min: 29,
       },
@@ -4479,8 +4942,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         name: 'generation_media_role',
         type: 'enum',
         tier: 'advanced',
-        description:
-          'Provider-native role for media inputs in multimodal video workflows.',
+        description: 'Provider-native role for media inputs in multimodal video workflows.',
         enum: [
           'audio_url',
           'driving_audio',
@@ -4511,8 +4973,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 4294967295,
         min: -1,
       },
@@ -4522,7 +4983,10 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'advanced',
         description: 'Provider service tier.',
         default: 'default',
-        enum: ['default', 'flex'],
+        enum: [
+          'default',
+          'flex',
+        ],
       },
       {
         name: 'generation_watermark',
@@ -4538,7 +5002,10 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
     uiName: 'Seedance 1.5 Pro',
     provider: 'byteplus',
     kind: 'video',
-    workflows: ['text-to-video', 'image-to-video'],
+    workflows: [
+      'text-to-video',
+      'image-to-video',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -4552,7 +5019,15 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'core',
         description: 'Aspect ratio of the generated content',
         default: 'adaptive',
-        enum: ['16:9', '4:3', '1:1', '3:4', '9:16', '21:9', 'adaptive'],
+        enum: [
+          '16:9',
+          '4:3',
+          '1:1',
+          '3:4',
+          '9:16',
+          '21:9',
+          'adaptive',
+        ],
       },
       {
         name: 'generation_output_format',
@@ -4560,7 +5035,9 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'mp4',
-        enum: ['mp4'],
+        enum: [
+          'mp4',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -4605,7 +5082,11 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'core',
         description: 'Output resolution',
         default: '720p',
-        enum: ['480p', '720p', '1080p'],
+        enum: [
+          '480p',
+          '720p',
+          '1080p',
+        ],
       },
       {
         name: 'generation_generate_audio',
@@ -4618,8 +5099,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         name: 'generation_camera_fixed',
         type: 'boolean',
         tier: 'advanced',
-        description:
-          'Fix the camera position during content generation (appends an instruction to your prompt but does not guarantee the effect)',
+        description: 'Fix the camera position during content generation (appends an instruction to your prompt but does not guarantee the effect)',
         default: false,
       },
       {
@@ -4648,8 +5128,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         name: 'generation_media_role',
         type: 'enum',
         tier: 'advanced',
-        description:
-          'Provider-native role for media inputs in multimodal video workflows.',
+        description: 'Provider-native role for media inputs in multimodal video workflows.',
         enum: [
           'audio_url',
           'driving_audio',
@@ -4680,8 +5159,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 4294967295,
         min: -1,
       },
@@ -4691,7 +5169,10 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'advanced',
         description: 'Provider service tier.',
         default: 'default',
-        enum: ['default', 'flex'],
+        enum: [
+          'default',
+          'flex',
+        ],
       },
       {
         name: 'generation_watermark',
@@ -4707,7 +5188,11 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
     uiName: 'Seedance 2.0',
     provider: 'byteplus',
     kind: 'video',
-    workflows: ['text-to-video', 'image-to-video', 'video-to-video'],
+    workflows: [
+      'text-to-video',
+      'image-to-video',
+      'video-to-video',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -4721,7 +5206,15 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'core',
         description: 'Aspect ratio of the generated content',
         default: 'adaptive',
-        enum: ['16:9', '4:3', '1:1', '3:4', '9:16', '21:9', 'adaptive'],
+        enum: [
+          '16:9',
+          '4:3',
+          '1:1',
+          '3:4',
+          '9:16',
+          '21:9',
+          'adaptive',
+        ],
       },
       {
         name: 'generation_output_format',
@@ -4729,7 +5222,9 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'mp4',
-        enum: ['mp4'],
+        enum: [
+          'mp4',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -4774,7 +5269,11 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'core',
         description: 'Output resolution',
         default: '720p',
-        enum: ['480p', '720p', '1080p'],
+        enum: [
+          '480p',
+          '720p',
+          '1080p',
+        ],
       },
       {
         name: 'generation_generate_audio',
@@ -4802,8 +5301,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         name: 'generation_media_role',
         type: 'enum',
         tier: 'advanced',
-        description:
-          'Provider-native role for media inputs in multimodal video workflows.',
+        description: 'Provider-native role for media inputs in multimodal video workflows.',
         enum: [
           'audio_url',
           'driving_audio',
@@ -4821,8 +5319,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         name: 'generation_priority',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Queue priority for providers that support priority scheduling.',
+        description: 'Queue priority for providers that support priority scheduling.',
         default: 0,
         max: 9,
         min: 0,
@@ -4844,8 +5341,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 4294967295,
         min: -1,
       },
@@ -4863,7 +5359,11 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
     uiName: 'Seedance 2.0 Fast',
     provider: 'byteplus',
     kind: 'video',
-    workflows: ['text-to-video', 'image-to-video', 'video-to-video'],
+    workflows: [
+      'text-to-video',
+      'image-to-video',
+      'video-to-video',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -4877,7 +5377,15 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'core',
         description: 'Aspect ratio of the generated content',
         default: 'adaptive',
-        enum: ['16:9', '4:3', '1:1', '3:4', '9:16', '21:9', 'adaptive'],
+        enum: [
+          '16:9',
+          '4:3',
+          '1:1',
+          '3:4',
+          '9:16',
+          '21:9',
+          'adaptive',
+        ],
       },
       {
         name: 'generation_output_format',
@@ -4885,7 +5393,9 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'mp4',
-        enum: ['mp4'],
+        enum: [
+          'mp4',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -4930,7 +5440,10 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'core',
         description: 'Output resolution',
         default: '720p',
-        enum: ['480p', '720p'],
+        enum: [
+          '480p',
+          '720p',
+        ],
       },
       {
         name: 'generation_generate_audio',
@@ -4958,8 +5471,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         name: 'generation_media_role',
         type: 'enum',
         tier: 'advanced',
-        description:
-          'Provider-native role for media inputs in multimodal video workflows.',
+        description: 'Provider-native role for media inputs in multimodal video workflows.',
         enum: [
           'audio_url',
           'driving_audio',
@@ -4977,8 +5489,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         name: 'generation_priority',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Queue priority for providers that support priority scheduling.',
+        description: 'Queue priority for providers that support priority scheduling.',
         default: 0,
         max: 9,
         min: 0,
@@ -5000,8 +5511,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 4294967295,
         min: -1,
       },
@@ -5019,7 +5529,10 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
     uiName: 'Veo 3.1',
     provider: 'google',
     kind: 'video',
-    workflows: ['text-to-video', 'image-to-video'],
+    workflows: [
+      'text-to-video',
+      'image-to-video',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -5034,7 +5547,10 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'core',
         description: 'Aspect ratio of the generated content',
         default: '16:9',
-        enum: ['16:9', '9:16'],
+        enum: [
+          '16:9',
+          '9:16',
+        ],
       },
       {
         name: 'generation_output_format',
@@ -5042,7 +5558,9 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'mp4',
-        enum: ['mp4'],
+        enum: [
+          'mp4',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -5064,8 +5582,12 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         type: 'integer',
         tier: 'core',
         description: 'Duration of generated content in seconds',
-        required: false,
         default: 8,
+        enum: [
+          4,
+          6,
+          8,
+        ],
         max: 8,
         min: 4,
       },
@@ -5075,7 +5597,11 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'core',
         description: 'Output resolution',
         default: '720p',
-        enum: ['720p', '1080p', '4K'],
+        enum: [
+          '720p',
+          '1080p',
+          '4K',
+        ],
       },
       {
         name: 'generation_generate_audio',
@@ -5100,10 +5626,9 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 4294967295,
-        min: -1,
+        min: 0,
       },
     ],
   },
@@ -5112,7 +5637,10 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
     uiName: 'Veo 3.1 Fast',
     provider: 'google',
     kind: 'video',
-    workflows: ['text-to-video', 'image-to-video'],
+    workflows: [
+      'text-to-video',
+      'image-to-video',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -5127,7 +5655,10 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'core',
         description: 'Aspect ratio of the generated content',
         default: '16:9',
-        enum: ['16:9', '9:16'],
+        enum: [
+          '16:9',
+          '9:16',
+        ],
       },
       {
         name: 'generation_output_format',
@@ -5135,7 +5666,9 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'mp4',
-        enum: ['mp4'],
+        enum: [
+          'mp4',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -5157,8 +5690,12 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         type: 'integer',
         tier: 'core',
         description: 'Duration of generated content in seconds',
-        required: false,
         default: 8,
+        enum: [
+          4,
+          6,
+          8,
+        ],
         max: 8,
         min: 4,
       },
@@ -5168,7 +5705,11 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'core',
         description: 'Output resolution',
         default: '720p',
-        enum: ['720p', '1080p', '4K'],
+        enum: [
+          '720p',
+          '1080p',
+          '4K',
+        ],
       },
       {
         name: 'generation_generate_audio',
@@ -5193,10 +5734,9 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 4294967295,
-        min: -1,
+        min: 0,
       },
     ],
   },
@@ -5205,7 +5745,10 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
     uiName: 'Veo 3.1 Lite',
     provider: 'google',
     kind: 'video',
-    workflows: ['text-to-video', 'image-to-video'],
+    workflows: [
+      'text-to-video',
+      'image-to-video',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -5220,7 +5763,10 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'core',
         description: 'Aspect ratio of the generated content',
         default: '16:9',
-        enum: ['16:9', '9:16'],
+        enum: [
+          '16:9',
+          '9:16',
+        ],
       },
       {
         name: 'generation_output_format',
@@ -5228,7 +5774,9 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'core',
         description: 'Format of the output file',
         default: 'mp4',
-        enum: ['mp4'],
+        enum: [
+          'mp4',
+        ],
       },
       {
         name: 'generation_output_number',
@@ -5250,8 +5798,12 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         type: 'integer',
         tier: 'core',
         description: 'Duration of generated content in seconds',
-        required: false,
         default: 8,
+        enum: [
+          4,
+          6,
+          8,
+        ],
         max: 8,
         min: 4,
       },
@@ -5261,7 +5813,10 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'core',
         description: 'Output resolution',
         default: '720p',
-        enum: ['720p', '1080p'],
+        enum: [
+          '720p',
+          '1080p',
+        ],
       },
       {
         name: 'generation_generate_audio',
@@ -5280,10 +5835,9 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 4294967295,
-        min: -1,
+        min: 0,
       },
     ],
   },
@@ -5292,7 +5846,9 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
     uiName: 'Act-Two',
     provider: 'runway',
     kind: 'video',
-    workflows: ['character-performance'],
+    workflows: [
+      'character-performance',
+    ],
     schema: [
       {
         name: 'generation_ratio',
@@ -5353,23 +5909,20 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         name: 'generation_moderation',
         type: 'boolean',
         tier: 'advanced',
-        description:
-          'Content moderation (true = moderation on, false = moderation off)',
+        description: 'Content moderation (true = moderation on, false = moderation off)',
         default: false,
       },
       {
         name: 'generation_reference_motion_file',
         type: 'url',
         tier: 'advanced',
-        description:
-          'Reference motion URL, data URL, file ID, or provider asset URI.',
+        description: 'Reference motion URL, data URL, file ID, or provider asset URI.',
       },
       {
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 4294967295,
         min: 0,
       },
@@ -5380,7 +5933,9 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
     uiName: 'Aleph 2',
     provider: 'runway',
     kind: 'video',
-    workflows: ['video-to-video'],
+    workflows: [
+      'video-to-video',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -5405,16 +5960,14 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         name: 'generation_moderation',
         type: 'boolean',
         tier: 'advanced',
-        description:
-          'Content moderation (true = moderation on, false = moderation off)',
+        description: 'Content moderation (true = moderation on, false = moderation off)',
         default: false,
       },
       {
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 4294967295,
         min: 0,
       },
@@ -5425,7 +5978,9 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
     uiName: 'Gen-4 Aleph',
     provider: 'runway',
     kind: 'video',
-    workflows: ['video-to-video'],
+    workflows: [
+      'video-to-video',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -5450,16 +6005,14 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         name: 'generation_moderation',
         type: 'boolean',
         tier: 'advanced',
-        description:
-          'Content moderation (true = moderation on, false = moderation off)',
+        description: 'Content moderation (true = moderation on, false = moderation off)',
         default: false,
       },
       {
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 4294967295,
         min: 0,
       },
@@ -5470,7 +6023,9 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
     uiName: 'Gen-4 Turbo',
     provider: 'runway',
     kind: 'video',
-    workflows: ['image-to-video'],
+    workflows: [
+      'image-to-video',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -5526,16 +6081,14 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         name: 'generation_moderation',
         type: 'boolean',
         tier: 'advanced',
-        description:
-          'Content moderation (true = moderation on, false = moderation off)',
+        description: 'Content moderation (true = moderation on, false = moderation off)',
         default: false,
       },
       {
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 4294967295,
         min: 0,
       },
@@ -5546,7 +6099,10 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
     uiName: 'Gen-4.5',
     provider: 'runway',
     kind: 'video',
-    workflows: ['text-to-video', 'image-to-video'],
+    workflows: [
+      'text-to-video',
+      'image-to-video',
+    ],
     schema: [
       {
         name: 'generation_prompt',
@@ -5602,16 +6158,14 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         name: 'generation_moderation',
         type: 'boolean',
         tier: 'advanced',
-        description:
-          'Content moderation (true = moderation on, false = moderation off)',
+        description: 'Content moderation (true = moderation on, false = moderation off)',
         default: false,
       },
       {
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
-        description:
-          'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
+        description: 'Random seed for reproducible generation (the same seed and prompt produce the same output every time), leave empty or use available default value for random seed',
         max: 4294967295,
         min: 0,
       },
