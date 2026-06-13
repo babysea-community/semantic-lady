@@ -5,13 +5,23 @@ import {
   SEMANTIC_LADY_IMAGE_MODELS,
   SEMANTIC_LADY_MODELS,
   SEMANTIC_LADY_VIDEO_MODELS,
-  getModel,
+  getModel as getModelUnsafe,
   getModelSchema,
   listModelNames,
   listModelSummaries,
   listModels,
   resolveModelSchema,
 } from '../dist/index.js';
+
+/**
+ * @param {string} modelName
+ * @returns {import('../dist/index.js').SemanticLadyModel}
+ */
+function getModel(modelName) {
+  const model = getModelUnsafe(modelName);
+  assert.ok(model);
+  return model;
+}
 
 test('publishes the resolved local schema catalog', () => {
   assert.equal(listModelNames().length, 57);
@@ -27,8 +37,10 @@ test('publishes the resolved local schema catalog', () => {
 });
 
 test('publishes doc-backed model-specific schemas', () => {
+  /** @param {string} modelName @param {string} fieldName */
   const field = (modelName, fieldName) =>
     getModelSchema(modelName).fields.find((entry) => entry.name === fieldName);
+  /** @param {string} modelName */
   const fieldNames = (modelName) =>
     getModelSchema(modelName).fields.map((entry) => entry.name);
 
@@ -51,6 +63,8 @@ test('publishes doc-backed model-specific schemas', () => {
   assert.ok(
     field('google/nano-banana-2', 'generation_ratio')?.enum?.includes('1:8'),
   );
+  assert.ok(field('z/image-turbo', 'generation_ratio')?.enum?.includes('7:9'));
+  assert.ok(field('z/image-turbo', 'generation_ratio')?.enum?.includes('9:7'));
   assert.ok(
     !fieldNames('runway/gen-4-turbo').includes('generation_input_video_file'),
   );
@@ -103,6 +117,8 @@ test('resolves schema views locally', () => {
 
 test('publishes lightweight summaries without schemas', () => {
   const summary = listModelSummaries()[0];
+
+  assert.ok(summary);
 
   assert.equal(Object.hasOwn(summary, 'schema'), false);
   assert.equal(typeof summary.apiName, 'string');
