@@ -4,6 +4,14 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 
 ## [Unreleased]
 
+## [0.2.3] - 2026-06-14
+
+### Fixed
+
+- Re-audited all 57 model request schemas against the raw provider docs under `source-of-truth-docs-raw-schema` and added a locked field-matrix regression test for every model.
+- Removed response-only or unsupported request fields from provider schemas, including generated output format/count fields on Alibaba Cloud video, BytePlus video, Google Veo video, and fixed-format image models where the raw docs do not accept those inputs.
+- Corrected model-specific media and parameter support for HappyHorse, BytePlus Seedance, Google Veo 3.1 variants, BFL raw width/height controls, and Qwen public-to-provider model mapping.
+
 ## [0.2.2] - 2026-06-13
 
 ### Fixed

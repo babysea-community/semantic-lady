@@ -32,16 +32,6 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         ],
       },
       {
-        name: 'generation_output_format',
-        type: 'enum',
-        tier: 'core',
-        description: 'Format of the output file',
-        default: 'png',
-        enum: [
-          'png',
-        ],
-      },
-      {
         name: 'generation_output_number',
         type: 'integer',
         tier: 'core',
@@ -113,16 +103,6 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
           '4:3',
           '9:16',
           '16:9',
-        ],
-      },
-      {
-        name: 'generation_output_format',
-        type: 'enum',
-        tier: 'core',
-        description: 'Format of the output file',
-        default: 'png',
-        enum: [
-          'png',
         ],
       },
       {
@@ -223,16 +203,6 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         ],
       },
       {
-        name: 'generation_output_format',
-        type: 'enum',
-        tier: 'core',
-        description: 'Format of the output file',
-        default: 'png',
-        enum: [
-          'png',
-        ],
-      },
-      {
         name: 'generation_output_number',
         type: 'integer',
         tier: 'core',
@@ -329,16 +299,6 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         ],
       },
       {
-        name: 'generation_output_format',
-        type: 'enum',
-        tier: 'core',
-        description: 'Format of the output file',
-        default: 'png',
-        enum: [
-          'png',
-        ],
-      },
-      {
         name: 'generation_output_number',
         type: 'integer',
         tier: 'core',
@@ -396,16 +356,6 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Text description of the content you want to generate',
         required: true,
-      },
-      {
-        name: 'generation_output_format',
-        type: 'enum',
-        tier: 'core',
-        description: 'Format of the output file',
-        default: 'png',
-        enum: [
-          'png',
-        ],
       },
       {
         name: 'generation_output_number',
@@ -476,16 +426,6 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
           '9:16',
           '16:9',
           '21:9',
-        ],
-      },
-      {
-        name: 'generation_output_format',
-        type: 'enum',
-        tier: 'core',
-        description: 'Format of the output file',
-        default: 'png',
-        enum: [
-          'png',
         ],
       },
       {
@@ -588,16 +528,6 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         ],
       },
       {
-        name: 'generation_output_format',
-        type: 'enum',
-        tier: 'core',
-        description: 'Format of the output file',
-        default: 'png',
-        enum: [
-          'png',
-        ],
-      },
-      {
         name: 'generation_output_number',
         type: 'integer',
         tier: 'core',
@@ -694,16 +624,6 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         ],
       },
       {
-        name: 'generation_output_format',
-        type: 'enum',
-        tier: 'core',
-        description: 'Format of the output file',
-        default: 'png',
-        enum: [
-          'png',
-        ],
-      },
-      {
         name: 'generation_output_number',
         type: 'integer',
         tier: 'core',
@@ -761,16 +681,6 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         tier: 'core',
         description: 'Text description of the content you want to generate',
         required: true,
-      },
-      {
-        name: 'generation_output_format',
-        type: 'enum',
-        tier: 'core',
-        description: 'Format of the output file',
-        default: 'png',
-        enum: [
-          'png',
-        ],
       },
       {
         name: 'generation_output_number',
@@ -924,16 +834,6 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         ],
       },
       {
-        name: 'generation_output_format',
-        type: 'enum',
-        tier: 'core',
-        description: 'Format of the output file',
-        default: 'png',
-        enum: [
-          'png',
-        ],
-      },
-      {
         name: 'generation_output_number',
         type: 'integer',
         tier: 'core',
@@ -1029,16 +929,6 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
           '16:9',
           '16:10',
           '21:9',
-        ],
-      },
-      {
-        name: 'generation_output_format',
-        type: 'enum',
-        tier: 'core',
-        description: 'Format of the output file',
-        default: 'png',
-        enum: [
-          'png',
         ],
       },
       {
@@ -1161,16 +1051,6 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         ],
       },
       {
-        name: 'generation_output_format',
-        type: 'enum',
-        tier: 'core',
-        description: 'Format of the output file',
-        default: 'png',
-        enum: [
-          'png',
-        ],
-      },
-      {
         name: 'generation_output_number',
         type: 'integer',
         tier: 'core',
@@ -1260,16 +1140,6 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
           '16:9',
           '16:10',
           '21:9',
-        ],
-      },
-      {
-        name: 'generation_output_format',
-        type: 'enum',
-        tier: 'core',
-        description: 'Format of the output file',
-        default: 'png',
-        enum: [
-          'png',
         ],
       },
       {
@@ -1391,16 +1261,6 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         ],
       },
       {
-        name: 'generation_output_format',
-        type: 'enum',
-        tier: 'core',
-        description: 'Format of the output file',
-        default: 'png',
-        enum: [
-          'png',
-        ],
-      },
-      {
         name: 'generation_output_number',
         type: 'integer',
         tier: 'core',
@@ -1513,25 +1373,6 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         ],
       },
       {
-        name: 'generation_output_format',
-        type: 'enum',
-        tier: 'core',
-        description: 'Format of the output file',
-        default: 'png',
-        enum: [
-          'png',
-        ],
-      },
-      {
-        name: 'generation_output_number',
-        type: 'integer',
-        tier: 'core',
-        description: 'Number of outputs to generate',
-        default: 1,
-        max: 1,
-        min: 1,
-      },
-      {
         name: 'generation_resolution',
         type: 'enum',
         tier: 'core',
@@ -1626,15 +1467,6 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         ],
       },
       {
-        name: 'generation_output_number',
-        type: 'integer',
-        tier: 'core',
-        description: 'Number of outputs to generate',
-        default: 1,
-        max: 1,
-        min: 1,
-      },
-      {
         name: 'generation_input_image_file',
         type: 'url-array',
         tier: 'core',
@@ -1660,6 +1492,14 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
           'off',
           'standard',
         ],
+      },
+      {
+        name: 'generation_height',
+        type: 'integer',
+        tier: 'advanced',
+        description: 'Output height in pixels where the provider accepts height directly.',
+        max: 1440,
+        min: 256,
       },
       {
         name: 'generation_moderation',
@@ -1693,6 +1533,14 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         type: 'url',
         tier: 'advanced',
         description: 'Provider-native webhook URL for providers that accept callback URLs directly.',
+      },
+      {
+        name: 'generation_width',
+        type: 'integer',
+        tier: 'advanced',
+        description: 'Output width in pixels where the provider accepts width directly.',
+        max: 1440,
+        min: 256,
       },
     ],
   },
@@ -1749,15 +1597,6 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
           'png',
           'webp',
         ],
-      },
-      {
-        name: 'generation_output_number',
-        type: 'integer',
-        tier: 'core',
-        description: 'Number of outputs to generate',
-        default: 1,
-        max: 1,
-        min: 1,
       },
       {
         name: 'generation_input_image_file',
@@ -1878,15 +1717,6 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         ],
       },
       {
-        name: 'generation_output_number',
-        type: 'integer',
-        tier: 'core',
-        description: 'Number of outputs to generate',
-        default: 1,
-        max: 1,
-        min: 1,
-      },
-      {
         name: 'generation_input_image_file',
         type: 'url-array',
         tier: 'core',
@@ -1922,6 +1752,19 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         default: 5,
         max: 10,
         min: 1.5,
+      },
+      {
+        name: 'generation_height',
+        type: 'integer',
+        tier: 'advanced',
+        description: 'Output height in pixels where the provider accepts height directly.',
+        min: 0,
+      },
+      {
+        name: 'generation_input_image_blob_path',
+        type: 'string',
+        tier: 'advanced',
+        description: 'Provider-native blob path for an input image.',
       },
       {
         name: 'generation_moderation',
@@ -1964,6 +1807,13 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         type: 'url',
         tier: 'advanced',
         description: 'Provider-native webhook URL for providers that accept callback URLs directly.',
+      },
+      {
+        name: 'generation_width',
+        type: 'integer',
+        tier: 'advanced',
+        description: 'Output width in pixels where the provider accepts width directly.',
+        min: 0,
       },
     ],
   },
@@ -2024,15 +1874,6 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         ],
       },
       {
-        name: 'generation_output_number',
-        type: 'integer',
-        tier: 'core',
-        description: 'Number of outputs to generate',
-        default: 1,
-        max: 1,
-        min: 1,
-      },
-      {
         name: 'generation_input_image_file',
         type: 'url-array',
         tier: 'core',
@@ -2048,6 +1889,13 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
           '1K',
           '2K',
         ],
+      },
+      {
+        name: 'generation_height',
+        type: 'integer',
+        tier: 'advanced',
+        description: 'Output height in pixels where the provider accepts height directly.',
+        min: 0,
       },
       {
         name: 'generation_moderation',
@@ -2081,6 +1929,13 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         type: 'url',
         tier: 'advanced',
         description: 'Provider-native webhook URL for providers that accept callback URLs directly.',
+      },
+      {
+        name: 'generation_width',
+        type: 'integer',
+        tier: 'advanced',
+        description: 'Output width in pixels where the provider accepts width directly.',
+        min: 0,
       },
     ],
   },
@@ -2141,15 +1996,6 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         ],
       },
       {
-        name: 'generation_output_number',
-        type: 'integer',
-        tier: 'core',
-        description: 'Number of outputs to generate',
-        default: 1,
-        max: 1,
-        min: 1,
-      },
-      {
         name: 'generation_input_image_file',
         type: 'url-array',
         tier: 'core',
@@ -2165,6 +2011,13 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
           '1K',
           '2K',
         ],
+      },
+      {
+        name: 'generation_height',
+        type: 'integer',
+        tier: 'advanced',
+        description: 'Output height in pixels where the provider accepts height directly.',
+        min: 0,
       },
       {
         name: 'generation_moderation',
@@ -2198,6 +2051,13 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         type: 'url',
         tier: 'advanced',
         description: 'Provider-native webhook URL for providers that accept callback URLs directly.',
+      },
+      {
+        name: 'generation_width',
+        type: 'integer',
+        tier: 'advanced',
+        description: 'Output width in pixels where the provider accepts width directly.',
+        min: 0,
       },
     ],
   },
@@ -2258,15 +2118,6 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         ],
       },
       {
-        name: 'generation_output_number',
-        type: 'integer',
-        tier: 'core',
-        description: 'Number of outputs to generate',
-        default: 1,
-        max: 1,
-        min: 1,
-      },
-      {
         name: 'generation_input_image_file',
         type: 'url-array',
         tier: 'core',
@@ -2282,6 +2133,13 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
           '1K',
           '2K',
         ],
+      },
+      {
+        name: 'generation_height',
+        type: 'integer',
+        tier: 'advanced',
+        description: 'Output height in pixels where the provider accepts height directly.',
+        min: 0,
       },
       {
         name: 'generation_moderation',
@@ -2315,6 +2173,13 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         type: 'url',
         tier: 'advanced',
         description: 'Provider-native webhook URL for providers that accept callback URLs directly.',
+      },
+      {
+        name: 'generation_width',
+        type: 'integer',
+        tier: 'advanced',
+        description: 'Output width in pixels where the provider accepts width directly.',
+        min: 0,
       },
     ],
   },
@@ -2375,15 +2240,6 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         ],
       },
       {
-        name: 'generation_output_number',
-        type: 'integer',
-        tier: 'core',
-        description: 'Number of outputs to generate',
-        default: 1,
-        max: 1,
-        min: 1,
-      },
-      {
         name: 'generation_input_image_file',
         type: 'url-array',
         tier: 'core',
@@ -2399,6 +2255,13 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
           '1K',
           '2K',
         ],
+      },
+      {
+        name: 'generation_height',
+        type: 'integer',
+        tier: 'advanced',
+        description: 'Output height in pixels where the provider accepts height directly.',
+        min: 0,
       },
       {
         name: 'generation_moderation',
@@ -2432,6 +2295,13 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         type: 'url',
         tier: 'advanced',
         description: 'Provider-native webhook URL for providers that accept callback URLs directly.',
+      },
+      {
+        name: 'generation_width',
+        type: 'integer',
+        tier: 'advanced',
+        description: 'Output width in pixels where the provider accepts width directly.',
+        min: 0,
       },
     ],
   },
@@ -2477,15 +2347,6 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
           '16:10',
           '21:9',
         ],
-      },
-      {
-        name: 'generation_output_number',
-        type: 'integer',
-        tier: 'core',
-        description: 'Number of outputs to generate',
-        default: 1,
-        max: 1,
-        min: 1,
       },
       {
         name: 'generation_input_image_file',
@@ -2612,15 +2473,6 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
           '16:10',
           '21:9',
         ],
-      },
-      {
-        name: 'generation_output_number',
-        type: 'integer',
-        tier: 'core',
-        description: 'Number of outputs to generate',
-        default: 1,
-        max: 1,
-        min: 1,
       },
       {
         name: 'generation_input_image_file',
@@ -2758,15 +2610,6 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         ],
       },
       {
-        name: 'generation_output_number',
-        type: 'integer',
-        tier: 'core',
-        description: 'Number of outputs to generate',
-        default: 1,
-        max: 1,
-        min: 1,
-      },
-      {
         name: 'generation_input_image_file',
         type: 'url-array',
         tier: 'core',
@@ -2879,16 +2722,6 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         ],
       },
       {
-        name: 'generation_output_format',
-        type: 'enum',
-        tier: 'core',
-        description: 'Format of the output file',
-        default: 'png',
-        enum: [
-          'png',
-        ],
-      },
-      {
         name: 'generation_output_number',
         type: 'integer',
         tier: 'core',
@@ -2947,16 +2780,6 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         ],
       },
       {
-        name: 'generation_output_format',
-        type: 'enum',
-        tier: 'core',
-        description: 'Format of the output file',
-        default: 'png',
-        enum: [
-          'png',
-        ],
-      },
-      {
         name: 'generation_output_number',
         type: 'integer',
         tier: 'core',
@@ -3011,16 +2834,6 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
           '4:3',
           '9:16',
           '16:9',
-        ],
-      },
-      {
-        name: 'generation_output_format',
-        type: 'enum',
-        tier: 'core',
-        description: 'Format of the output file',
-        default: 'png',
-        enum: [
-          'png',
         ],
       },
       {
@@ -3085,16 +2898,6 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
           '9:16',
           '16:9',
           '21:9',
-        ],
-      },
-      {
-        name: 'generation_output_format',
-        type: 'enum',
-        tier: 'core',
-        description: 'Format of the output file',
-        default: 'png',
-        enum: [
-          'png',
         ],
       },
       {
@@ -3176,16 +2979,6 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
           '4:1',
           '1:8',
           '8:1',
-        ],
-      },
-      {
-        name: 'generation_output_format',
-        type: 'enum',
-        tier: 'core',
-        description: 'Format of the output file',
-        default: 'png',
-        enum: [
-          'png',
         ],
       },
       {
@@ -3280,16 +3073,6 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
           '9:16',
           '16:9',
           '21:9',
-        ],
-      },
-      {
-        name: 'generation_output_format',
-        type: 'enum',
-        tier: 'core',
-        description: 'Format of the output file',
-        default: 'png',
-        enum: [
-          'png',
         ],
       },
       {
@@ -3663,25 +3446,6 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         description: 'Text description of the content you want to generate',
       },
       {
-        name: 'generation_output_format',
-        type: 'enum',
-        tier: 'core',
-        description: 'Format of the output file',
-        default: 'mp4',
-        enum: [
-          'mp4',
-        ],
-      },
-      {
-        name: 'generation_output_number',
-        type: 'integer',
-        tier: 'core',
-        description: 'Number of outputs to generate',
-        default: 1,
-        max: 1,
-        min: 1,
-      },
-      {
         name: 'generation_input_image_file',
         type: 'url-array',
         tier: 'core',
@@ -3758,25 +3522,6 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
           '9:21',
           '21:9',
         ],
-      },
-      {
-        name: 'generation_output_format',
-        type: 'enum',
-        tier: 'core',
-        description: 'Format of the output file',
-        default: 'mp4',
-        enum: [
-          'mp4',
-        ],
-      },
-      {
-        name: 'generation_output_number',
-        type: 'integer',
-        tier: 'core',
-        description: 'Number of outputs to generate',
-        default: 1,
-        max: 1,
-        min: 1,
       },
       {
         name: 'generation_input_image_file',
@@ -3857,25 +3602,6 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         ],
       },
       {
-        name: 'generation_output_format',
-        type: 'enum',
-        tier: 'core',
-        description: 'Format of the output file',
-        default: 'mp4',
-        enum: [
-          'mp4',
-        ],
-      },
-      {
-        name: 'generation_output_number',
-        type: 'integer',
-        tier: 'core',
-        description: 'Number of outputs to generate',
-        default: 1,
-        max: 1,
-        min: 1,
-      },
-      {
         name: 'generation_duration',
         type: 'integer',
         tier: 'core',
@@ -3928,25 +3654,6 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         tier: 'core',
         description: 'Text description of the content you want to generate',
         required: true,
-      },
-      {
-        name: 'generation_output_format',
-        type: 'enum',
-        tier: 'core',
-        description: 'Format of the output file',
-        default: 'mp4',
-        enum: [
-          'mp4',
-        ],
-      },
-      {
-        name: 'generation_output_number',
-        type: 'integer',
-        tier: 'core',
-        description: 'Number of outputs to generate',
-        default: 1,
-        max: 1,
-        min: 1,
       },
       {
         name: 'generation_input_image_file',
@@ -4009,25 +3716,6 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
     ],
     schema: [
       {
-        name: 'generation_output_format',
-        type: 'enum',
-        tier: 'core',
-        description: 'Format of the output file',
-        default: 'mp4',
-        enum: [
-          'mp4',
-        ],
-      },
-      {
-        name: 'generation_output_number',
-        type: 'integer',
-        tier: 'core',
-        description: 'Number of outputs to generate',
-        default: 1,
-        max: 1,
-        min: 1,
-      },
-      {
         name: 'generation_input_image_file',
         type: 'url-array',
         tier: 'core',
@@ -4075,25 +3763,6 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
       'image-to-video',
     ],
     schema: [
-      {
-        name: 'generation_output_format',
-        type: 'enum',
-        tier: 'core',
-        description: 'Format of the output file',
-        default: 'mp4',
-        enum: [
-          'mp4',
-        ],
-      },
-      {
-        name: 'generation_output_number',
-        type: 'integer',
-        tier: 'core',
-        description: 'Number of outputs to generate',
-        default: 1,
-        max: 1,
-        min: 1,
-      },
       {
         name: 'generation_input_image_file',
         type: 'url-array',
@@ -4147,25 +3816,6 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         type: 'string',
         tier: 'core',
         description: 'Text description of the content you want to generate',
-      },
-      {
-        name: 'generation_output_format',
-        type: 'enum',
-        tier: 'core',
-        description: 'Format of the output file',
-        default: 'mp4',
-        enum: [
-          'mp4',
-        ],
-      },
-      {
-        name: 'generation_output_number',
-        type: 'integer',
-        tier: 'core',
-        description: 'Number of outputs to generate',
-        default: 1,
-        max: 1,
-        min: 1,
       },
       {
         name: 'generation_input_image_file',
@@ -4295,25 +3945,6 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         ],
       },
       {
-        name: 'generation_output_format',
-        type: 'enum',
-        tier: 'core',
-        description: 'Format of the output file',
-        default: 'mp4',
-        enum: [
-          'mp4',
-        ],
-      },
-      {
-        name: 'generation_output_number',
-        type: 'integer',
-        tier: 'core',
-        description: 'Number of outputs to generate',
-        default: 1,
-        max: 1,
-        min: 1,
-      },
-      {
         name: 'generation_input_image_file',
         type: 'url-array',
         tier: 'core',
@@ -4435,25 +4066,6 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         ],
       },
       {
-        name: 'generation_output_format',
-        type: 'enum',
-        tier: 'core',
-        description: 'Format of the output file',
-        default: 'mp4',
-        enum: [
-          'mp4',
-        ],
-      },
-      {
-        name: 'generation_output_number',
-        type: 'integer',
-        tier: 'core',
-        description: 'Number of outputs to generate',
-        default: 1,
-        max: 1,
-        min: 1,
-      },
-      {
         name: 'generation_input_audio_file',
         type: 'url',
         tier: 'core',
@@ -4541,25 +4153,6 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
           '4:3',
           '3:4',
         ],
-      },
-      {
-        name: 'generation_output_format',
-        type: 'enum',
-        tier: 'core',
-        description: 'Format of the output file',
-        default: 'mp4',
-        enum: [
-          'mp4',
-        ],
-      },
-      {
-        name: 'generation_output_number',
-        type: 'integer',
-        tier: 'core',
-        description: 'Number of outputs to generate',
-        default: 1,
-        max: 1,
-        min: 1,
       },
       {
         name: 'generation_input_image_file',
@@ -4672,41 +4265,10 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         ],
       },
       {
-        name: 'generation_output_format',
-        type: 'enum',
-        tier: 'core',
-        description: 'Format of the output file',
-        default: 'mp4',
-        enum: [
-          'mp4',
-        ],
-      },
-      {
-        name: 'generation_output_number',
-        type: 'integer',
-        tier: 'core',
-        description: 'Number of outputs to generate',
-        default: 1,
-        max: 1,
-        min: 1,
-      },
-      {
         name: 'generation_input_image_file',
         type: 'url-array',
         tier: 'core',
         description: 'Input image URL(s) to transform or use as reference',
-      },
-      {
-        name: 'generation_input_video_file',
-        type: 'url',
-        tier: 'core',
-        description: 'Input video URL(s) to transform or use as reference',
-      },
-      {
-        name: 'generation_input_audio_file',
-        type: 'url',
-        tier: 'core',
-        description: 'Input audio URL(s) to transform or use as reference',
       },
       {
         name: 'generation_duration',
@@ -4759,24 +4321,6 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         type: 'url',
         tier: 'advanced',
         description: 'Last-frame image for video or chained image workflows.',
-      },
-      {
-        name: 'generation_media_role',
-        type: 'enum',
-        tier: 'advanced',
-        description: 'Provider-native role for media inputs in multimodal video workflows.',
-        enum: [
-          'audio_url',
-          'driving_audio',
-          'first_clip',
-          'first_frame',
-          'image_url',
-          'last_frame',
-          'reference_audio',
-          'reference_image',
-          'reference_video',
-          'video_url',
-        ],
       },
       {
         name: 'generation_return_last_frame',
@@ -4852,41 +4396,10 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         ],
       },
       {
-        name: 'generation_output_format',
-        type: 'enum',
-        tier: 'core',
-        description: 'Format of the output file',
-        default: 'mp4',
-        enum: [
-          'mp4',
-        ],
-      },
-      {
-        name: 'generation_output_number',
-        type: 'integer',
-        tier: 'core',
-        description: 'Number of outputs to generate',
-        default: 1,
-        max: 1,
-        min: 1,
-      },
-      {
         name: 'generation_input_image_file',
         type: 'url-array',
         tier: 'core',
         description: 'Input image URL(s) to transform or use as reference',
-      },
-      {
-        name: 'generation_input_video_file',
-        type: 'url',
-        tier: 'core',
-        description: 'Input video URL(s) to transform or use as reference',
-      },
-      {
-        name: 'generation_input_audio_file',
-        type: 'url',
-        tier: 'core',
-        description: 'Input audio URL(s) to transform or use as reference',
       },
       {
         name: 'generation_duration',
@@ -4939,24 +4452,6 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         type: 'url',
         tier: 'advanced',
         description: 'Last-frame image for video or chained image workflows.',
-      },
-      {
-        name: 'generation_media_role',
-        type: 'enum',
-        tier: 'advanced',
-        description: 'Provider-native role for media inputs in multimodal video workflows.',
-        enum: [
-          'audio_url',
-          'driving_audio',
-          'first_clip',
-          'first_frame',
-          'image_url',
-          'last_frame',
-          'reference_audio',
-          'reference_image',
-          'reference_video',
-          'video_url',
-        ],
       },
       {
         name: 'generation_return_last_frame',
@@ -5032,41 +4527,10 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         ],
       },
       {
-        name: 'generation_output_format',
-        type: 'enum',
-        tier: 'core',
-        description: 'Format of the output file',
-        default: 'mp4',
-        enum: [
-          'mp4',
-        ],
-      },
-      {
-        name: 'generation_output_number',
-        type: 'integer',
-        tier: 'core',
-        description: 'Number of outputs to generate',
-        default: 1,
-        max: 1,
-        min: 1,
-      },
-      {
         name: 'generation_input_image_file',
         type: 'url-array',
         tier: 'core',
         description: 'Input image URL(s) to transform or use as reference',
-      },
-      {
-        name: 'generation_input_video_file',
-        type: 'url',
-        tier: 'core',
-        description: 'Input video URL(s) to transform or use as reference',
-      },
-      {
-        name: 'generation_input_audio_file',
-        type: 'url',
-        tier: 'core',
-        description: 'Input audio URL(s) to transform or use as reference',
       },
       {
         name: 'generation_duration',
@@ -5125,24 +4589,6 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         type: 'url',
         tier: 'advanced',
         description: 'Last-frame image for video or chained image workflows.',
-      },
-      {
-        name: 'generation_media_role',
-        type: 'enum',
-        tier: 'advanced',
-        description: 'Provider-native role for media inputs in multimodal video workflows.',
-        enum: [
-          'audio_url',
-          'driving_audio',
-          'first_clip',
-          'first_frame',
-          'image_url',
-          'last_frame',
-          'reference_audio',
-          'reference_image',
-          'reference_video',
-          'video_url',
-        ],
       },
       {
         name: 'generation_return_last_frame',
@@ -5217,25 +4663,6 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
           '21:9',
           'adaptive',
         ],
-      },
-      {
-        name: 'generation_output_format',
-        type: 'enum',
-        tier: 'core',
-        description: 'Format of the output file',
-        default: 'mp4',
-        enum: [
-          'mp4',
-        ],
-      },
-      {
-        name: 'generation_output_number',
-        type: 'integer',
-        tier: 'core',
-        description: 'Number of outputs to generate',
-        default: 1,
-        max: 1,
-        min: 1,
       },
       {
         name: 'generation_input_image_file',
@@ -5390,25 +4817,6 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         ],
       },
       {
-        name: 'generation_output_format',
-        type: 'enum',
-        tier: 'core',
-        description: 'Format of the output file',
-        default: 'mp4',
-        enum: [
-          'mp4',
-        ],
-      },
-      {
-        name: 'generation_output_number',
-        type: 'integer',
-        tier: 'core',
-        description: 'Number of outputs to generate',
-        default: 1,
-        max: 1,
-        min: 1,
-      },
-      {
         name: 'generation_input_image_file',
         type: 'url-array',
         tier: 'core',
@@ -5555,25 +4963,6 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         ],
       },
       {
-        name: 'generation_output_format',
-        type: 'enum',
-        tier: 'core',
-        description: 'Format of the output file',
-        default: 'mp4',
-        enum: [
-          'mp4',
-        ],
-      },
-      {
-        name: 'generation_output_number',
-        type: 'integer',
-        tier: 'core',
-        description: 'Number of outputs to generate',
-        default: 1,
-        max: 1,
-        min: 1,
-      },
-      {
         name: 'generation_input_image_file',
         type: 'url-array',
         tier: 'core',
@@ -5663,25 +5052,6 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         ],
       },
       {
-        name: 'generation_output_format',
-        type: 'enum',
-        tier: 'core',
-        description: 'Format of the output file',
-        default: 'mp4',
-        enum: [
-          'mp4',
-        ],
-      },
-      {
-        name: 'generation_output_number',
-        type: 'integer',
-        tier: 'core',
-        description: 'Number of outputs to generate',
-        default: 1,
-        max: 1,
-        min: 1,
-      },
-      {
         name: 'generation_input_image_file',
         type: 'url-array',
         tier: 'core',
@@ -5710,15 +5080,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         enum: [
           '720p',
           '1080p',
-          '4K',
         ],
-      },
-      {
-        name: 'generation_generate_audio',
-        type: 'boolean',
-        tier: 'core',
-        description: 'Add audio for generated content',
-        default: true,
       },
       {
         name: 'generation_input_image_file_last_content',
@@ -5771,25 +5133,6 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         ],
       },
       {
-        name: 'generation_output_format',
-        type: 'enum',
-        tier: 'core',
-        description: 'Format of the output file',
-        default: 'mp4',
-        enum: [
-          'mp4',
-        ],
-      },
-      {
-        name: 'generation_output_number',
-        type: 'integer',
-        tier: 'core',
-        description: 'Number of outputs to generate',
-        default: 1,
-        max: 1,
-        min: 1,
-      },
-      {
         name: 'generation_input_image_file',
         type: 'url-array',
         tier: 'core',
@@ -5819,13 +5162,6 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
           '720p',
           '1080p',
         ],
-      },
-      {
-        name: 'generation_generate_audio',
-        type: 'boolean',
-        tier: 'core',
-        description: 'Add audio for generated content',
-        default: true,
       },
       {
         name: 'generation_negative_prompt',
