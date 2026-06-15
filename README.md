@@ -32,7 +32,7 @@ Schema unification SDK for generative media model APIs.
 <strong>Built with</strong>
 
 [![npm](https://img.shields.io/npm/v/semantic-lady?style=for-the-badge&color=CB3837&logo=npm&logoColor=white)](https://www.npmjs.com/package/semantic-lady)
-[![Node.js](https://img.shields.io/badge/Node.js-22%2B-5FA04E?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org)
+[![Node.js](https://img.shields.io/badge/Node.js-24%2B-5FA04E?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org)
 [![TypeScript](https://img.shields.io/badge/typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
 
 <br/>

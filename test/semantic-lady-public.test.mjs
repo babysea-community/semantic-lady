@@ -23,6 +23,22 @@ function getModel(modelName) {
   return model;
 }
 
+const forbiddenFieldNames = new Set([
+  'generation_audio_setting',
+  'generation_count',
+  'generation_enhance_prompt',
+  'generation_generate_audio',
+  'generation_guidance_scale',
+  'generation_mask_file',
+  'generation_max_images',
+  'generation_num_inference_steps',
+  'generation_prompt_strength',
+  'generation_ratio',
+  'generation_raw_mode',
+  'generation_sequential_max_images',
+  'generation_thinking_mode',
+]);
+
 test('publishes the resolved local schema catalog', () => {
   assert.equal(listModelNames().length, 57);
   assert.equal(SEMANTIC_LADY_MODELS.length, 57);
@@ -31,7 +47,7 @@ test('publishes the resolved local schema catalog', () => {
 
   const qwen = getModel('qwen/image');
 
-  assert.equal(qwen.uiName, 'Qwen Image');
+  assert.equal(qwen.uiName, 'Image');
   assert.equal(qwen.kind, 'image');
   assert.ok(qwen.schema.every((field) => field.name.startsWith('generation_')));
 });
@@ -56,10 +72,10 @@ test('publishes doc-backed model-specific schemas', () => {
   );
   assert.ok(!fieldNames('google/nano-banana').includes('generation_thinking'));
   assert.ok(
-    field('google/nano-banana-2', 'generation_ratio')?.enum?.includes('1:8'),
+    field('google/nano-banana-2', 'generation_aspect_ratio')?.enum?.includes('1:8'),
   );
   assert.ok(fieldNames('z/image-turbo').includes('generation_size'));
-  assert.ok(!fieldNames('z/image-turbo').includes('generation_ratio'));
+  assert.ok(!fieldNames('z/image-turbo').includes('generation_aspect_ratio'));
   assert.ok(
     !fieldNames('runway/gen-4-turbo').includes('generation_input_video_file'),
   );
@@ -70,6 +86,18 @@ test('publishes doc-backed model-specific schemas', () => {
     8,
   ]);
   assert.equal(field('google/veo-3.1-fast', 'generation_seed')?.min, 0);
+});
+
+test('does not publish removed semantic field names', () => {
+  for (const model of listModels()) {
+    for (const field of model.schema) {
+      assert.equal(
+        forbiddenFieldNames.has(field.name),
+        false,
+        `${model.apiName} publishes ${field.name}`,
+      );
+    }
+  }
 });
 
 test('orders models by inference provider and API name', () => {
@@ -105,7 +133,7 @@ test('resolves schema views locally', () => {
   assert.ok(advanced.every((field) => field.tier === 'advanced'));
   assert.ok(
     full.fields.some(
-      (field) => field.name === 'generation_reference_motion_file',
+      (field) => field.name === 'generation_input_video_file',
     ),
   );
 });

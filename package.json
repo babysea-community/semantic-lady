@@ -45,12 +45,15 @@
     "dist",
     "CHANGELOG.md",
     "README.md",
-    "LICENSE"
+    "LICENSE",
+    "CODE_OF_CONDUCT.md",
+    "CONTRIBUTING.md",
+    "SECURITY.md"
   ],
   "packageManager": "pnpm@10.19.0",
   "sideEffects": false,
   "engines": {
-    "node": ">=22"
+    "node": "24.16.10"
   },
   "publishConfig": {
     "access": "public"
@@ -63,8 +66,8 @@
     "check": "pnpm run typecheck && pnpm run test && pnpm run build"
   },
   "devDependencies": {
-    "@types/node": "^25.3.1",
-    "tsup": "^8.5.1",
-    "typescript": "^5.9.3"
+    "@types/node": "catalog:",
+    "tsup": "catalog:",
+    "typescript": "catalog:"
   }
 }

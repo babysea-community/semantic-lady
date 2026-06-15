@@ -4,6 +4,20 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 
 ## [Unreleased]
 
+## [0.3.1] - 2026-06-15
+
+### Changed
+
+- Refactored the private schema source so provider-native raw schemas are tracked separately from BabySea standard model names and refined `generation_*` schemas.
+- Promoted `generation_moderation` into the core schema tier so moderation controls appear alongside primary generation inputs.
+- Normalized diverse image, video, and audio input-file terms through dedicated converter maps, including polymorphic media roles such as first frame, last frame, reference image, reference video, and reference audio.
+- Consolidated provider output-count controls, including Alibaba `max_images` and BytePlus `sequential_image_generation_options.max_images`, under `generation_output_number` while keeping provider modes such as sequential generation, partial images, return-last-frame, and masks as separate fields.
+
+### Fixed
+
+- Removed semantic workflow defaults from raw provider schemas so raw model definitions remain aligned with provider documentation.
+- Added `requiredAnyOf` metadata for polymorphic required media inputs so models can express “one of these input files is required” without incorrectly requiring every possible media type.
+
 ## [0.3.0] - 2026-06-15
 
 ### Changed
