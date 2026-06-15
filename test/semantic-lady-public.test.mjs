@@ -44,27 +44,22 @@ test('publishes doc-backed model-specific schemas', () => {
   const fieldNames = (modelName) =>
     getModelSchema(modelName).fields.map((entry) => entry.name);
 
-  assert.deepEqual(field('wan/2.7-image', 'generation_resolution')?.enum, [
-    '1K',
-    '2K',
-  ]);
-  assert.deepEqual(field('wan/2.7-image-pro', 'generation_resolution')?.enum, [
-    '1K',
-    '2K',
-    '4K',
-  ]);
+  assert.ok(fieldNames('wan/2.7-image').includes('generation_size'));
+  assert.ok(fieldNames('wan/2.7-image-pro').includes('generation_size'));
+  assert.ok(!fieldNames('wan/2.7-image').includes('generation_resolution'));
+  assert.ok(!fieldNames('wan/2.7-image-pro').includes('generation_resolution'));
   assert.equal(field('wan/2.7-image-pro', 'generation_output_number')?.max, 12);
   assert.ok(!fieldNames('wan/2.7-image-pro').includes('generation_max_images'));
-  assert.deepEqual(
-    field('bytedance/seedream-4', 'generation_resolution')?.enum,
-    ['1K', '2K', '4K'],
+  assert.ok(fieldNames('bytedance/seedream-4').includes('generation_size'));
+  assert.ok(
+    !fieldNames('bytedance/seedream-4').includes('generation_resolution'),
   );
   assert.ok(!fieldNames('google/nano-banana').includes('generation_thinking'));
   assert.ok(
     field('google/nano-banana-2', 'generation_ratio')?.enum?.includes('1:8'),
   );
-  assert.ok(field('z/image-turbo', 'generation_ratio')?.enum?.includes('7:9'));
-  assert.ok(field('z/image-turbo', 'generation_ratio')?.enum?.includes('9:7'));
+  assert.ok(fieldNames('z/image-turbo').includes('generation_size'));
+  assert.ok(!fieldNames('z/image-turbo').includes('generation_ratio'));
   assert.ok(
     !fieldNames('runway/gen-4-turbo').includes('generation_input_video_file'),
   );

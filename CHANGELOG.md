@@ -4,6 +4,19 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-06-15
+
+### Changed
+
+- Aligned image sizing schemas with provider-native request fields across all 57 models: models that accept raw `size` expose `generation_size`, models that accept raw `width`/`height` expose `generation_width` and `generation_height`, and models that accept raw `ratio`/`resolution` keep `generation_ratio`/`generation_resolution` without synthesized replacement fields.
+- Removed ratio/resolution-to-size and size-to-width/height provider payload synthesis; Semantic Lady now passes provider-native sizing values through under their `generation_*` names instead of converting between sizing dialects.
+- Updated Runway schemas to use provider-native pixel-ratio values (for example `1280:720`) where Runway expects those values directly.
+- Promoted `generation_size`, `generation_width`, and `generation_height` into the core schema tier so native size controls appear in the primary field set for models that support them.
+
+### Fixed
+
+- Preserved the existing moderation normalization boundary while removing unrelated sizing value normalization, so moderation remains the only cross-provider value abstraction handled by Semantic Lady.
+
 ## [0.2.3] - 2026-06-14
 
 ### Fixed
