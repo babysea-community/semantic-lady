@@ -50,10 +50,10 @@
     "CONTRIBUTING.md",
     "SECURITY.md"
   ],
-  "packageManager": "pnpm@10.19.0",
+  "packageManager": "pnpm@11.7.0",
   "sideEffects": false,
   "engines": {
-    "node": "24.16.10"
+    "node": ">=24.14.0 <25"
   },
   "publishConfig": {
     "access": "public"
