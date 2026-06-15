@@ -1,6 +1,6 @@
 {
   "name": "semantic-lady",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Schema unification SDK for generative media model APIs.",
   "keywords": [
     "babysea",

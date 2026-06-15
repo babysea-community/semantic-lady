@@ -4,6 +4,12 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 
 ## [Unreleased]
 
+## [0.3.2] - 2026-06-16
+
+### Changed
+
+- Consolidated provider output-count controls, including Alibaba `max_images` and BytePlus `sequential_image_generation_options.max_images`, under `generation_output_number` while keeping provider modes such as sequential generation, partial images, return-last-frame, and masks as separate fields.
+
 ## [0.3.1] - 2026-06-15
 
 ### Changed
@@ -11,7 +17,6 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 - Refactored the private schema source so provider-native raw schemas are tracked separately from BabySea standard model names and refined `generation_*` schemas.
 - Promoted `generation_moderation` into the core schema tier so moderation controls appear alongside primary generation inputs.
 - Normalized diverse image, video, and audio input-file terms through dedicated converter maps, including polymorphic media roles such as first frame, last frame, reference image, reference video, and reference audio.
-- Consolidated provider output-count controls, including Alibaba `max_images` and BytePlus `sequential_image_generation_options.max_images`, under `generation_output_number` while keeping provider modes such as sequential generation, partial images, return-last-frame, and masks as separate fields.
 
 ### Fixed
 
