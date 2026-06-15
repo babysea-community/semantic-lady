@@ -21,9 +21,7 @@ Schema unification SDK for generative media model APIs.
 <strong>Checks</strong>
 
 [![GitLabCI](https://img.shields.io/gitlab/pipeline-status/babysea/semantic-lady?branch=main&style=for-the-badge&label=gitlabci&logo=gitlab&logoColor=white&color=FC6D26)](https://gitlab.com/babysea/semantic-lady/-/commits/main)
-[![CircleCI](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fcircleci.com%2Fapi%2Fv1.1%2Fproject%2Fcircleci%2F2uTLcwc4naeNuKDP41es88%2FPgdP4SEoNsCeJGSKgZ7Shq%2Ftree%2Fmain%3Flimit%3D1&query=%24%5B0%5D.status&style=for-the-badge&logo=circleci&logoColor=white&label=circleci&color=003740)](https://dl.circleci.com/status-badge/redirect/circleci/2uTLcwc4naeNuKDP41es88/PgdP4SEoNsCeJGSKgZ7Shq/tree/main)
 [![Codecov](https://img.shields.io/codecov/c/github/babysea-community/semantic-lady?style=for-the-badge&label=codecov&logo=codecov&logoColor=white&color=FF0077&token=dBkFMBfgZf)](https://codecov.io/github/babysea-community/semantic-lady)
-[![Sentry](https://img.shields.io/github/actions/workflow/status/babysea-community/semantic-lady/sentry-check.yml?style=for-the-badge&label=sentry&logo=sentry&logoColor=white&color=181225)](https://github.com/babysea-community/semantic-lady/actions/workflows/sentry-check.yml)
 [![CodeQL](https://img.shields.io/github/actions/workflow/status/babysea-community/semantic-lady/codeql.yml?style=for-the-badge&label=codeql&logo=github&logoColor=white)](https://github.com/babysea-community/semantic-lady/actions/workflows/codeql.yml)
 [![Package](https://img.shields.io/github/actions/workflow/status/babysea-community/semantic-lady/package-check.yml?style=for-the-badge&label=package&logo=npm&logoColor=white)](https://github.com/babysea-community/semantic-lady/actions/workflows/package-check.yml)
 
@@ -246,7 +244,6 @@ Semantic Lady normalizes model names for APIs, model names for UIs, and provider
 
 Examples of normalized field names include:
 
-
 ### Model ordering
 
 The exported model catalog is ordered by inference provider first, then model API name alphabetically. Image and video models are also exported separately for products that need media-type tabs or filters.
@@ -272,28 +269,19 @@ New behavior stays out of the public contract until it is implemented, documente
 
 ## 9. Security and Compliance
 
-Semantic Lady is a local schema SDK. It contains no provider credentials, no hosted endpoint, no telemetry client, and no network request path.
-
-| Signal            | Coverage                                                                                                  |
-| :---------------- | :-------------------------------------------------------------------------------------------------------- |
-| Secret exposure   | The package does not accept, store, or transmit provider keys.                                             |
-| BYOK boundary     | Provider execution remains in the caller's application or infrastructure.                                 |
-| Public catalog    | The published data is the normalized schema contract plus canonical provider model IDs, not raw provider-doc extraction or private compiler logic. |
-| Package checks    | TypeScript typecheck, tests, and build verify the public resolver API before release.                     |
+Semantic Lady publishes its trust signals through public GitLab and GitHub checks so contributors can inspect the actual CI configuration, jobs, and reports.
 
 ## 10. Community
 
 ### Who's using it
 
+- **[BabySea](https://babysea.ai)**: execution control plane for generative media.
 
 *Using `semantic-lady`? Open a PR to add yourself.*
 
-### Related projects
-
-
 ### Contributing
 
-We welcome PRs, issues, and design discussion. Keep changes focused on the public schema contract and avoid adding provider credentials, hosted API clients, or network behavior to this SDK.
+We welcome PRs, issues, and design discussion. See [`CONTRIBUTING.md`](CONTRIBUTING.md), [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md), and [`SECURITY.md`](SECURITY.md).
 
 ## 11. License
 
