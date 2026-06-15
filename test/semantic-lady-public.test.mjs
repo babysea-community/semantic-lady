@@ -49,6 +49,7 @@ test('publishes the resolved local schema catalog', () => {
 
   assert.equal(qwen.uiName, 'Image');
   assert.equal(qwen.kind, 'image');
+  assert.equal(qwen.providerModel, 'qwen-image');
   assert.ok(qwen.schema.every((field) => field.name.startsWith('generation_')));
 });
 
@@ -111,15 +112,26 @@ test('orders models by inference provider and API name', () => {
   );
 });
 
-test('keeps public model data free of raw provider internals', () => {
+test('publishes provider model ids without private aliases', () => {
+  const providerModelIds = new Set();
+
   for (const model of listModels()) {
     assert.equal(Object.hasOwn(model, 'aliases'), false);
-    assert.equal(Object.hasOwn(model, 'providerModel'), false);
+    assert.equal(typeof model.providerModel, 'string');
+    assert.ok(model.providerModel.length > 0);
+    assert.equal(providerModelIds.has(model.providerModel), false);
+    providerModelIds.add(model.providerModel);
     assert.equal(
       model.schema.some((field) => Object.hasOwn(field, 'aliases')),
       false,
     );
   }
+
+  assert.equal(providerModelIds.size, 57);
+  assert.equal(
+    getModelSchema('google/veo-3.1-fast').model.providerModel,
+    'veo-3.1-fast-generate-preview',
+  );
 });
 
 test('resolves schema views locally', () => {
@@ -145,4 +157,5 @@ test('publishes lightweight summaries without schemas', () => {
 
   assert.equal(Object.hasOwn(summary, 'schema'), false);
   assert.equal(typeof summary.apiName, 'string');
+  assert.equal(typeof summary.providerModel, 'string');
 });

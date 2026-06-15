@@ -7,9 +7,9 @@ This file mirrors the README so deploys, IDEs, and tooling that read `AGENTS.md`
 ## Scope
 
 - **Supported OSS surface:** local TypeScript SDK, generated model catalog, and resolver helpers only.
-- **Purpose:** normalize model API names, UI names, and `generation_*` schema fields for BYOK image/video applications.
+- **Purpose:** normalize model API names, provider model IDs, UI names, and `generation_*` schema fields for BYOK image/video applications.
 - **Not included:** hosted APIs, provider SDK calls, provider credentials, auth, persistence, billing, queues, webhooks, telemetry, network clients, retries, or BabySea account dependencies.
-- **Public data boundary:** resolved schema metadata is public; private schema compiler details, provider aliases, raw provider payloads, and BabySea-only internals are not public.
+- **Public data boundary:** resolved schema metadata and canonical provider model IDs are public; private schema compiler details, provider aliases, raw provider payloads, and BabySea-only internals are not public.
 
 ## Layout
 

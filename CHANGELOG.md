@@ -4,7 +4,14 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 
 ## [Unreleased]
 
-## [0.3.2] - 2026-06-16
+## [0.4.0] - 2026-06-15
+
+### Added
+
+- Published canonical provider model identifiers as `providerModel` on model records, model summaries, and schema model metadata, so BYOK applications can route provider calls without maintaining their own model-id catalog.
+- Added package lifecycle guards so `npm pack` builds `dist` and `npm publish` runs the public package check before publishing.
+
+## [0.3.2] - 2026-06-15
 
 ### Changed
 

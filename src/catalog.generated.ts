@@ -3,6 +3,7 @@ import type { SemanticLadyModel } from './types.js';
 export const SEMANTIC_LADY_IMAGE_MODELS = [
   {
     apiName: 'qwen/image',
+    providerModel: 'qwen-image',
     uiName: 'Image',
     provider: 'alibaba-cloud',
     kind: 'image',
@@ -65,6 +66,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
   },
   {
     apiName: 'qwen/image-2',
+    providerModel: 'qwen-image-2.0',
     uiName: 'Image 2',
     provider: 'alibaba-cloud',
     kind: 'image',
@@ -133,6 +135,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
   },
   {
     apiName: 'qwen/image-2-pro',
+    providerModel: 'qwen-image-2.0-pro',
     uiName: 'Image 2 Pro',
     provider: 'alibaba-cloud',
     kind: 'image',
@@ -201,6 +204,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
   },
   {
     apiName: 'qwen/image-edit',
+    providerModel: 'qwen-image-edit',
     uiName: 'Image Edit',
     provider: 'alibaba-cloud',
     kind: 'image',
@@ -256,6 +260,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
   },
   {
     apiName: 'qwen/image-edit-max',
+    providerModel: 'qwen-image-edit-max',
     uiName: 'Image Edit Max',
     provider: 'alibaba-cloud',
     kind: 'image',
@@ -324,6 +329,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
   },
   {
     apiName: 'qwen/image-edit-plus',
+    providerModel: 'qwen-image-edit-plus',
     uiName: 'Image Edit Plus',
     provider: 'alibaba-cloud',
     kind: 'image',
@@ -392,6 +398,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
   },
   {
     apiName: 'qwen/image-max',
+    providerModel: 'qwen-image-max',
     uiName: 'Image Max',
     provider: 'alibaba-cloud',
     kind: 'image',
@@ -454,6 +461,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
   },
   {
     apiName: 'qwen/image-plus',
+    providerModel: 'qwen-image-plus',
     uiName: 'Image Plus',
     provider: 'alibaba-cloud',
     kind: 'image',
@@ -516,6 +524,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
   },
   {
     apiName: 'wan/2.1-imageedit',
+    providerModel: 'wanx2.1-imageedit',
     uiName: '2.1 Imageedit',
     provider: 'alibaba-cloud',
     kind: 'image',
@@ -651,6 +660,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
   },
   {
     apiName: 'wan/2.5-i2i-preview',
+    providerModel: 'wan2.5-i2i-preview',
     uiName: '2.5 I2i Preview',
     provider: 'alibaba-cloud',
     kind: 'image',
@@ -720,6 +730,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
   },
   {
     apiName: 'wan/2.6-image',
+    providerModel: 'wan2.6-image',
     uiName: '2.6 Image',
     provider: 'alibaba-cloud',
     kind: 'image',
@@ -803,6 +814,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
   },
   {
     apiName: 'wan/2.6-t2i',
+    providerModel: 'wan2.6-t2i',
     uiName: '2.6 T2i',
     provider: 'alibaba-cloud',
     kind: 'image',
@@ -865,6 +877,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
   },
   {
     apiName: 'wan/2.7-image',
+    providerModel: 'wan2.7-image',
     uiName: '2.7 Image',
     provider: 'alibaba-cloud',
     kind: 'image',
@@ -947,6 +960,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
   },
   {
     apiName: 'wan/2.7-image-pro',
+    providerModel: 'wan2.7-image-pro',
     uiName: '2.7 Image Pro',
     provider: 'alibaba-cloud',
     kind: 'image',
@@ -1029,6 +1043,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
   },
   {
     apiName: 'z/image-turbo',
+    providerModel: 'z-image-turbo',
     uiName: 'Image Turbo',
     provider: 'alibaba-cloud',
     kind: 'image',
@@ -1069,6 +1084,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
   },
   {
     apiName: 'bfl/flux-1.1-pro',
+    providerModel: 'flux-pro-1.1',
     uiName: 'Flux 1.1 Pro',
     provider: 'black-forest-labs',
     kind: 'image',
@@ -1146,6 +1162,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
   },
   {
     apiName: 'bfl/flux-1.1-pro-ultra',
+    providerModel: 'flux-pro-1.1-ultra',
     uiName: 'Flux 1.1 Pro Ultra',
     provider: 'black-forest-labs',
     kind: 'image',
@@ -1245,6 +1262,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
   },
   {
     apiName: 'bfl/flux-2-flex',
+    providerModel: 'flux-2-flex',
     uiName: 'Flux 2 Flex',
     provider: 'black-forest-labs',
     kind: 'image',
@@ -1338,6 +1356,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
   },
   {
     apiName: 'bfl/flux-2-klein-4b',
+    providerModel: 'flux-2-klein-4b',
     uiName: 'Flux 2 Klein 4b',
     provider: 'black-forest-labs',
     kind: 'image',
@@ -1406,6 +1425,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
   },
   {
     apiName: 'bfl/flux-2-klein-9b',
+    providerModel: 'flux-2-klein-9b',
     uiName: 'Flux 2 Klein 9b',
     provider: 'black-forest-labs',
     kind: 'image',
@@ -1474,6 +1494,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
   },
   {
     apiName: 'bfl/flux-2-max',
+    providerModel: 'flux-2-max',
     uiName: 'Flux 2 Max',
     provider: 'black-forest-labs',
     kind: 'image',
@@ -1542,6 +1563,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
   },
   {
     apiName: 'bfl/flux-2-pro',
+    providerModel: 'flux-2-pro',
     uiName: 'Flux 2 Pro',
     provider: 'black-forest-labs',
     kind: 'image',
@@ -1610,6 +1632,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
   },
   {
     apiName: 'bytedance/seedream-4',
+    providerModel: 'seedream-4-0-250828',
     uiName: 'Seedream 4',
     provider: 'byteplus',
     kind: 'image',
@@ -1699,6 +1722,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
   },
   {
     apiName: 'bytedance/seedream-4.5',
+    providerModel: 'seedream-4-5-251128',
     uiName: 'Seedream 4.5',
     provider: 'byteplus',
     kind: 'image',
@@ -1787,6 +1811,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
   },
   {
     apiName: 'bytedance/seedream-5-lite',
+    providerModel: 'seedream-5-0-lite-260128',
     uiName: 'Seedream 5 Lite',
     provider: 'byteplus',
     kind: 'image',
@@ -1886,6 +1911,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
   },
   {
     apiName: 'google/imagen-4',
+    providerModel: 'imagen-4.0-generate-001',
     uiName: 'Imagen 4',
     provider: 'google',
     kind: 'image',
@@ -1938,6 +1964,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
   },
   {
     apiName: 'google/imagen-4-fast',
+    providerModel: 'imagen-4.0-fast-generate-001',
     uiName: 'Imagen 4 Fast',
     provider: 'google',
     kind: 'image',
@@ -1989,6 +2016,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
   },
   {
     apiName: 'google/imagen-4-ultra',
+    providerModel: 'imagen-4.0-ultra-generate-001',
     uiName: 'Imagen 4 Ultra',
     provider: 'google',
     kind: 'image',
@@ -2041,6 +2069,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
   },
   {
     apiName: 'google/nano-banana',
+    providerModel: 'gemini-2.5-flash-image',
     uiName: 'Nano Banana',
     provider: 'google',
     kind: 'image',
@@ -2112,6 +2141,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
   },
   {
     apiName: 'google/nano-banana-2',
+    providerModel: 'gemini-3.1-flash-image',
     uiName: 'Nano Banana 2',
     provider: 'google',
     kind: 'image',
@@ -2204,6 +2234,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
   },
   {
     apiName: 'google/nano-banana-pro',
+    providerModel: 'gemini-3-pro-image',
     uiName: 'Nano Banana Pro',
     provider: 'google',
     kind: 'image',
@@ -2291,6 +2322,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
   },
   {
     apiName: 'gpt/image-2',
+    providerModel: 'gpt-image-2',
     uiName: 'Image 2',
     provider: 'openai',
     kind: 'image',
@@ -2405,6 +2437,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
   },
   {
     apiName: 'runway/gen-4-image',
+    providerModel: 'gen4_image',
     uiName: 'Gen 4 Image',
     provider: 'runway',
     kind: 'image',
@@ -2476,6 +2509,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
   },
   {
     apiName: 'runway/gen-4-image-turbo',
+    providerModel: 'gen4_image_turbo',
     uiName: 'Gen 4 Image Turbo',
     provider: 'runway',
     kind: 'image',
@@ -2550,6 +2584,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
 export const SEMANTIC_LADY_VIDEO_MODELS = [
   {
     apiName: 'happyhorse/1.0-i2v',
+    providerModel: 'happyhorse-1.0-i2v',
     uiName: '1.0 I2v',
     provider: 'alibaba-cloud',
     kind: 'video',
@@ -2609,6 +2644,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
   },
   {
     apiName: 'happyhorse/1.0-r2v',
+    providerModel: 'happyhorse-1.0-r2v',
     uiName: '1.0 R2v',
     provider: 'alibaba-cloud',
     kind: 'video',
@@ -2693,6 +2729,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
   },
   {
     apiName: 'happyhorse/1.0-t2v',
+    providerModel: 'happyhorse-1.0-t2v',
     uiName: '1.0 T2v',
     provider: 'alibaba-cloud',
     kind: 'video',
@@ -2764,6 +2801,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
   },
   {
     apiName: 'happyhorse/1.0-video-edit',
+    providerModel: 'happyhorse-1.0-video-edit',
     uiName: '1.0 Video Edit',
     provider: 'alibaba-cloud',
     kind: 'video',
@@ -2832,6 +2870,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
   },
   {
     apiName: 'wan/2.2-animate-mix',
+    providerModel: 'wan2.2-animate-mix',
     uiName: '2.2 Animate Mix',
     provider: 'alibaba-cloud',
     kind: 'video',
@@ -2883,6 +2922,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
   },
   {
     apiName: 'wan/2.2-animate-move',
+    providerModel: 'wan2.2-animate-move',
     uiName: '2.2 Animate Move',
     provider: 'alibaba-cloud',
     kind: 'video',
@@ -2934,6 +2974,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
   },
   {
     apiName: 'wan/2.7-i2v-2026-04-25',
+    providerModel: 'wan2.7-i2v-2026-04-25',
     uiName: '2.7 I2v 2026 04 25',
     provider: 'alibaba-cloud',
     kind: 'video',
@@ -3025,6 +3066,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
   },
   {
     apiName: 'wan/2.7-r2v',
+    providerModel: 'wan2.7-r2v',
     uiName: '2.7 R2v',
     provider: 'alibaba-cloud',
     kind: 'video',
@@ -3124,6 +3166,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
   },
   {
     apiName: 'wan/2.7-t2v',
+    providerModel: 'wan2.7-t2v',
     uiName: '2.7 T2v',
     provider: 'alibaba-cloud',
     kind: 'video',
@@ -3210,6 +3253,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
   },
   {
     apiName: 'wan/2.7-videoedit',
+    providerModel: 'wan2.7-videoedit',
     uiName: '2.7 Videoedit',
     provider: 'alibaba-cloud',
     kind: 'video',
@@ -3313,6 +3357,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
   },
   {
     apiName: 'bytedance/seedance-1-pro',
+    providerModel: 'seedance-1-0-pro-250528',
     uiName: 'Seedance 1 Pro',
     provider: 'byteplus',
     kind: 'video',
@@ -3443,6 +3488,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
   },
   {
     apiName: 'bytedance/seedance-1-pro-fast',
+    providerModel: 'seedance-1-0-pro-fast-251015',
     uiName: 'Seedance 1 Pro Fast',
     provider: 'byteplus',
     kind: 'video',
@@ -3573,6 +3619,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
   },
   {
     apiName: 'bytedance/seedance-1.5-pro',
+    providerModel: 'seedance-1-5-pro-251215',
     uiName: 'Seedance 1.5 Pro',
     provider: 'byteplus',
     kind: 'video',
@@ -3710,6 +3757,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
   },
   {
     apiName: 'bytedance/seedance-2.0',
+    providerModel: 'dreamina-seedance-2-0-260128',
     uiName: 'Seedance 2.0',
     provider: 'byteplus',
     kind: 'video',
@@ -3844,6 +3892,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
   },
   {
     apiName: 'bytedance/seedance-2.0-fast',
+    providerModel: 'dreamina-seedance-2-0-fast-260128',
     uiName: 'Seedance 2.0 Fast',
     provider: 'byteplus',
     kind: 'video',
@@ -3977,6 +4026,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
   },
   {
     apiName: 'google/veo-3.1',
+    providerModel: 'veo-3.1-generate-preview',
     uiName: 'Veo 3.1',
     provider: 'google',
     kind: 'video',
@@ -4066,6 +4116,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
   },
   {
     apiName: 'google/veo-3.1-fast',
+    providerModel: 'veo-3.1-fast-generate-preview',
     uiName: 'Veo 3.1 Fast',
     provider: 'google',
     kind: 'video',
@@ -4147,6 +4198,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
   },
   {
     apiName: 'google/veo-3.1-lite',
+    providerModel: 'veo-3.1-lite-generate-preview',
     uiName: 'Veo 3.1 Lite',
     provider: 'google',
     kind: 'video',
@@ -4222,6 +4274,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
   },
   {
     apiName: 'runway/act-two',
+    providerModel: 'act_two',
     uiName: 'Act Two',
     provider: 'runway',
     kind: 'video',
@@ -4290,6 +4343,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
   },
   {
     apiName: 'runway/aleph-2',
+    providerModel: 'aleph2',
     uiName: 'Aleph 2',
     provider: 'runway',
     kind: 'video',
@@ -4353,6 +4407,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
   },
   {
     apiName: 'runway/gen-4-aleph',
+    providerModel: 'gen4_aleph',
     uiName: 'Gen 4 Aleph',
     provider: 'runway',
     kind: 'video',
@@ -4416,6 +4471,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
   },
   {
     apiName: 'runway/gen-4-turbo',
+    providerModel: 'gen4_turbo',
     uiName: 'Gen 4 Turbo',
     provider: 'runway',
     kind: 'video',
@@ -4480,6 +4536,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
   },
   {
     apiName: 'runway/gen-4.5',
+    providerModel: 'gen4.5',
     uiName: 'Gen 4.5',
     provider: 'runway',
     kind: 'video',

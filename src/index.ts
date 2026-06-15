@@ -119,6 +119,7 @@ function toModelSummary(model: SemanticLadyModel): SemanticLadyModelSummary {
     apiName: model.apiName,
     kind: model.kind,
     provider: model.provider,
+    providerModel: model.providerModel,
     uiName: model.uiName,
     workflows: [...model.workflows],
   };

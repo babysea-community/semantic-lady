@@ -51,6 +51,7 @@ export type SemanticLadyModel = {
   apiName: string;
   kind: SemanticLadyModelKind;
   provider: SemanticLadyProvider;
+  providerModel: string;
   schema: readonly SemanticLadyField[];
   uiName: string;
   workflows: readonly SemanticLadyWorkflow[];

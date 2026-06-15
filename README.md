@@ -112,11 +112,11 @@ It helps BYOK products, workflow builders, and community tools present many prov
 
 ### Short version
 
-Different inference providers name the same ideas differently. Semantic Lady exposes a resolved catalog where model IDs, UI names, field names, field types, defaults, enum values, placeholders, and schema tiers are normalized for application code.
+Different inference providers name the same ideas differently. Semantic Lady exposes a resolved catalog where public API model IDs, provider model IDs, UI names, field names, field types, defaults, enum values, placeholders, and schema tiers are normalized for application code.
 
 ### Production lineage
 
-Semantic Lady is extracted from the schema work used to make BabySea and BabyChain handle provider growth without hard-coding every UI and request shape by hand. The public SDK exposes the normalized contract, not BabySea's private schema compiler or provider-mapping internals.
+Semantic Lady is extracted from the schema work used to make BabySea and BabyChain handle provider growth without hard-coding every UI and request shape by hand. The public SDK exposes the normalized contract and canonical provider model identifiers, not BabySea's private schema compiler or provider payload mapper.
 
 ### Grounding rule
 
@@ -130,9 +130,9 @@ Install the SDK, list available image/video models, resolve the schema for the s
 
 | Surface       | Contract                                                                                           |
 | :------------ | :------------------------------------------------------------------------------------------------- |
-| Model names   | Stable API names such as `bfl/flux-2-pro`, plus user-facing UI names for pickers and labels.       |
+| Model names   | Stable API names such as `bfl/flux-2-pro`, provider model IDs such as `flux-2-pro`, and user-facing UI names for pickers and labels. |
 | Model groups  | Separate image and video model arrays, plus one combined array ordered by provider and API name.    |
-| Fields        | Normalized `generation_*` names such as `generation_prompt`, `generation_ratio`, and media inputs. |
+| Fields        | Normalized `generation_*` names such as `generation_prompt`, `generation_aspect_ratio`, and media inputs. |
 | Field shape   | Type, required flag, default, enum values, min/max, placeholder, description, and schema tier.      |
 | Schema views  | `core`, `advanced`, and `full` views for compact UI controls or complete model forms.              |
 
@@ -144,6 +144,7 @@ The public package is data plus local resolver helpers. It is safe to use in ser
 | :-------------------- | :------------------------------------------------------------------------------------------------------- |
 | Semantic model        | One supported image or video model with an API name, UI name, provider, workflows, and resolved schema. |
 | API name              | Stable model identifier used by application code, for example `google/veo-3.1-fast`.                    |
+| Provider model        | Canonical provider-side model identifier used by BYOK adapters, for example `veo-3.1-fast-generate-preview`. |
 | UI name               | Human-readable model label for menus and forms.                                                         |
 | Normalized field      | A provider-neutral field named with the `generation_*` prefix.                                           |
 | Core schema           | The fields most users need first, ordered for predictable UI rendering.                                  |
@@ -155,7 +156,7 @@ The public package is data plus local resolver helpers. It is safe to use in ser
 - Not a hosted API, backend client, or network SDK.
 - Not a provider SDK wrapper and not a generation submission tool.
 - Not a credential store, proxy, queue, pricing engine, or provider router.
-- Not BabySea's private schema compiler, raw provider-doc parser, alias map, or provider payload mapper.
+- Not BabySea's private schema compiler, raw provider-doc parser, private alias map, or provider payload mapper.
 - Not a replacement for your BYOK integration. It gives your app the normalized schema contract your BYOK integration can consume.
 
 ## 5. Architecture
@@ -200,7 +201,12 @@ const models = listModelSummaries();
 const imageModelCount = SEMANTIC_LADY_IMAGE_MODELS.length;
 const videoModelCount = SEMANTIC_LADY_VIDEO_MODELS.length;
 
-console.log(models[0]?.apiName, imageModelCount, videoModelCount);
+console.log(
+  models[0]?.apiName,
+  models[0]?.providerModel,
+  imageModelCount,
+  videoModelCount,
+);
 ```
 
 ### Resolve a model schema
@@ -257,6 +263,10 @@ Semantic Lady is meant for BYOK applications. It never asks for provider keys an
 
 Current version surface:
 
+- Model metadata: `apiName`, `providerModel`, `uiName`, `provider`, `kind`, and `workflows`.
+- Field metadata: `name`, `type`, `tier`, `description`, plus optional `required`, `default`, `enum`, `min`, `max`, and `placeholder`.
+- Resolver APIs: `listModels`, `listModelSummaries`, `listModelNames`, `getModel`, `requireModel`, `getModelSchema`, `getModelCoreSchema`, `getModelAdvancedSchema`, and `resolveModelSchema`.
+- Catalog exports: `SEMANTIC_LADY_MODELS`, `SEMANTIC_LADY_IMAGE_MODELS`, and `SEMANTIC_LADY_VIDEO_MODELS`.
 
 New behavior stays out of the public contract until it is implemented, documented, and covered by package tests.
 
@@ -268,7 +278,7 @@ Semantic Lady is a local schema SDK. It contains no provider credentials, no hos
 | :---------------- | :-------------------------------------------------------------------------------------------------------- |
 | Secret exposure   | The package does not accept, store, or transmit provider keys.                                             |
 | BYOK boundary     | Provider execution remains in the caller's application or infrastructure.                                 |
-| Public catalog    | The published data is the normalized schema contract, not raw provider-doc extraction or private compiler logic. |
+| Public catalog    | The published data is the normalized schema contract plus canonical provider model IDs, not raw provider-doc extraction or private compiler logic. |
 | Package checks    | TypeScript typecheck, tests, and build verify the public resolver API before release.                     |
 
 ## 10. Community
