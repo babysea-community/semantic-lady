@@ -4,6 +4,13 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 
 ## [Unreleased]
 
+## [0.4.2] - 2026-06-16
+
+### Fixed
+
+- Corrected provider defaults in the generated schema catalog, including BFL Flux seed defaults, and locked raw-to-refined default preservation across all 57 models.
+- Removed non-file example metadata from raw and public schemas so generated schemas only expose documented defaults and constraints.
+
 ## [0.4.1] - 2026-06-16
 
 ### Changed

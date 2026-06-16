@@ -87,6 +87,16 @@ test('publishes doc-backed model-specific schemas', () => {
     8,
   ]);
   assert.equal(field('google/veo-3.1-fast', 'generation_seed')?.min, 0);
+  assert.equal(field('bfl/flux-1.1-pro', 'generation_seed')?.default, 42);
+  assert.equal(field('bfl/flux-2-flex', 'generation_seed')?.default, 42);
+});
+
+test('does not publish generated example metadata', () => {
+  for (const model of listModels()) {
+    for (const field of model.schema) {
+      assert.equal(Object.hasOwn(field, 'example'), false, `${model.apiName}.${field.name}`);
+    }
+  }
 });
 
 test('does not publish removed semantic field names', () => {
