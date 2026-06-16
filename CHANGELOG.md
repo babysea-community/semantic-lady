@@ -4,7 +4,13 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 
 ## [Unreleased]
 
-## [0.4.0] - 2026-06-15
+## [0.4.1] - 2026-06-16
+
+### Changed
+
+- Updated the pnpm and node version.
+
+## [0.4.0] - 2026-06-16
 
 ### Added
 
