@@ -21,7 +21,6 @@ Schema unification SDK for generative media model APIs.
 <strong>Checks</strong>
 
 [![GitLabCI](https://img.shields.io/gitlab/pipeline-status/babysea/semantic-lady?branch=main&style=for-the-badge&label=gitlabci&logo=gitlab&logoColor=white&color=FC6D26)](https://gitlab.com/babysea/semantic-lady/-/commits/main)
-[![Codecov](https://img.shields.io/codecov/c/github/babysea-community/semantic-lady?style=for-the-badge&label=codecov&logo=codecov&logoColor=white&color=FF0077&token=dBkFMBfgZf)](https://codecov.io/github/babysea-community/semantic-lady)
 [![CodeQL](https://img.shields.io/github/actions/workflow/status/babysea-community/semantic-lady/codeql.yml?style=for-the-badge&label=codeql&logo=github&logoColor=white)](https://github.com/babysea-community/semantic-lady/actions/workflows/codeql.yml)
 [![Package](https://img.shields.io/github/actions/workflow/status/babysea-community/semantic-lady/package-check.yml?style=for-the-badge&label=package&logo=npm&logoColor=white)](https://github.com/babysea-community/semantic-lady/actions/workflows/package-check.yml)
 
@@ -69,36 +68,18 @@ BabySea OSS projects are published into three status levels:
 | **Production** | Working plus a hardened public runtime contract. Validated against a stated infrastructure stack with deterministic behavior, explicit failure modes, and a documented upgrade path. |
 | **Alpha**      | Early-stage implementation. Core structure exists but some capabilities may be incomplete, undocumented, or subject to breaking changes. Not recommended for production deployments. |
 
-## Table of contents
+---
 
-1. [Overview](#1-overview)
-   - [What this is](#what-this-is)
-   - [Short version](#short-version)
-   - [Production lineage](#production-lineage)
-   - [Grounding rule](#grounding-rule)
-   - [Adoption path](#adoption-path)
-2. [Schema contract](#2-schema-contract)
-3. [Terminology](#3-terminology)
-4. [Boundaries](#4-boundaries)
-5. [Architecture](#5-architecture)
-6. [Quick start](#6-quick-start)
-   - [Install](#install)
-   - [List models](#list-models)
-   - [Resolve a model schema](#resolve-a-model-schema)
-   - [Build UI controls](#build-ui-controls)
-7. [Core capabilities](#7-core-capabilities)
-   - [What it normalizes](#what-it-normalizes)
-   - [Model ordering](#model-ordering)
-   - [Schema tiers](#schema-tiers)
-   - [BYOK usage](#byok-usage)
-8. [Version surface](#8-version-surface)
-9. [Security and Compliance](#9-security-and-compliance)
-10. [Community](#10-community)
-    - [Who's using it](#whos-using-it)
-    - [Related projects](#related-projects)
-    - [Contributing](#contributing)
-11. [License](#11-license)
+## Contents
 
+- [1. Overview](#1-overview)
+- [2. Architecture](#2-architecture)
+- [3. Quickstart](#3-quickstart)
+- [4. Security and Compliance](#4-security-and-compliance)
+- [5. Community](#5-community)
+- [6. License](#6-license)
+
+---
 
 ## 1. Overview
 
@@ -108,23 +89,15 @@ BabySea OSS projects are published into three status levels:
 
 It helps BYOK products, workflow builders, and community tools present many provider models through one consistent schema vocabulary without calling BabySea, running a backend, or wrapping provider SDKs.
 
-### Short version
-
 Different inference providers name the same ideas differently. Semantic Lady exposes a resolved catalog where public API model IDs, provider model IDs, UI names, field names, field types, defaults, enum values, placeholders, and schema tiers are normalized for application code.
-
-### Production lineage
 
 Semantic Lady is extracted from the schema work used to make BabySea and BabyChain handle provider growth without hard-coding every UI and request shape by hand. The public SDK exposes the normalized contract and canonical provider model identifiers, not BabySea's private schema compiler or provider payload mapper.
 
-### Grounding rule
-
 Public OSS behavior is limited to local schema discovery and schema resolution. The package ships model metadata and normalized `generation_*` fields. It does not submit generations, store credentials, call provider APIs, call BabySea APIs, choose providers, price workloads, or manage execution.
-
-### Adoption path
 
 Install the SDK, list available image/video models, resolve the schema for the selected model, render fields in your UI, collect user input, then pass that input to your own BYOK provider integration.
 
-## 2. Schema contract
+### Schema contract
 
 | Surface       | Contract                                                                                           |
 | :------------ | :------------------------------------------------------------------------------------------------- |
@@ -136,7 +109,7 @@ Install the SDK, list available image/video models, resolve the schema for the s
 
 The public package is data plus local resolver helpers. It is safe to use in server-side code, build tools, CLIs, and browser bundles where the generated catalog size is acceptable.
 
-## 3. Terminology
+### Terminology
 
 | Term                  | Meaning in this package                                                                                 |
 | :-------------------- | :------------------------------------------------------------------------------------------------------- |
@@ -149,7 +122,7 @@ The public package is data plus local resolver helpers. It is safe to use in ser
 | Advanced schema       | Less common controls, ordered alphabetically after core fields.                                          |
 | BYOK                  | Bring your own key: your application owns provider credentials and provider execution.                   |
 
-## 4. Boundaries
+### Boundaries
 
 - Not a hosted API, backend client, or network SDK.
 - Not a provider SDK wrapper and not a generation submission tool.
@@ -157,7 +130,17 @@ The public package is data plus local resolver helpers. It is safe to use in ser
 - Not BabySea's private schema compiler, raw provider-doc parser, private alias map, or provider payload mapper.
 - Not a replacement for your BYOK integration. It gives your app the normalized schema contract your BYOK integration can consume.
 
-## 5. Architecture
+### Core capabilities
+
+**What it normalizes.** Semantic Lady normalizes model names for APIs, model names for UIs, and provider field shapes into one `generation_*` schema vocabulary. Normalized field names follow the `generation_` prefix convention, for example `generation_prompt`, `generation_aspect_ratio`, `generation_image_url`, `generation_duration`, and `generation_seed`.
+
+**Model ordering.** The exported model catalog is ordered by inference provider first, then model API name alphabetically. Image and video models are also exported separately for products that need media-type tabs or filters.
+
+**Schema tiers.** `core` fields are designed for the first screen of a model form. `advanced` fields are available for complete model control. `full` returns both tiers in deterministic order.
+
+**BYOK usage.** Semantic Lady is meant for BYOK applications. It never asks for provider keys and never sends requests. Use it to decide which fields your app should collect, then map the normalized input inside your own provider adapter.
+
+## 2. Architecture
 
 ```text
 Private schema source
@@ -174,7 +157,7 @@ Your BYOK app UI / workflow builder / provider adapter
 
 The public SDK exports generated, normalized catalog data and small resolver helpers. Your application remains responsible for provider credentials, provider calls, retries, storage, billing, and moderation policy.
 
-## 6. Quick start
+## 3. Quickstart
 
 ### Install
 
@@ -236,53 +219,14 @@ const controls = core.fields.map((field) => ({
 }));
 ```
 
-## 7. Core capabilities
+## 4. Security and Compliance
 
-### What it normalizes
+The project publishes its trust signals through public GitHub, GitLab, or other CI provider checks so contributors can inspect the actual CI configuration, jobs, and reports.
 
-Semantic Lady normalizes model names for APIs, model names for UIs, and provider field shapes into one `generation_*` schema vocabulary.
+## 5. Community
 
-Examples of normalized field names include:
+Issues, pull requests, design discussion, and security reports should follow [`CONTRIBUTING.md`](CONTRIBUTING.md), [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md), and [`SECURITY.md`](SECURITY.md).
 
-### Model ordering
+## 6. License
 
-The exported model catalog is ordered by inference provider first, then model API name alphabetically. Image and video models are also exported separately for products that need media-type tabs or filters.
-
-### Schema tiers
-
-`core` fields are designed for the first screen of a model form. `advanced` fields are available for complete model control. `full` returns both tiers in deterministic order.
-
-### BYOK usage
-
-Semantic Lady is meant for BYOK applications. It never asks for provider keys and never sends requests. Use it to decide which fields your app should collect, then map the normalized input inside your own provider adapter.
-
-## 8. Version surface
-
-Current version surface:
-
-- Model metadata: `apiName`, `providerModel`, `uiName`, `provider`, `kind`, and `workflows`.
-- Field metadata: `name`, `type`, `tier`, `description`, plus optional `required`, `default`, `enum`, `min`, `max`, and `placeholder`.
-- Resolver APIs: `listModels`, `listModelSummaries`, `listModelNames`, `getModel`, `requireModel`, `getModelSchema`, `getModelCoreSchema`, `getModelAdvancedSchema`, and `resolveModelSchema`.
-- Catalog exports: `SEMANTIC_LADY_MODELS`, `SEMANTIC_LADY_IMAGE_MODELS`, and `SEMANTIC_LADY_VIDEO_MODELS`.
-
-New behavior stays out of the public contract until it is implemented, documented, and covered by package tests.
-
-## 9. Security and Compliance
-
-Semantic Lady publishes its trust signals through public GitLab and GitHub checks so contributors can inspect the actual CI configuration, jobs, and reports.
-
-## 10. Community
-
-### Who's using it
-
-- **[BabySea](https://babysea.ai)**: execution control plane for generative media.
-
-*Using `semantic-lady`? Open a PR to add yourself.*
-
-### Contributing
-
-We welcome PRs, issues, and design discussion. See [`CONTRIBUTING.md`](CONTRIBUTING.md), [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md), and [`SECURITY.md`](SECURITY.md).
-
-## 11. License
-
-[Apache License 2.0](LICENSE). Use it, fork it, ship it.
+[Apache License 2.0](LICENSE).
