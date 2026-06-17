@@ -86,6 +86,7 @@ test('publishes doc-backed model-specific schemas', () => {
     6,
     8,
   ]);
+  assert.ok(!fieldNames('google/veo-3.1').includes('generation_audio'));
   assert.equal(field('google/veo-3.1-fast', 'generation_seed')?.min, 0);
   assert.equal(field('bfl/flux-1.1-pro', 'generation_seed')?.default, 42);
   assert.equal(field('bfl/flux-2-flex', 'generation_seed')?.default, 42);

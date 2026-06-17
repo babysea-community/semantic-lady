@@ -4,6 +4,12 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 
 ## [Unreleased]
 
+## [0.4.3] - 2026-06-17
+
+### Fixed
+
+- Removed the unsupported Google Veo 3.1 `generateAudio` request control from the generated schema so BYOK clients no longer send an invalid Gemini API parameter.
+
 ## [0.4.2] - 2026-06-16
 
 ### Fixed

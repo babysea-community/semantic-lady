@@ -4087,13 +4087,6 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         min: 4,
       },
       {
-        name: 'generation_audio',
-        type: 'boolean',
-        tier: 'core',
-        description: 'Audio generation or provider-native audio behavior.',
-        default: true,
-      },
-      {
         name: 'generation_input_image_file',
         type: 'url-array',
         tier: 'core',
