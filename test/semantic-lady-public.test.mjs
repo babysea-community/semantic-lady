@@ -92,6 +92,28 @@ test('publishes doc-backed model-specific schemas', () => {
   assert.equal(field('bfl/flux-2-flex', 'generation_seed')?.default, 42);
 });
 
+test('publishes workflow roles from primary media inputs', () => {
+  assert.deepEqual(getModel('runway/aleph-2').workflows, ['video-to-video']);
+  assert.deepEqual(getModel('runway/gen-4-aleph').workflows, [
+    'video-to-video',
+  ]);
+  assert.deepEqual(getModel('happyhorse/1.0-video-edit').workflows, [
+    'video-to-video',
+  ]);
+  assert.deepEqual(getModel('wan/2.7-videoedit').workflows, [
+    'video-to-video',
+  ]);
+  assert.deepEqual(getModel('happyhorse/1.0-r2v').workflows, [
+    'image-to-video',
+    'video-to-video',
+  ]);
+  assert.deepEqual(getModel('wan/2.7-r2v').workflows, [
+    'image-to-video',
+    'video-to-video',
+  ]);
+  assert.deepEqual(getModel('wan/2.7-t2v').workflows, ['text-to-video']);
+});
+
 test('does not publish generated example metadata', () => {
   for (const model of listModels()) {
     for (const field of model.schema) {

@@ -2813,7 +2813,6 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
     provider: 'alibaba-cloud',
     kind: 'video',
     workflows: [
-      'image-to-video',
       'video-to-video',
     ],
     schema: [
@@ -2857,6 +2856,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         type: 'url-array',
         tier: 'core',
         description: 'Input video files used as source or reference media.',
+        required: true,
       },
       {
         name: 'generation_seed',
@@ -3265,8 +3265,6 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
     provider: 'alibaba-cloud',
     kind: 'video',
     workflows: [
-      'text-to-video',
-      'image-to-video',
       'video-to-video',
     ],
     schema: [
@@ -3331,6 +3329,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         type: 'url-array',
         tier: 'core',
         description: 'Input video files used as source or reference media.',
+        required: true,
       },
       {
         name: 'generation_negative_prompt',
@@ -4348,7 +4347,6 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
     provider: 'runway',
     kind: 'video',
     workflows: [
-      'image-to-video',
       'video-to-video',
     ],
     schema: [
@@ -4412,7 +4410,6 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
     provider: 'runway',
     kind: 'video',
     workflows: [
-      'image-to-video',
       'video-to-video',
     ],
     schema: [

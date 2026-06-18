@@ -4,6 +4,12 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 
 ## [Unreleased]
 
+## [0.4.4] - 2026-06-18
+
+### Fixed
+
+- Corrected video workflow inference so optional reference-image fields no longer make video-to-video models appear as primary image-to-video models; Runway Aleph, Wan 2.7 Video Edit, and HappyHorse Video Edit now publish only `video-to-video`, while Wan and HappyHorse reference-to-video models keep both image/video workflows.
+
 ## [0.4.3] - 2026-06-17
 
 ### Fixed
