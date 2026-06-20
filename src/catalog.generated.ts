@@ -4098,12 +4098,6 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         description: 'Last-frame reference file.',
       },
       {
-        name: 'generation_negative_prompt',
-        type: 'string',
-        tier: 'advanced',
-        description: 'Text describing content to avoid.',
-      },
-      {
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
@@ -4180,12 +4174,6 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         description: 'Last-frame reference file.',
       },
       {
-        name: 'generation_negative_prompt',
-        type: 'string',
-        tier: 'advanced',
-        description: 'Text describing content to avoid.',
-      },
-      {
         name: 'generation_seed',
         type: 'integer',
         tier: 'advanced',
@@ -4254,12 +4242,6 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
         type: 'url-array',
         tier: 'core',
         description: 'Input image files used as source or reference media.',
-      },
-      {
-        name: 'generation_negative_prompt',
-        type: 'string',
-        tier: 'advanced',
-        description: 'Text describing content to avoid.',
       },
       {
         name: 'generation_seed',

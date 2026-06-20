@@ -4,6 +4,12 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 
 ## [Unreleased]
 
+## [0.4.5] - 2026-06-20
+
+### Fixed
+
+- Removed unsupported Google Veo 3.1 `negativePrompt` request fields from every Veo 3.1 variant schema so clients no longer emit invalid Gemini API parameters.
+
 ## [0.4.4] - 2026-06-18
 
 ### Fixed
