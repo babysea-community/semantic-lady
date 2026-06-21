@@ -95,8 +95,10 @@ test('publishes doc-backed model-specific schemas', () => {
     assert.ok(!fieldNames(modelName).includes('generation_negative_prompt'));
   }
   assert.equal(field('google/veo-3.1-fast', 'generation_seed')?.min, 0);
-  assert.equal(field('bfl/flux-1.1-pro', 'generation_seed')?.default, 42);
-  assert.equal(field('bfl/flux-2-flex', 'generation_seed')?.default, 42);
+  assert.ok(fieldNames('bfl/flux-1.1-pro').includes('generation_seed'));
+  assert.ok(fieldNames('bfl/flux-2-flex').includes('generation_seed'));
+  assert.equal(field('bfl/flux-1.1-pro', 'generation_seed')?.default, undefined);
+  assert.equal(field('bfl/flux-2-flex', 'generation_seed')?.default, undefined);
 });
 
 test('publishes workflow roles from primary media inputs', () => {

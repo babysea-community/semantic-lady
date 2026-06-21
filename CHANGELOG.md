@@ -4,6 +4,21 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-06-21
+
+### Changed
+
+- Restructured the Runway Aleph 2 schema to provider-native keyframe references and a `targetAspectRatio` control with standard aspect-ratio values (such as `16:9`), replacing the previous typed reference list.
+
+### Fixed
+
+- Validated every model schema against the inference provider documentation as the single source of truth and corrected provider-native values across all 57 models:
+  - Black Forest Labs: dropped the synthesized Flux `seed` default, minimum, and maximum (the docs document only an example value, not a default) and published the Flux Pro 1.1 Ultra aspect ratio as a free-form provider value.
+  - BytePlus: removed the undocumented `off` prompt-enhancement mode from the Seedream models.
+  - Google: corrected resolution tokens (`0.5K` to `512`, `4K` to `4k`) and added the missing `4k` option for Veo 3.1 Fast.
+  - Runway: made `promptText` and `duration` optional on Gen-4 Turbo to match the API.
+  - Alibaba Cloud: marked the Wan 2.2 Animate `mode` control as required with no default, matching the provider's required field.
+
 ## [0.4.5] - 2026-06-20
 
 ### Fixed
