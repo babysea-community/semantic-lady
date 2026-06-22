@@ -87,6 +87,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         type: 'string',
         tier: 'core',
         description: 'Provider-native output size preset.',
+        default: '1024*1024',
       },
       {
         name: 'generation_output_number',
@@ -156,6 +157,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         type: 'string',
         tier: 'core',
         description: 'Provider-native output size preset.',
+        default: '1024*1024',
       },
       {
         name: 'generation_output_number',
@@ -280,6 +282,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         type: 'string',
         tier: 'core',
         description: 'Provider-native output size preset.',
+        default: '1024*1024',
       },
       {
         name: 'generation_output_number',
@@ -349,6 +352,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         type: 'string',
         tier: 'core',
         description: 'Provider-native output size preset.',
+        default: '1024*1024',
       },
       {
         name: 'generation_output_number',
@@ -1262,7 +1266,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         type: 'integer',
         tier: 'core',
         description: 'Output width in pixels.',
-        default: 0,
+        default: 1024,
         min: 64,
       },
       {
@@ -1270,7 +1274,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         type: 'integer',
         tier: 'core',
         description: 'Output height in pixels.',
-        default: 0,
+        default: 1024,
         min: 64,
       },
       {
@@ -1354,7 +1358,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         type: 'integer',
         tier: 'core',
         description: 'Output width in pixels.',
-        default: 0,
+        default: 1024,
         min: 64,
       },
       {
@@ -1362,7 +1366,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         type: 'integer',
         tier: 'core',
         description: 'Output height in pixels.',
-        default: 0,
+        default: 1024,
         min: 64,
       },
       {
@@ -1421,7 +1425,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         type: 'integer',
         tier: 'core',
         description: 'Output width in pixels.',
-        default: 0,
+        default: 1024,
         min: 64,
       },
       {
@@ -1429,7 +1433,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         type: 'integer',
         tier: 'core',
         description: 'Output height in pixels.',
-        default: 0,
+        default: 1024,
         min: 64,
       },
       {
@@ -1488,7 +1492,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         type: 'integer',
         tier: 'core',
         description: 'Output width in pixels.',
-        default: 0,
+        default: 1024,
         min: 64,
       },
       {
@@ -1496,7 +1500,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         type: 'integer',
         tier: 'core',
         description: 'Output height in pixels.',
-        default: 0,
+        default: 1024,
         min: 64,
       },
       {
@@ -1555,7 +1559,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         type: 'integer',
         tier: 'core',
         description: 'Output width in pixels.',
-        default: 0,
+        default: 1024,
         min: 64,
       },
       {
@@ -1563,7 +1567,7 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
         type: 'integer',
         tier: 'core',
         description: 'Output height in pixels.',
-        default: 0,
+        default: 1024,
         min: 64,
       },
       {

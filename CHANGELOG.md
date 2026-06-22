@@ -4,6 +4,18 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 
 ## [Unreleased]
 
+## [0.5.1] - 2026-06-22
+
+### Fixed
+
+- Added safe square defaults to dimensional fields that previously synthesized an out-of-range value when a client (or a downstream agent that auto-fills omitted fields) left them blank:
+  - Black Forest Labs: Flux 2 Flex, Klein 4B, Klein 9B, Max, and Pro `generation_width`/`generation_height` now default to `1024`. They previously defaulted to `0`, which is below the documented `64` minimum and was rejected with `generation_width must be >= 64`.
+  - Alibaba Cloud: Qwen Image 2.0, Qwen Image 2.0 Pro, Qwen Image Edit Max, and Qwen Image Edit Plus `generation_size` now default to `1024*1024` instead of an empty string.
+
+### Notes
+
+- These dimensional defaults are BabySea schema-completion conveniences, not provider-documented defaults (the providers treat the dimensions as optional/auto-sized); they are marked `// custom` in the raw schema source.
+
 ## [0.5.0] - 2026-06-21
 
 ### Changed
