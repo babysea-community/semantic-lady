@@ -2620,7 +2620,6 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
     kind: 'video',
     workflows: [
       'image-to-video',
-      'video-to-video',
     ],
     schema: [
       {
@@ -2845,8 +2844,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
     provider: 'alibaba-cloud',
     kind: 'video',
     workflows: [
-      'image-to-video',
-      'video-to-video',
+      'animation',
     ],
     schema: [
       {
@@ -2897,8 +2895,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
     provider: 'alibaba-cloud',
     kind: 'video',
     workflows: [
-      'image-to-video',
-      'video-to-video',
+      'animation',
     ],
     schema: [
       {
@@ -2951,7 +2948,6 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
     workflows: [
       'text-to-video',
       'image-to-video',
-      'video-to-video',
     ],
     schema: [
       {
@@ -3042,7 +3038,6 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
     kind: 'video',
     workflows: [
       'image-to-video',
-      'video-to-video',
     ],
     schema: [
       {
@@ -3733,7 +3728,6 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
     workflows: [
       'text-to-video',
       'image-to-video',
-      'video-to-video',
     ],
     schema: [
       {
@@ -3868,7 +3862,6 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
     workflows: [
       'text-to-video',
       'image-to-video',
-      'video-to-video',
     ],
     schema: [
       {
@@ -4224,7 +4217,7 @@ export const SEMANTIC_LADY_VIDEO_MODELS = [
     provider: 'runway',
     kind: 'video',
     workflows: [
-      'character-performance',
+      'character',
     ],
     schema: [
       {

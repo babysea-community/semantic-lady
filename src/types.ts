@@ -9,13 +9,13 @@ export type SemanticLadyProvider =
 export type SemanticLadyModelKind = 'image' | 'video';
 
 export type SemanticLadyWorkflow =
-  | 'character-performance'
-  | 'image-to-image'
-  | 'image-to-video'
-  | 'text-to-image'
-  | 'text-to-video'
-  | 'upscale-image'
-  | 'video-to-video';
+  | 'text-to-image' // image
+  | 'image-to-image' // image
+  | 'text-to-video' // video
+  | 'image-to-video' // video
+  | 'video-to-video' // video
+  | 'character' // video: performance transfer driven by a reference (e.g. Act Two)
+  | 'animation'; // video: a still image animated by a required driving video (e.g. Wan Animate)
 
 export type SemanticLadyFieldType =
   | 'boolean'

@@ -4,6 +4,20 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 
 ## [Unreleased]
 
+## [0.6.0] - 2026-06-23
+
+### Changed
+
+- Recategorized video model workflows to reflect true capabilities. Workflow inference now derives `video-to-video` only for models that edit a **required primary** video input, and adds two dedicated workflows for specialized models:
+  - `video-to-video` is now limited to the four genuine video editors: Runway Aleph 2, Runway Gen-4 Aleph, HappyHorse 1.0 Video Edit, and Wan 2.7 VideoEdit.
+  - Reference (`reference_video`) and continuation (`first_clip`) inputs no longer imply `video-to-video`. HappyHorse 1.0 R2V, Wan 2.7 R2V, Wan 2.7 I2V, ByteDance Seedance 2.0, and Seedance 2.0 Fast are now image/reference-to-video only.
+  - Added `character` workflow for performance transfer driven by a reference (Runway Act Two).
+  - Added `animation` workflow for a still image animated by a required driving video (Wan 2.2 Animate Mix and Move).
+
+### Removed
+
+- Removed the `character-performance` workflow, superseded by the more precise `character` workflow.
+
 ## [0.5.1] - 2026-06-22
 
 ### Fixed

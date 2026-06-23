@@ -112,15 +112,12 @@ test('publishes workflow roles from primary media inputs', () => {
   assert.deepEqual(getModel('wan/2.7-videoedit').workflows, [
     'video-to-video',
   ]);
-  assert.deepEqual(getModel('happyhorse/1.0-r2v').workflows, [
-    'image-to-video',
-    'video-to-video',
-  ]);
-  assert.deepEqual(getModel('wan/2.7-r2v').workflows, [
-    'image-to-video',
-    'video-to-video',
-  ]);
+  assert.deepEqual(getModel('happyhorse/1.0-r2v').workflows, ['image-to-video']);
+  assert.deepEqual(getModel('wan/2.7-r2v').workflows, ['image-to-video']);
   assert.deepEqual(getModel('wan/2.7-t2v').workflows, ['text-to-video']);
+  assert.deepEqual(getModel('runway/act-two').workflows, ['character']);
+  assert.deepEqual(getModel('wan/2.2-animate-mix').workflows, ['animation']);
+  assert.deepEqual(getModel('wan/2.2-animate-move').workflows, ['animation']);
 });
 
 test('does not publish generated example metadata', () => {
