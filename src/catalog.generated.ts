@@ -1182,10 +1182,21 @@ export const SEMANTIC_LADY_IMAGE_MODELS = [
       },
       {
         name: 'generation_aspect_ratio',
-        type: 'string',
+        type: 'enum',
         tier: 'core',
         description: 'Aspect ratio of the generated content.',
         default: '16:9',
+        enum: [
+          '21:9',
+          '16:9',
+          '3:2',
+          '4:3',
+          '1:1',
+          '3:4',
+          '2:3',
+          '9:16',
+          '9:21',
+        ],
       },
       {
         name: 'generation_output_format',

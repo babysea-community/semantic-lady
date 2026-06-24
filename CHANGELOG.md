@@ -4,6 +4,12 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 
 ## [Unreleased]
 
+## [0.6.1] - 2026-06-24
+
+### Changed
+
+- Black Forest Labs FLUX 1.1 [pro] ultra `generation_aspect_ratio` is now an enum of common presets (`21:9`, `16:9`, `3:2`, `4:3`, `1:1`, `3:4`, `2:3`, `9:16`, `9:21`; default `16:9`) instead of a free-form string. BFL accepts any ratio between 21:9 and 9:21, but surfacing the common presets lets consumers render it as a dropdown that matches every other model's aspect ratio field while keeping BYOK validation aligned.
+
 ## [0.6.0] - 2026-06-23
 
 ### Changed
